@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="dd7937d4-d851-4be1-a504-e468eed59e5f" name="Default" comment="">
+    <list default="true" id="dd7937d4-d851-4be1-a504-e468eed59e5f" name="Default" comment="1">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/detail/detail.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/detail/detail.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/detail/detail.wxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/detail/detail.wxss" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/search/search.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/search/search.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/search/search.wxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/search/search.wxss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eSearch.iws" />
@@ -29,6 +37,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
   </component>
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
@@ -78,6 +89,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="eSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eSearch" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -184,7 +209,13 @@
       <option name="project" value="LOCAL" />
       <updated>1540280017026</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="1">
+      <created>1540280024049</created>
+      <option name="number" value="00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540280024049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="ToolWindowManager">
