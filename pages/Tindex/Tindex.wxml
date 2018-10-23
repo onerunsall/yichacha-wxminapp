@@ -1,13 +1,18 @@
 <view class="top_title" style='background:url(../img/top_tip2.png);background-size:cover'>
-  <view class="search">
+  <navigator url='../search/search'>
+    <view class="search">
     <image style="position: static;vertical-align: middle;" src="../icon/search@2x.png"></image>
     <text>请输入产品名称、注册证标号等</text>
   </view>
+  </navigator>
 </view>
-
+<navigator url='{{hrefs}}'>
 <view class='ggwei'>
-  <image src='https://passion.njshangka.com/oss/yichaxun/201706010932055979500.jpg'></image>
+  
+  <image src='{{adverCover}}'></image>
+
 </view>
+  </navigator>
 
 <view class="productList bottom">
   <text>产品列表</text>
@@ -15,7 +20,8 @@
 <!-- 产品列表 -->
 <view class="productList_list lf">
   <view class="contain">
-    <view style="background:#fff" time="1" uid="201704131219309713239DT" class="productList_list_pic bottom lf" mid="201704131219309713239DT" isfavor="undefined">
+    <navigator url='../detail/detail'>
+      <view style="background:#fff" time="1" uid="201704131219309713239DT" class="productList_list_pic bottom lf" mid="201704131219309713239DT" isfavor="undefined">
       <view mid="201704131219309713239DT" class="productList_list_pic lf">
         <text mid="201704131219309713239DT">外固定支架 (张家港市锦丰康达医用器材厂 苏械注准20152100485)</text>
         <view mid="201704131219309713239DT" name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
@@ -25,6 +31,7 @@
         </view>
       </view>
     </view>
+    </navigator>
     <view style="background:#fff" time="7" uid="201703232117168414617DT" class="productList_list_text bottom lf" mid="201703232117168414617DT" isfavor="undefined">
       <view mid="201703232117168414617DT" class="productList_list_text_lf lf">
         <text class='text' mid="201703232117168414617DT">Diagnostic Ultrasound Scanner (GE Healthcare Austria GmbH &amp; Co OG 国食药监械(进)字2014第2234370号)</text>
