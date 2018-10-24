@@ -119,7 +119,7 @@ Page({
             })
           } else {
             wx.showModal({
-              title: res.data.codeMsg
+              title: res.data.codeMsg 
             })
           }
         }

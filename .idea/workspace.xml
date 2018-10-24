@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd7937d4-d851-4be1-a504-e468eed59e5f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/linkhref/linkhref.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/linkhref/linkhref.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/linkhref/linkhref.wxml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/pages/linkhref/linkhref.wxss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Tindex/Tindex.js" afterPath="$PROJECT_DIR$/pages/Tindex/Tindex.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Tindex/Tindex.wxml" afterPath="$PROJECT_DIR$/pages/Tindex/Tindex.wxml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.json" afterPath="$PROJECT_DIR$/app.json" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/detail/detail.js" afterPath="$PROJECT_DIR$/pages/detail/detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/detail/detail.wxml" afterPath="$PROJECT_DIR$/pages/detail/detail.wxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eSearch.iws" />
@@ -83,20 +88,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="eSearch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eSearch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="eSearch" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pages" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -228,7 +219,13 @@
       <option name="project" value="LOCAL" />
       <updated>1540352440757</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="1">
+      <created>1540363216590</created>
+      <option name="number" value="00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1540363216590</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="ToolWindowManager">

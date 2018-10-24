@@ -1,0 +1,2 @@
+<!--pages/linkhref/linkhref.wxml-->
+<web-view src="{{href}}"></web-view>

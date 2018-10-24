@@ -4,7 +4,8 @@
     "pages/detail/detail",
     "pages/search/search",
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/linkhref/linkhref"
   ],
   "window": {
     "backgroundTextStyle": "light",

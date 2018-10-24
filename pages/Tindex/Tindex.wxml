@@ -6,13 +6,11 @@
   </view>
   </navigator>
 </view>
-<navigator url='{{hrefs}}'>
-<view class='ggwei'>
+<view bindtap='jumpurl' class='ggwei' data-url='{{hrefs}}'>
   
   <image src='{{adverCover}}'></image>
 
 </view>
-  </navigator>
 
 <view class="productList bottom">
   <text>产品列表</text>

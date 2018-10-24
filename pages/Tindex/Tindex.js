@@ -25,9 +25,6 @@ Page({
     that.setData({
       domain: domain
     })
-      
-
-
     wx.request({
       url: domain + '/yichaxun/u/ua/loginindev',
       header: {
@@ -36,7 +33,7 @@ Page({
       method: 'post',
       data: {
         userPhone: 15077822798
-              },
+      },
       success: function (res) {
         wx.hideToast()
         if (res.data.code == 0) {
@@ -173,6 +170,13 @@ Page({
           })
         }
       }
+    })
+  },
+
+  jumpurl:function(e){
+    var url = e.currentTarget.dataset.url
+    wx.navigateTo({
+      url: '../linkhref/linkhref?url='+url
     })
   },
   /**
