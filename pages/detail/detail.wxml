@@ -1,75 +1,9 @@
 <!--pages/detail/detail.wxml-->
 <view>
-  <view id="dataList">
-    <input type="text" class="corporationSite" style="display: none"></input>
-    <input type="text" class="corporationTel" style="display: none"></input>
+  <view id="dataList"  wx:for="{{dataDetail}}"  wx:key="dataDetail" data-index="{{index}}">
     <view class="details">
-      <text class="name">[注册人住所]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[备注]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[适用范围]</text>
-      <text class="value">该产品与金属骨针配套，供临床骨科外固定手术用。</text>
-    </view>
-    <view class="details">
-      <text class="name">[代理人住所]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[生产地址]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[其他内容]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[变更日期]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[产品名称]</text>
-      <text class="value">外固定支架</text>
-    </view>
-    <view class="details">
-      <text class="name">[产品标准]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[注册人名称]</text>
-      <text class="value">张家港市锦丰康达医用器材厂</text>
-    </view>
-    <view class="details">
-      <text class="name">[注册证编号]</text>
-      <text class="value">苏械注准20152100485</text>
-    </view>
-    <view class="details">
-      <text class="name">[代理人名称]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[型号、规格]</text>
-      <text class="value">Ⅱ型（KD1号、KD2号、KD3号）、Ⅲ型（KD1号、KD2号、KD3号）、Ⅳ型（KD1号、KD2号）、Ⅴ型（KD1号、KD2号）</text>
-    </view>
-    <view class="details">
-      <text class="name">[主要组成成分（体外诊断试剂）]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[产品储存条件及有效期（体外诊断试剂）]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[批准日期]</text>
-      <text class="value"></text>
-    </view>
-    <view class="details">
-      <text class="name">[有效期至]</text>
-      <text class="value">2020-05-06</text>
+      <text class="name">[{{item.name}}]</text>
+      <text class="value">{{item.value}}</text>
     </view>
   </view>
   <view class="img_list" id="jq22">
@@ -79,11 +13,11 @@
   </view>
 </view>
 <view class='btn'>
-    <view class="footer_1 lf">
+    <view class="footer_1 lf"  data-url='{{url}}' bindtap='url'>
     <image  src="../icon/icon-contact-2.png" alt=""></image>
         <text>前往厂商</text>
     </view>
-    <view class="footer_2 lf">
+    <view class="footer_2 lf" data-phone='{{phone}}' bindtap='phone'>
     <image  src="../icon/icon-contact-3.png" alt=""></image>
         <text>直接询价</text>
     </view>

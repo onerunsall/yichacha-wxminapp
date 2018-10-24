@@ -25,6 +25,29 @@ Page({
     that.setData({
       domain: domain
     })
+      
+
+
+    wx.request({
+      url: domain + '/yichaxun/u/ua/loginindev',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: 'post',
+      data: {
+        userPhone: 15077822798
+              },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+          wx.setStorageSync('token', res.data.data.token)
+        } else {
+          wx.showModal({
+            title: res.data.codeMsg
+          })
+        }
+      }
+    })
     wx.request({
       url: domain + '/yichaxun/u/homeadlist',
       header: {
@@ -116,7 +139,6 @@ Page({
               for (var i = 0; i < that.data.list.length; i++) { 
               if (that.data.list[i].dataPic) {
                 var dataPic = that.data.list[i].dataPic.split(',')
-                console.log(dataPic)
                 if (dataPic.length == 1) {
                   pic1 = dataPic;
                   pic2 = '';

@@ -9,7 +9,12 @@ Page({
        'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
        'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
        'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg' 
-    ]
+    ],
+    dataDetail:[],
+    phone:'',
+    url:'',
+    domain:'',
+    token:''
   },
 	/** 
 	 * 预览图片
@@ -29,7 +34,13 @@ Page({
     var id = options.id;
     var that=this;
     var domain = wx.getStorageSync('domain')
+    that.setData({
+      domain: domain
+    })
     var token = wx.getStorageSync('token')
+    that.setData({
+      token: token
+    })
     wx.request({
       url: domain + '/yichaxun/data/detail',
       header: {
@@ -43,32 +54,24 @@ Page({
       success: function (res) {
         wx.hideToast()
         if (res.data.code == 0) {
-          var homeAdPic = '';
-          for (var i = 0; i < res.data.data.items.length; i++) {
-            homeAdPic = res.data.data.items[i].homeAdPic;
-            var str = homeAdPic;
-            var sear = new RegExp('com');
-            if (sear.test(str)) {
-
-            } else {
-              homeAdPic = domain + homeAdPic;
-            }
-            if (!res.data.data.items[i].homeAdUrl) {
+          if (res.data.data.corporation){
+            if (res.data.data.corporation.corporationTel){
               that.setData({
-                hrefs: ''
-              })
-            } else {
-              var _html_ = res.data.data.items[i].homeAdUrl;
-              that.setData({
-                hrefs: domain + _html_,
+                phone: res.data.data.corporation.corporationTel
               })
             }
+            if (res.data.data.corporation.corporationSite) {
+              that.setData({
+                url: res.data.data.corporation.corporationSite
+              })
+            }
+            console.log(that.data.url, that.data.phone)
           }
-
-          that.setData({
-            adverCover: homeAdPic,
-            // hrefs: 'https://passion.njshangka.com/yichaxun/weixin/newsDetails.html'
-          })
+          var imgalist = res.data.data.dataPic.split(',');
+            that.setData({
+              imgalist: imgalist,
+              dataDetail: res.data.data.dataDetail,
+            })
         } else {
           wx.showModal({
             title: res.data.codeMsg
@@ -77,7 +80,52 @@ Page({
       }
     })
   },
-
+  url: function (e) {
+    var url = e.currentTarget.dataset.url;
+    if (url!=''){
+      wx.navigateTo({
+        url: url
+      })
+    }else{
+      wx.showModal({
+        title: '该厂家官网尚待激活',
+        content: '',
+      })
+    }
+   
+  },
+  phone: function (e) {
+    var that=this
+    var phone = e.currentTarget.dataset.phone;
+    if (phone != '') {
+    wx.makePhoneCall({
+      phoneNumber: phone,
+    })
+  }else{
+      wx.request({
+        url: that.data.domain + '/yichaxun/u/userinit',
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        method: 'post',
+        data: {
+          token:that.data.token
+        },
+        success: function (res) {
+          wx.hideToast()
+          if (res.data.code == 0) {
+            wx.makePhoneCall({
+              phoneNumber: res.data.data.serviceTel,
+            })
+          } else {
+            wx.showModal({
+              title: res.data.codeMsg
+            })
+          }
+        }
+      })
+  }
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
