@@ -10,7 +10,8 @@ Page({
     hrefs: '',
     lastRowId:'',
     domain:'',
-    septum:''
+    septum:'',
+    type:1
   },
 
   /**
@@ -50,7 +51,7 @@ Page({
             } else {
               var _html_ = res.data.data.items[i].homeAdUrl;
               that.setData({
-                hrefs: _html_,
+                hrefs: domain +  _html_,
               })
             }
           }
@@ -84,7 +85,6 @@ Page({
       },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
-
       },
       success: function (res) {
 
@@ -103,17 +103,44 @@ Page({
               // duration: 1500
             })
           } else {
+            that.setData({
+              list: newlist,
+            });
             for (var i = 0; i < res.data.data.items.length; i++) {
               that.setData({
                 lastRowId: res.data.data.items[i].dataId,
                 septum: res.data.data.items[i].dataOnHomeSort,
               })
-              console.log(that.data.lastRowId)
+            }   
+            var pic1, pic2, pic3;
+              for (var i = 0; i < that.data.list.length; i++) { 
+              if (that.data.list[i].dataPic) {
+                var dataPic = that.data.list[i].dataPic.split(',')
+                console.log(dataPic)
+                if (dataPic.length == 1) {
+                  pic1 = dataPic;
+                  pic2 = '';
+                  pic3 = '';
+                } else if (dataPic.length == 2) {
+                  pic1 = dataPic[0];
+                  pic2 = dataPic[1];
+                  pic3 = '';
+                } else {
+                  pic1 = dataPic[0];
+                  pic2 = dataPic[1];
+                  pic3 = dataPic[2];
+                }
+              }
+                that.data.list[i].pic1 = pic1
+                that.data.list[i].pic2 = pic2
+                that.data.list[i].pic3 = pic3
             }
+          
+              var list = that.data.list
             that.setData({
-              list: newlist,
-            });
-          }
+              list: list
+            })
+            }
         }
 
 

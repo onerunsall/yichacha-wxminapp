@@ -20,30 +20,32 @@
 <!-- 产品列表 -->
 <view class="productList_list lf">
   <view class="contain">
-    <navigator url='../detail/detail'>
-      <view style="background:#fff" time="1" uid="201704131219309713239DT" class="productList_list_pic bottom lf" mid="201704131219309713239DT" isfavor="undefined">
+<view wx:for="{{list}}"  wx:key="list" data-index="{{index}}">
+    <navigator url='../detail/detail?id={{item.dataId}}'>
+      <view wx:if="{{item.dataPic}}" style="background:#fff"  class="productList_list_pic bottom lf" >
       <view mid="201704131219309713239DT" class="productList_list_pic lf">
-        <text mid="201704131219309713239DT">外固定支架 (张家港市锦丰康达医用器材厂 苏械注准20152100485)</text>
+        <text mid="201704131219309713239DT">{{item.dataTitle}}</text>
         <view mid="201704131219309713239DT" name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
-          <image src="https://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg" alt="" class="dis1 img1 color_c"></image>
-          <image src="https://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg" alt="" class="dis2 img2 color_c"></image>
-          <image src="https://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg" alt="" class="dis3 img3 color_c"></image>
+          <image src="{{item.pic1}}" alt="" class="dis1 img1 color_c"></image>
+          <image src="{{item.pic2}}" alt="" class="dis2 img2 color_c"></image>
+          <image src="{{item.pic3}}" alt="" class="dis3 img3 color_c"></image>
         </view>
       </view>
     </view>
     </navigator>
-    <view style="background:#fff" time="7" uid="201703232117168414617DT" class="productList_list_text bottom lf" mid="201703232117168414617DT" isfavor="undefined">
+    </view>
+
+    <navigator url='../detail/detail?id={{item.dataId}}'>
+    <view  wx:if="{{item.dataPic==''}}" style="background:#fff" class="productList_list_text bottom lf" >
       <view mid="201703232117168414617DT" class="productList_list_text_lf lf">
-        <text class='text' mid="201703232117168414617DT">Diagnostic Ultrasound Scanner (GE Healthcare Austria GmbH &amp; Co OG 国食药监械(进)字2014第2234370号)</text>
-        <text class='text1' style="margin-bottom: 12px;">注册证编号:国食药监械(进)字2014第2234370号</text>
-        <text class='text1' style="margin-bottom:17px;">注册人名称:GE Healthcare Austria GmbH &amp; Co OG</text>
+        <text class='text' mid="201703232117168414617DT">{{item.dataTitle}}</text>
+        <text class='text1' style="margin-bottom: 12px;">注册证编号:{{item.dataRegisterNo}}</text>
+        <text class='text1' style="margin-bottom:17px;">注册人名称:{{item.corporationName}}</text>
       </view>
       <view class="productList_list_text_rt rt">
         <image src="../iconTwo/back-arrow@2x.png"></image>
       </view>
     </view>
-
-
-
+    </navigator>
   </view>
 </view>
