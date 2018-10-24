@@ -20,7 +20,7 @@
   <view class="contain">
 <view wx:for="{{list}}"  wx:key="list" data-index="{{index}}">
     <navigator url='../detail/detail?id={{item.dataId}}'>
-      <view wx:if="{{item.dataPic}}" style="background:#fff"  class="productList_list_pic bottom lf" >
+      <view wx:if="{{item.dataPic!=''}}" style="background:#fff"  class="productList_list_pic bottom lf" >
       <view mid="201704131219309713239DT" class="productList_list_pic lf">
         <text mid="201704131219309713239DT">{{item.dataTitle}}</text>
         <view mid="201704131219309713239DT" name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
@@ -31,7 +31,7 @@
       </view>
     </view>
     </navigator>
-    </view>
+
 
     <navigator url='../detail/detail?id={{item.dataId}}'>
     <view  wx:if="{{item.dataPic==''}}" style="background:#fff" class="productList_list_text bottom lf" >
@@ -45,5 +45,8 @@
       </view>
     </view>
     </navigator>
+    </view>
+
+    
   </view>
 </view>

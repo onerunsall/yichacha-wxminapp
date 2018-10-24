@@ -31,12 +31,12 @@ wx.login({
     if (res.code) {
       //发起网络请求
       console.log((res.code));
-      wx.request({
-        url: 'https://test.com/onLogin',
-        data: {
-          code: res.code
-        }
-      })
+      // wx.request({
+      //   url: 'https://test.com/onLogin',
+      //   data: {
+      //     code: res.code
+      //   }
+      // })
     } else {
       console.log('登录失败！' + res.errMsg)
     }
