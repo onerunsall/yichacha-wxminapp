@@ -14,7 +14,9 @@ Page({
     phone:'',
     url:'',
     domain:'',
-    token:''
+    token:'',
+    showModal:false,
+    urlText:'',
   },
 	/** 
 	 * 预览图片
@@ -83,8 +85,9 @@ Page({
   url: function (e) {
     var url = e.currentTarget.dataset.url;
     if (url!=''){
-      wx.navigateTo({
-        url: url
+      this.setData({
+        urlText: url,
+        showModal: true
       })
     }else{
       wx.showModal({
@@ -173,5 +176,17 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+ 
+
+  // 禁止屏幕滚动
+  preventTouchMove: function () {
+  },
+
+  // 弹出层里面的弹窗
+  ok: function () {
+    this.setData({
+      showModal: false
+    })
   }
 })

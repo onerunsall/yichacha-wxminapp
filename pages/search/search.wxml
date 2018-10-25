@@ -2,29 +2,21 @@
   <view class="top">
     <view class="input_box ">
       <view class="lf  input_box_view" style="display: inline-block">
-        <input placeholder-class="place_holder" class="input input_dex" type="text" placeholder="请输入产品名称、注册证编号等"></input>
-        <!-- <text class="input_text" style="display: block;">请输入产品名称、注册证编号等</text> -->
+        <input bindinput="inputUser" placeholder-class="place_holder" class="input input_dex" value='{{inputVal}}' type="text" placeholder="请输入产品名称、注册证编号等"></input>
       </view>
-      <image class="search_fdj rt" src="../icon/search@2x.png" alt=""></image>
+      <image bindtap='searchIcon' class="search_fdj rt" src="../icon/search@2x.png" alt=""></image>
     </view>
   </view>
   <!--热门搜索-->
   <view class="clear"></view>
-  <view class="lf hot_search" style='display:none;'>
+  <view class="lf hot_search" wx:if="{{searchVal==1}}">
     <view class="hot_search_title">
       <text>热门搜索</text>
     </view>
     <view style="width: 100%;background-color: #ffffff;">
       <view id="textList" style="margin-left: 30rpx;margin-right: 30rpx">
         <view class="hot_search_text">
-          <text>新华医疗</text>
-          <text>东软</text>
-          <text>西门子</text>
-          <text>迈瑞</text>
-          <text>GE</text>
-          <text>南京卡普</text>
-          <text>万东</text>
-          <text>安科</text>
+          <text bindtap="searchSpan" wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">{{item.hotKeyName}}</text>
         </view>
       </view>
     </view>
@@ -32,29 +24,20 @@
 </view>
 
 
-<view>
-  <view>
-    <view time="1492056455957" uid="201704131207359573191DT" style="background-color:#fff" class="productList_list_text bottom lf" id="201704131207359573191DT" isfavor="0">
-      <view id="201704131207359573191DT" class="productList_list_text_lf lf">
-        <text class='textp'>全自动生化分析仪 (沈阳东软医疗系统有限公司 辽食药监械(准)字2014第2400227号)</text>
-        <text class='textspan1' style="margin-bottom: 24rpx;">注册证编号:辽食药监械(准)字2014第2400227号</text>
-        <text class='textspan2' style="margin-bottom:34rpx;">注册人名称:沈阳东软医疗系统有限公司</text>
+<view wx:if="{{searchVal==2}}">
+  <view wx:for="{{list}}" wx:key="list" data-index="{{index}}">
+    <navigator  url='../detail/detail?id={{item.dataId}}'>
+      <view style="background-color:#fff" class="productList_list_text bottom lf">
+        <view class="productList_list_text_lf lf">
+          <text class='textp'>{{item.dataTitle}}</text>
+          <text class='textspan1' style="margin-bottom: 24rpx;">注册证编号:{{item.dataRegisterNo}}</text>
+          <text class='textspan2' style="margin-bottom:34rpx;">注册人名称:{{item.corporationName}}</text>
+        </view>
+        <view class="productList_list_text_rt rt">
+          <image src="../iconTwo/back-arrow@2x.png" alt=""></image>
+        </view>
+        <view style="width: 100%;height: 20rpx;background-color: #f2f2f2"></view>
       </view>
-      <view class="productList_list_text_rt rt">
-        <image  src="../iconTwo/back-arrow@2x.png" alt=""></image>
-      </view>
-      <view style="width: 100%;height: 20rpx;background-color: #f2f2f2"></view>
-    </view>
-    <view time="1492056455957" uid="201704131207359573191DT" style="background-color:#fff" class="productList_list_text bottom lf" id="201704131207359573191DT" isfavor="0">
-      <view id="201704131207359573191DT" class="productList_list_text_lf lf">
-        <text class='textp'>全自动生化分析仪 (沈阳东软医疗系统有限公司 辽食药监械(准)字2014第2400227号2014第2400227号2014第2400227号2014第2400227号2014第2400227号)</text>
-        <text class='textspan1' style="margin-bottom: 24rpx;">注册证编号:辽食药监械(准)字2014第2400227号2014第2400227号2014第2400227号</text>
-        <text class='textspan2' style="margin-bottom:34rpx;">注册人名称:沈阳东软医疗系统有限公司</text>
-      </view>
-      <view class="productList_list_text_rt rt">
-        <image  src="../iconTwo/back-arrow@2x.png" alt=""></image>
-      </view>
-      <view style="width: 100%;height: 20rpx;background-color: #f2f2f2"></view>
-    </view>
+    </navigator>
   </view>
 </view>

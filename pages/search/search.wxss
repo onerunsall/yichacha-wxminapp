@@ -38,17 +38,16 @@ page {
 .input_box_view{
   width: 590rpx;
 }
+
 .input_box_view>.input_dex {
     width: 100% !important;
     font-size: 28rpx;
     color: #000000;
-    height: 40rpx;
-    line-height: 40rpx;
+    height: 60rpx;
+    line-height: 60rpx;
     border: 0;
 }
 .place_holder {
-    position: relative;
-    top: -52rpx;
     font-size: 28rpx;
     color: #CCCCCC;
 }
@@ -82,7 +81,7 @@ page {
     padding-bottom: 20rpx;
     /* border-bottom: 1rpx solid #e5e5e5; */
 }
-.hot_search_text text {
+.hot_search_text>text {
     /* margin-left: 30rpx; */
     margin-right: 20rpx;
     margin-bottom: 20rpx;
@@ -92,6 +91,11 @@ page {
     height: 70rpx;
     line-height: 70rpx;
     border: 1rpx solid #d1d1d1;
+}
+.hot_search_text>text>text{
+  width: 100%;
+  height: 70rpx;
+  display: inline-block;
 }
 .content {
     max-width: 750rpx;

@@ -22,3 +22,13 @@
         <text>直接询价</text>
     </view>
 </view>
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+<!-- 二维码或其他图片 -->
+<text style='text-align:center;color:#333;font-size:30rpx;margin-top:40rpx;'>请长按复制网址</text>
+    <text class="text" selectable="true" style='text-align:center'>{{urlText}}</text>
+    <view bindtap="ok" class="ok">确认</view>
+</view>
