@@ -48,3 +48,16 @@
     </view>
   </view>
 </view>
+
+
+<!-- 遮罩层 -->
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<!-- 弹出层 -->
+<view class="modalDlg" wx:if="{{showModal}}">
+<!-- 二维码或其他图片 -->
+<text style='text-align:center;color:#333;font-size:30rpx;margin-top:40rpx;'>获取微信头像昵称</text>
+    <text class="text">请允许我们获取您的头像昵称，或者将不能正常体验与使用</text>
+    <view>
+    <button bindtap="nook" class="nook">关闭</button><button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="ok">确定</button>
+    </view>
+</view>

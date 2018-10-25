@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd7937d4-d851-4be1-a504-e468eed59e5f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Tindex/Tindex.js" afterPath="$PROJECT_DIR$/pages/Tindex/Tindex.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Tindex/Tindex.wxml" afterPath="$PROJECT_DIR$/pages/Tindex/Tindex.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/detail/detail.js" afterPath="$PROJECT_DIR$/pages/detail/detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/detail/detail.wxml" afterPath="$PROJECT_DIR$/pages/detail/detail.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/detail/detail.wxss" afterPath="$PROJECT_DIR$/pages/detail/detail.wxss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/search/search.js" afterPath="$PROJECT_DIR$/pages/search/search.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/search/search.wxml" afterPath="$PROJECT_DIR$/pages/search/search.wxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/search/search.wxss" afterPath="$PROJECT_DIR$/pages/search/search.wxss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pages/Tindex/Tindex.wxss" afterPath="$PROJECT_DIR$/pages/Tindex/Tindex.wxss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="eSearch.iws" />
@@ -256,7 +252,13 @@
       <option name="project" value="LOCAL" />
       <updated>1540370294768</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="2">
+      <created>1540438799525</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1540438799525</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
