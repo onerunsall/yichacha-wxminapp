@@ -159,26 +159,7 @@ Page({
 
 
 
-    wx.request({
-      url: domain + '/yichaxun/u/ua/loginindev',
-      header: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      method: 'post',
-      data: {
-        userPhone: 15077822798
-      },
-      success: function (res) {
-        wx.hideToast()
-        if (res.data.code == 0) {
-          wx.setStorageSync('token', res.data.data.token)
-        } else {
-          wx.showModal({
-            title: res.data.codeMsg
-          })
-        }
-      }
-    })
+    
     wx.request({
       url: domain + '/yichaxun/u/homeadlist',
       header: {
