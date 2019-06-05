@@ -1,4 +1,4 @@
-<view class="top_title" style='background-image:url(https://dev.njshangka.com/yichaxun/bighealthwxminapp/img/top_tip2.png);background-size:cover'>
+<view class="top_title" style='background-image:url(https://www.njshangka.com/zaylt/resources/img/top_tip2.png);background-size:cover'>
   <navigator url='../search/search'>
     <view class="search">
     <image style="position: static;vertical-align: middle;" src="../icon/search@2x.png"></image>

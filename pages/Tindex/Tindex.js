@@ -65,7 +65,7 @@ Page({
   onLoad: function(options) {
 
     var that = this;
-    var domain = 'https://dev.njshangka.com';
+    var domain = 'https://www.njshangka.com';
     wx.setStorageSync('domain', domain);
     that.setData({
       domain: domain
@@ -252,17 +252,17 @@ Page({
               if (that.data.list[i].dataPic) {
                 var dataPic = that.data.list[i].dataPic.split(',')
                 if (dataPic.length == 1) {
-                  pic1 = dataPic;
+                  pic1 = 'http://www.njshangka.com'+dataPic;
                   pic2 = '';
                   pic3 = '';
                 } else if (dataPic.length == 2) {
-                  pic1 = dataPic[0];
-                  pic2 = dataPic[1];
+                  pic1 = 'http://www.njshangka.com' +dataPic[0];
+                  pic2 = 'http://www.njshangka.com' +dataPic[1];
                   pic3 = '';
                 } else {
-                  pic1 = dataPic[0];
-                  pic2 = dataPic[1];
-                  pic3 = dataPic[2];
+                  pic1 = 'http://www.njshangka.com' +dataPic[0];
+                  pic2 = 'http://www.njshangka.com' +dataPic[1];
+                  pic3 = 'http://www.njshangka.com' +dataPic[2];
                 }
               }
                 that.data.list[i].pic1 = pic1

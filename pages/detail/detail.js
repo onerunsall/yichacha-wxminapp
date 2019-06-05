@@ -69,7 +69,10 @@ Page({
             }
             console.log(that.data.url, that.data.phone)
           }
-          var imgalist = res.data.data.dataPic.split(',');
+          var imgalist =''
+          if (res.data.data.dataPic){
+            imgalist= res.data.data.dataPic.split(',');
+          }
             that.setData({
               imgalist: imgalist,
               dataDetail: res.data.data.dataDetail,

@@ -8,7 +8,7 @@
   </view>
   <view class="img_list" id="jq22">
     <view wx:for="{{imgalist}}" wx:for-item="image" class="previewimg">
-      <image src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+      <image src="http://www.njshangka.com{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
     </view>
   </view>
 </view>
