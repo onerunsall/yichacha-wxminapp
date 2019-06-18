@@ -121,6 +121,34 @@ Page({
       }
     })
   },
+//   value = '环网柜';
+//   var data = JSON.parse(res.Content).rows;
+
+//   // 将标题已关键字拆开成数组    
+//   for(let i = 0; i<data.length; i++) {
+//   data[i].title = that.hilight_word(value, data[i].title);
+// },
+
+// 根据搜索字分割字符
+hilight_word: function (key, word) {
+  let idx = word.indexOf(key), t = [];
+
+  if (idx > -1) {
+    if (idx == 0) {
+      t = this.hilight_word(key, word.substr(key.length));
+      t.unshift({ key: true, str: key });
+      return t;
+    }
+
+    if (idx > 0) {
+      t = this.hilight_word(key, word.substr(idx));
+      t.unshift({ key: false, str: word.substring(0, idx) });
+      return t;
+    }
+  }
+  return [{ key: false, str: word }];
+},
+
   lastPage: function (keyword,pageNo, pageSize) {
     var that = this;
     wx.request({
@@ -145,17 +173,17 @@ Page({
             });
           }
           for (var i = 0; i < res.data.data.items.length; i++) {
+            var data = res.data.data.items
             if (res.data.data.items[i].coName.indexOf(keyword) > -1) {
+              data[i].name = that.hilight_word(keyword, data[i].name);
               // searched.push(hilight_word(inputs, current_word))
+              console.log(data[i].name)
             }
 
-            // if (res.data.data.items[i].coName.split(keyword)){
-            //   res.data.data.items[i].coName = res.data.data.items[i].coName.split(keyword)[0] + '<b>' + keyword + '</b>' + res.data.data.items[i].coName.split(keyword)[1]
+            // console.log(res.data.data.items[i].coName.indexOf(keyword), res.data.data.items[i].name.indexOf(keyword))
+            // if (res.data.data.items[i].name.split(keyword)) {
+            //   res.data.data.items[i].name = res.data.data.items[i].name.split(keyword)[0] + '<b>' + keyword + '</b>' + res.data.data.items[i].name.split(keyword)[1]
             // }
-            console.log(res.data.data.items[i].coName.indexOf(keyword), res.data.data.items[i].name.indexOf(keyword))
-            if (res.data.data.items[i].name.split(keyword)) {
-              res.data.data.items[i].name = res.data.data.items[i].name.split(keyword)[0] + '<b>' + keyword + '</b>' + res.data.data.items[i].name.split(keyword)[1]
-            }
             if (res.data.data.items[i].pics != '' && res.data.data.items[i].pics != null && res.data.data.items[i].pics!=undefined) {
               var pics = res.data.data.items[i].pics.split(',')
               if (pics.length == 1) {

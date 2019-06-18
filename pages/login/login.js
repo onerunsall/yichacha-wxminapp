@@ -59,8 +59,8 @@ Page({
                     app.globalData.loginIs = 1
                     wx.setStorageSync('token', res.data.data.token)
                     wx.removeStorageSync('isBind')
-                    wx.navigateBack({
-
+                    wx.navigateTo({
+                      url: '../selectRole/selectRole',
                     })
                   } else if (res.data.code == 25) {
                     wx.setStorageSync('isBind', 1)

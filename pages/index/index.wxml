@@ -1,30 +1,27 @@
-<view class="top_title" style='background-image:url(https://dev.njshangka.com/yichacha/resource/BJ-shouye@2x.png);background-size:cover'>
-  
-  <!-- <navigator url='../mine/mine'> -->
+<!-- <view class="top_title" style='background-image:url(https://dev.njshangka.com/yichacha/resource/BJ-shouye@2x.png);background-size:cover'>
+
   <view class='mine' bindtap='mine'>
     <image src='../img/mine@2x.png'></image>
   </view>
-  <!-- </navigator> -->
-  <!-- <navigator url='../news/news'> -->
   <view class='news' bindtap='news'>
     <image src='../img/xiaoxi@2x.png'></image>
     <text>{{newMsgCount}}</text>
   </view>
-    <!-- </navigator> -->
-
 
   <view class='esearchIcon'>
     <image src='../img/logo1@2x.png'></image>
     <text>医查查</text>
   </view>
   <view class='findQx'>找器械，就上医查查</view>
-  <!-- <navigator class='searchIs'  url='../search/search'> -->
     <view class="searchIs search" bindtap='searchIs'>
       <image style="position: static;vertical-align: middle;" src="../icon/search@2x.png"></image>
-      <text>请输入产品名称、注册证标号等</text>
+      <text>请输入产品名称、厂商</text>
     </view>
-  <!-- </navigator> -->
+</view> -->
+<view>
+
 </view>
+
 <!-- <view bindtap='jumpurl' class='ggwei' data-url='{{hrefs}}'>
   
   <image src='{{adverCover}}'></image>

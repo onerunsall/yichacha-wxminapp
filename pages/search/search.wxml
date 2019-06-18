@@ -41,6 +41,13 @@
 
 <view style='margin-top:70rpx;' wx:if="{{searchVal==2}}">
   <view wx:for="{{list}}" wx:key="list" data-index="{{index}}">
+
+<block wx:for="{{list}}" wx:for-item="key_obj" wx:key="">
+          <text wx:if="{{key_obj.key == true}}" style="color:red;">{{key_obj.str}}</text>
+          <text wx:else>{{key_obj.str}}</text>
+      </block>
+
+
        <navigator url='../detail/detail?id={{item.productId}}'>
         <view wx:if="{{item.pics}}" style="background:#fff" class="productList_list_pic bottom lf">
           <view class="productList_list_pic lf">
@@ -58,6 +65,7 @@
     
               </view>
               <view>
+              
                 <text >{{item.name}}</text>
               </view>
             </view>

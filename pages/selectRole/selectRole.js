@@ -1,4 +1,5 @@
 // pages/selectRole/selectRole.js
+var  app=getApp()
 Page({
 
   /**
@@ -75,6 +76,7 @@ Page({
     })
   },
   joinIn(e){
+    let that=this
     wx.request({
       url: app.globalData.url + '/yichacha/client/setidentity',
       header: {
@@ -88,9 +90,15 @@ Page({
       success: function (res) {
         wx.hideToast()
         if (res.data.code == 0) {
-          wx.navigateBack({
-            delta: 2
+         
+          wx.showToast({
+            title: '身份绑定成功',
           })
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 2
+            })
+          },1000)
         } else {
           wx.showToast({
             title: res.data.codeMsg

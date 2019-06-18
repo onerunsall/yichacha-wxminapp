@@ -71,6 +71,16 @@ Page({
                   success: function (res) {
                     wx.hideToast()
                     if (res.data.code == 0) {
+                      if (res.data.data.identity == '' || res.data.data.identity == null || res.data.data.identity ==undefined){
+                        wx.showToast({
+                          title: '请绑定身份',
+                        })
+                        setTimeout(function(){
+                              wx.navigateTo({
+                                url: '../selectRole/selectRole',
+                              })
+                        },1000)
+                      }
                       app.globalData.msgNotifyIs = res.data.data.msgNotifyIs
                       that.setData({
                         newMsgCount: res.data.data.newMsgCount
@@ -87,15 +97,15 @@ Page({
                   }
                 })
               } else if (res.data.code == 25) {
-                wx.setStorageSync('isBind', 1)
-                wx.showToast({
-                  title: '请登录',
-                })
-                setTimeout(function () {
-                  wx.navigateTo({
-                    url: '../login/login',
-                  })
-                }, 1000)
+                // wx.setStorageSync('isBind', 1)
+                // wx.showToast({
+                //   title: '请登录',
+                // })
+                // setTimeout(function () {
+                //   wx.navigateTo({
+                //     url: '../login/login',
+                //   })
+                // }, 1000)
               } else {
                 wx.showModal({
                   title: res.data.codeMsg
@@ -111,16 +121,16 @@ Page({
     })
 
   
-    if (wx.getStorageSync('isBind') == 1) {
-      wx.showToast({
-        title: '请登录',
-      })
-      setTimeout(function() {
-        wx.navigateTo({
-          url: '../login/login',
-        })
-      }, 1000)
-    }
+    // if (wx.getStorageSync('isBind') == 1) {
+    //   wx.showToast({
+    //     title: '请登录',
+    //   })
+    //   setTimeout(function() {
+    //     wx.navigateTo({
+    //       url: '../login/login',
+    //     })
+    //   }, 1000)
+    // }
    
     that.lastPage(1, 200)
   },
