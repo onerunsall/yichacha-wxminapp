@@ -11,6 +11,7 @@ page {
   font-size: 28rpx;
   line-height: 50rpx;
   color: #666;
+  margin-top: 40rpx;
 }
 
 .value {
@@ -128,4 +129,227 @@ page {
   color: #666;
   width: 360rpx;
   margin-top: 40rpx;
+}
+
+
+
+swiper {
+  width: 750rpx;
+  height: 680rpx;
+}
+
+swiper-item image {
+  width: 750rpxp;
+  height: 680rpx;
+  /* margin: 0 32rpx; */
+  /* border-radius: 15rpx; */
+}
+
+.swiper-container {
+  position: relative;
+  width: 100%;
+  height: 680rpx;
+}
+.favors{
+  position: absolute;
+  right: 0;
+ background: #fff;
+  bottom: 20rpx;
+  z-index: 999;
+  width: 100rpx;
+  height: 50rpx;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+  border: 1rpx solid #f2f2f2;
+   border-right: 0;
+  /* line-height: 50rpx; */
+}
+.favors>image{
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 35rpx;
+  float: left;
+  margin-top: 10rpx;
+   /* vertical-align: middle; */
+}
+.zdl{
+  position: absolute;
+  top: 20rpx;
+  right: 0;
+  width: 186rpx;
+  height: 68rpx;
+  z-index: 3;
+}
+.zdl image{
+  width: 100%;
+  height: 100%;
+}
+.zdl text{
+  position: absolute;
+  height: 100%;
+  text-align: center;
+  line-height: 68rpx;
+  font-size: 32rpx;
+  color: #fff;
+  display: block;
+  top: 0;
+  right: 28rpx;
+}
+.swiper-container .dots {
+  /* position: absolute; */
+  left: 0;
+  right: 0;
+  margin-top: 14rpx;
+  margin-bottom: 40rpx;
+  display: flex;
+  justify-content: center;
+}
+
+.swiper-container .dots .dot {
+  margin: 0 8rpx;
+  width: 14rpx;
+  height: 14rpx;
+  background: rgb(238,238,238);
+  border-radius: 7rpx;
+  transition: all 0.6s;
+}
+
+.swiper-container .dots .dot.active {
+  /* width: 44rpx; */
+  background: rgb(2,175,101);
+}
+
+.details{
+  display: block;
+  clear: both
+}
+.details>.name{
+  display: inline-block;
+  width: 180rpx;
+  float: left;
+}
+.details>.value{
+  width: 470rpx;
+  text-align: left;
+  height: auto;
+  /* float: left; */
+  display: inline-block;
+}
+.productTitle{
+  height: 64rpx;
+  width: 100%;
+  margin: 40rpx 0;
+  /* padding: 0 30rpx; */
+}
+.productTitle>text{
+  display:inline-block;
+  width: 690rpx;
+  margin: 0 auto;
+  font-size: 34rpx;
+  color: rgb(51,51,51);
+  line-height: 64rpx;
+  margin-left: 30rpx;
+}
+.productTitle>view{
+  float: right;
+  width: 186rpx;
+  height: 62rpx;
+  border-radius: 31rpx;
+  border: 1rpx solid rgb(242,67,67);
+  text-align: center;
+  line-height: 62rpx;
+  margin-right: 30rpx;
+  color: rgb(242,67,67);
+  font-size: 32rpx;
+}
+.productTitle>view image{
+  float: left;
+  margin-left: 30rpx;
+  margin-top: 11rpx;
+  width: 42rpx;
+  height: 40rpx;
+  /* margin-right: 20rpx; */
+}
+.productTitle>view text{
+  float: left;
+  margin-left: 20rpx;
+}
+.connectNow{
+  width: 678rpx;
+  height: 84rpx;
+  border-radius: 42rpx;
+  background: rgb(2,175,101);
+  color: #fff;
+  margin: 30rpx auto;
+  text-align: center;
+  line-height: 84rpx;
+}
+.connectNow image{
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 10rpx;
+  vertical-align: middle;
+}
+.connectNow text{
+  font-size: 32rpx;
+  color: #fff;
+}
+.contury{
+  width: 690rpx;
+  height: 140rpx;
+  margin: 30rpx auto;
+  box-shadow: -2rpx 8rpx 10px rgba(0,0,0,0.1)
+}
+.conturyTitle{
+  width: 100%;
+  height: 66rpx;
+}
+.conturyTitle>text{
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: rgb(51,51,51);
+  margin-left: 30rpx;
+  margin-top: 34rpx;
+  float: left;
+  width: 530rpx;
+  height: 32rpx;
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+.conturyTitle>image{
+  width: 44rpx;
+  height: 34rpx;
+  float: right;
+  margin-top: 32rpx;
+  margin-right: 32rpx;
+}
+.authentication{
+  height: 30rpx;
+  margin-top: 18rpx;
+  width: 100%;
+  line-height: 30rpx;
+}
+.authentication>view:nth-child(1) image{
+  width: 34rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+  margin-left: 30rpx;
+  margin-top: 0;
+  float: left;
+}
+.authentication>view:nth-child(1) text{
+  font-size: 22rpx;
+color: rgb(251,119,0);
+float: left;line-height: 30rpx;
+}
+.authentication .join{
+  color: rgb(2,175,101);
+  font-size: 24rpx;
+  height: 30rpx;
+  width: 100rpx;
+  text-align: right;
+  float: right;
+  margin-right: 32rpx;
 }

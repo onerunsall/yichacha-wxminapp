@@ -2,10 +2,11 @@
   <view class="top">
     <view class="input_box ">
       <view class="lf  input_box_view" style="display: inline-block">
-        <input bindinput="inputUser" placeholder-class="place_holder" class="input input_dex" value='{{inputVal}}' type="text" placeholder="请输入产品名称、注册证编号等"></input>
+        <input  focus='false'  bindinput='inputUser' placeholder-class="place_holder" class="input input_dex" value='{{inputVal}}' bindconfirm='inputUserSearch' type="text" confirm-type='search' placeholder="请输入产品名称、注册证编号等"></input>
       </view>
       <image bindtap='searchIcon' class="search_fdj rt" src="../icon/search@2x.png" alt=""></image>
     </view>
+    <text class='refuse' bindtap='refuse'>取消</text>
   </view>
   <!--热门搜索-->
   <view class="clear"></view>
@@ -14,30 +15,87 @@
       <text>热门搜索</text>
     </view>
     <view style="width: 100%;background-color: #ffffff;">
-      <view id="textList" style="margin-left: 30rpx;margin-right: 30rpx">
+      <view id="textList" style="margin-left: 32rpx;">
         <view class="hot_search_text">
-          <text bindtap="searchSpan" wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">{{item.hotKeyName}}</text>
+          <view bindtap="searchSpan" data-kw='{{item.keyword}}' wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">
+          <image wx:if='{{item.paixuid==1}}' src='../img/top1@2x.png'></image>
+          <image wx:if='{{item.paixuid==2}}' src='../img/top2@2x.png'></image>
+          <image wx:if='{{item.paixuid==3}}' src='../img/top3@2x.png'></image>
+          <image class='up' wx:if='{{item.paixuid==4}}' src='../img/up@2x.png'></image>
+            <text>{{item.keyword}}</text>
+          </view>
         </view>
       </view>
     </view>
   </view>
 </view>
 
-
-<view wx:if="{{searchVal==2}}">
-  <view wx:for="{{list}}" wx:key="list" data-index="{{index}}">
-    <navigator  url='../detail/detail?id={{item.dataId}}'>
-      <view style="background-color:#fff" class="productList_list_text bottom lf">
-        <view class="productList_list_text_lf lf">
-          <text class='textp'>{{item.dataTitle}}</text>
-          <text class='textspan1' style="margin-bottom: 24rpx;">注册证编号:{{item.dataRegisterNo}}</text>
-          <text class='textspan2' style="margin-bottom:34rpx;">注册人名称:{{item.corporationName}}</text>
-        </view>
-        <view class="productList_list_text_rt rt">
-          <image src="../iconTwo/back-arrow@2x.png" alt=""></image>
-        </view>
-        <view style="width: 100%;height: 20rpx;background-color: #f2f2f2"></view>
+ <!-- <view class="search">
+    <form bindreset="res" bindsubmit="search">      
+      <view class="df search_arr">
+        <icon class="searchcion" size='20' type='search' value="{{search}}" bindtap='Search'></icon>
+        <input class="searchdo" bindconfirm="search" placeholder="你想要的都在这里" bindinput="input"/>
       </view>
-    </navigator>
+    </form>  
+   </view> -->
+
+<view style='margin-top:70rpx;' wx:if="{{searchVal==2}}">
+  <view wx:for="{{list}}" wx:key="list" data-index="{{index}}">
+       <navigator url='../detail/detail?id={{item.productId}}'>
+        <view wx:if="{{item.pics}}" style="background:#fff" class="productList_list_pic bottom lf">
+          <view class="productList_list_pic lf">
+            <view class='csTitle'>
+              <view>
+                <text>{{item.coName||''}}</text>
+                <view wx:if='{{item.coVipIs==1}}'>
+                  <image src='../img/V@2x.png'></image>
+                  <text>认证厂商</text>
+                </view>
+                 <!-- <view wx:if='{{item.coVipIs!=1}}'>
+                  <image src='../img/V-grey@2x.png'></image>
+                  <text style='color:rgb(153,153,153)'>未认证</text>
+                </view> -->
+    
+              </view>
+              <view>
+                <text >{{item.name}}</text>
+              </view>
+            </view>
+            <view name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
+            <view  style='background:url({{item.pic1}}) no-repeat;background-size:cover;background-position: center;'  class="dis1 img1 color_c"></view>
+              <view style='background:url({{item.pic2}}) no-repeat;background-size:cover;background-position: center;'  class="dis2 img2 color_c"></view>
+              <view style='background:url({{item.pic3}}) no-repeat;background-size:cover;background-position: center;'  class="dis3 img3 color_c"></view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+
+<!-- <navigator url='../detail/detail?id={{item.productId}}'>
+        <view wx:if="{{item.pics==''}}" style="background:#fff" class="productList_list_text bottom lf">
+          <view class="productList_list_text_lf lf">
+            <text class='text1' style="margin-bottom: 24rpx;margin-top:24rpx;">{{item.name}}</text>
+            <text class='text1'wx:if='{{item.intro}}' style="margin-bottom:24rpx;">{{item.intro}}</text>
+          </view>
+        </view>
+      </navigator> -->
+
+         <navigator url='../detail/detail?id={{item.productId}}'>
+        <view wx:if="{{!item.pics}}" style="background:#fff" class="productList_list_text bottom lf">
+          <view class='csTitle' wx:if='{{item.coName}}'>
+              <view>
+                <text>{{item.coName}}</text>
+                <view wx:if='{{item.coVipIs==1}}'>
+                  <image src='../img/V@2x.png'></image>
+                  <text>认证厂商</text>
+                </view>
+              </view>
+            </view>
+          <view class="productList_list_text_lf lf">
+            <text class='text1' style="margin-bottom: 24rpx;margin-top:24rpx;">{{item.name}}</text>
+            <text class='text1'wx:if='{{item.intro}}' style="margin-bottom:24rpx;">{{item.intro}}</text>
+          </view>
+        </view>
+      </navigator>
   </view>
+  <view class='upMore'>——  {{learnMore}} ——</view>
 </view>

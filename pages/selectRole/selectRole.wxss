@@ -1,0 +1,70 @@
+/* pages/selectRole/selectRole.wxss */
+.please>text:first-child{
+  font-size: 42rpx;
+  color: rgb(51,51,51);
+  width: 100%;
+  text-align: center;
+  display: block;
+  margin: 160rpx 0 22rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+}
+.please>text:last-child{
+  font-size: 24rpx;
+  color: rgb(51,51,51);
+  display: block;width: 100%;
+  text-align: center;
+  margin-bottom: 102rpx;
+}
+.role>view{
+  width: 292rpx;
+  height: 176rpx;
+  float: left;
+  text-align: center;
+  margin-bottom: 48rpx;
+  border-radius: 10rpx;
+}
+.role>view>text{
+  display: block;
+}
+.role>view>text:nth-child(1){
+  font-size: 46rpx;
+  /* color: rgb(115,87,76); */
+  margin: 36rpx 0 15rpx;
+}
+.role>view>text:nth-child(2){
+  font-size: 32rpx;
+  /* color: rgb(115,87,76); */
+}
+.role>view:nth-child(1),.role>view:nth-child(3){
+  margin-left: 59rpx;
+  margin-right: 48rpx;
+}
+/* .role>view:nth-child(1){
+  background: url('https://dev.njshangka.com/yichacha/resource/1@2x.png');
+  background-size: cover;
+}
+.role>view:nth-child(2){
+  background: url('https://dev.njshangka.com/yichacha/resource/2@2x.png');
+   background-size: cover;
+}
+.role>view:nth-child(3){
+  background: url('https://dev.njshangka.com/yichacha/resource/3@2x.png');
+   background-size: cover;
+}
+.role>view:nth-child(4){
+  background: url('https://dev.njshangka.com/yichacha/resource/4@2x.png');
+   background-size: cover;
+} */
+.joinIn{
+  float: left;
+  width: 620rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  font-size: 32rpx;
+  color: #fff;
+  text-align: center;
+  margin: 144rpx 65rpx;
+  border-radius: 45rpx;
+  background: rgb(2,175,101);
+}

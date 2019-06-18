@@ -1,0 +1,13 @@
+<!--pages/selectRole/selectRole.wxml-->
+<view class='please'>
+<text>请选择你的身份</text>
+<text>身份选择后不可更改</text>
+</view>
+<view class='role'>
+<view bindtap='choose1' style='background: {{bg1}};background-size: cover;'><text style='color:{{cols1}}'>厂商</text><text style='color:{{cols1}}'>Manufacturer</text></view>
+<view bindtap='choose2' style='background: {{bg2}};background-size: cover;'><text style='color:{{cols2}}'>医院</text><text style='color:{{cols2}}'>Hospital</text></view>
+<view bindtap='choose3'style='background: {{bg3}};background-size: cover;'><text style='color:{{cols3}}'>经销</text><text style='color:{{cols3}}'>Dealer</text></view>
+<view bindtap='choose4'style='background: {{bg4}};background-size: cover;'><text style='color:{{cols4}}'>运营</text><text style='color:{{cols4}}'>Operation</text></view>
+</view>
+
+<view class='joinIn' bindtap='joinIn'>进入医查查</view>

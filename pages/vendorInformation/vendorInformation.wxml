@@ -1,0 +1,49 @@
+<!--pages/vendorInformation/vendorInformation.wxml-->
+<view class='DExhibitionHall' bindtap='TDLook' wx:if='{{detail.lobby3D}}' style='background:url({{detail.cover}}) no-repeat;background-size:cover;background-position: center;'>
+  <image src='../img/play@2x.png'></image>
+  <text>3D展厅</text>
+</view>
+<view class='manufacturer'>
+  <text>{{detail.name||''}}</text>
+  <view wx:if='{{detail.vipIs==1}}'>
+    <image src='../img/V@2x.png'></image>
+    <text>认证厂商</text>
+  </view>
+  <view wx:if='{{detail.vipIs==0}}'>
+    <image src='../img/V-grey@2x.png'></image>
+    <text style='color:rgb(153,153,153)'>未认证</text>
+  </view>
+  <view class='addPhone'>
+    <image src='../img/location@2x.png'></image>
+    <text>{{detail.address||''}}</text>
+    <view class='phone'>
+    <image bindtap='tel' src='../img/phone@2x.png'></image>
+    </view>
+  </view>
+</view>
+<view class='allInstrument'>
+  <text>所有仪器</text>
+
+  <view class='instrumentList'>
+    <navigator style='display:inline-block' wx:for='{{list}}' url='../detail/detail?id={{item.productId}}'>
+      <view class='instrument'>
+        <view style='background:url({{item.pic1}}) no-repeat;background-size:cover;background-position: center;'>
+          <view wx:if='{{item.coVipIs==1}}' class='zdl'></view>
+        </view>
+        <view>{{item.name||''}}</view>
+        <view wx:if='{{item.favorIs==1}}'>
+          <image src='../img/love2@2x.png'></image>
+          <text>收藏</text>
+        </view>
+        <view wx:if='{{item.favorIs==0}}'>
+          <image src='../img/love3@2x.png'></image>
+          <text>未收藏</text>
+        </view>
+      </view>
+    </navigator>
+
+
+
+    <view class='upMore' style='clear:both'>—— {{learnMore}} ——</view>
+  </view>
+</view>

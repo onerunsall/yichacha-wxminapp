@@ -1,0 +1,80 @@
+/* pages/mine/mine.wxss */
+.topBg{
+  width: 750rpx;
+  height: 414rpx;
+  background-image:url(https://dev.njshangka.com/yichacha/resource/index.png);background-size:cover;
+}
+.imgBox{
+  width: 180rpx;
+  height: 140rpx;
+  float: left;
+  margin: 192rpx 0 0 64rpx;
+}
+.imgBox>view{
+  width: 140rpx;
+  height: 140rpx;
+  border-radius:70rpx;
+  background: #fff;
+  float: left;
+}
+.imgBox>view image{
+  width: 88rpx;
+  height: 86rpx;
+  margin: 27rpx 26rpx;
+}
+.imgBox>image{
+  width: 28rpx;
+  height: 26rpx;
+  float: left;
+  margin-top: 114rpx;
+}
+.avatorImg{
+   clip-path: circle(70rpx at center);
+}
+.avatorImg>image{
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  border-radius: 50%;
+}
+.userName{
+  display: block;
+  font-size: 30rpx;
+  color: rgb(51,51,51);
+  margin-left: 64rpx;
+  float: left;
+  width: 686rpx;
+  margin-top: 28rpx;
+}
+.xian{
+  clear: both;
+  height: 24rpx;
+  width: 100%;
+  background: #f2f2f2;
+}
+.line{
+  width: 718rpx;
+  margin-left: 32rpx;
+}
+.line view{
+   height: 104rpx;
+   border-bottom: 1rpx solid rgb(238,238,238);
+}
+.line view>image:nth-child(1){
+  width: 40rpx;
+  height: 40rpx;
+  float: left;
+  margin: 32rpx 20rpx 32rpx 0;
+}
+.line view>text{
+  font-size: 34rpx;
+  color: rgb(51,51,51);
+  float: left;
+  line-height: 104rpx;
+}
+.line view>image:nth-child(3){
+  width: 16rpx;
+  height: 26rpx;
+  float: right;
+  margin: 39rpx 36rpx;
+}

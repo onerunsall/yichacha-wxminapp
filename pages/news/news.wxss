@@ -1,0 +1,125 @@
+/* pages/news/news.wxss */
+
+page {
+  background: #fff;
+}
+
+.topLine {
+  width: 100%;
+  height: 114rpx;
+  line-height: 114rpx;
+}
+
+.topLine>text {
+  font-size: 34rpx;
+  color: rgb(0, 0, 0);
+  line-height: 114rpx;
+  float: left;
+  margin-left: 30rpx;
+}
+
+.topLine .body-view {
+  float: right;
+  width: 102rpx;
+  height: 62rpx;
+  /* margin-top: 26rpx; */
+  margin-right: 30rpx;
+}
+
+.topLine .body-view switch {
+  width: 100%;
+  height: 100%;
+  float: right;
+}
+
+.newItem {
+  /* border: 1rpx solid #e5e5e5; */
+  box-shadow: 2rpx 2rpx 4rpx 4rpx rgba(0,0,0,0.1);
+  width: 702rpx;
+  height: 134rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  margin: 24rpx;
+  position: relative;
+  
+
+}
+
+.newItem>view:nth-child(1) {
+  width: 600rpx;
+  float: left;
+}
+
+.newItem>view:nth-child(1)>view:nth-child(1) {
+  font-size: 30rpx;
+  line-height: 30rpx;
+  height: 30rpx;
+  margin: 32rpx 0 20rpx 20rpx;
+  display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+
+.newItem>view:nth-child(1)>view:nth-child(1) text:nth-child(1) {
+  color: rgb(51, 51, 51);
+}
+
+.newItem>view:nth-child(1)>view:nth-child(1) text:nth-child(2) {
+  margin-left: 10rpx;
+  color: rgb(43, 119, 239);
+}
+
+.newItem>view:nth-child(1)>view:nth-child(2) {
+  font-size: 24rpx;
+  color: rgb(153, 153, 153);
+  height: 24rpx;
+  line-height: 24rpx;
+  margin-left: 20rpx;
+}
+
+.newItem>view:nth-child(2) {
+  height: 134rpx;
+  /* height: 68rpx; */
+  float: right;
+  width: 90rpx;
+  /* margin-top: 33rpx; */
+  border-left: 1rpx solid rgb(238, 238, 238);
+}
+
+.newItem>view:nth-child(2) image {
+  width: 30rpx;
+  height: 32rpx;
+  float: right;
+  margin-right: 30rpx;
+  margin-top:52rpx;
+}
+
+.round {
+  position: absolute;
+  width: 20rpx;
+  height: 20rpx;
+  border-radius: 10rpx;
+  background: #ff1a2e;
+  top: -5rpx;
+  left: -5rpx;
+}
+
+.newsNone{
+  width: 100%;
+  height: auto;
+}
+.newsNone image{
+  width: 284rpx;
+  height: 214rpx;
+  margin: 346rpx 233rpx 0 233rpx;
+  vertical-align: bottom;
+}
+.newsNone text{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 56rpx;
+  color: rgb(153, 153, 153);
+}

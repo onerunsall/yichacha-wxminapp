@@ -1,0 +1,44 @@
+<!--pages/mine/mine.wxml-->
+<view class='topBg'>
+  <view class='imgBox'>
+    <view class='avatorImg'   >
+    <open-data type="userAvatarUrl"></open-data>
+      <!-- <image  src='{{detail.headimg}}'></image> -->
+    </view>
+     <!-- <view  wx:if='{{!detail.headimg}}' >
+      <image src='../img/logo-green@2x.png'></image>
+    </view> -->
+    <!-- <image src='../img/bianji@2x.png'></image> -->
+  </view>
+  <text class='userName'>用户名 {{detail.phone||detail.nickname}}</text>
+</view>
+<view class='xian'></view>
+
+<view class='line'>
+  <navigator url='../mycollection/mycollection'>
+    <view>
+      <image src='../img/shoucang@2x.png'></image>
+      <text>我的收藏</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+  </navigator>
+ <navigator url='../news/news'>
+    <view>
+      <image src='../img/TB-xiaoxi@2x.png'></image>
+      <text>推送消息</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+  </navigator>
+    <view bindtap='serviceTel'>
+      <image src='../img/kefu@2x.png'></image>
+      <text>客服</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+   <!-- <navigator url='../login/login'>
+    <view>
+      <image src='../img/shezhi@2x.png'></image>
+      <text>切换账号</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+  </navigator> -->
+</view>

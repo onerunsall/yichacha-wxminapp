@@ -1,19 +1,25 @@
 {
   "pages": [
-    "pages/Tindex/Tindex",
-      "pages/webview/webview",
-   
-    "pages/detail/detail",
-    "pages/search/search",
     "pages/index/index",
+    "pages/mycollection/mycollection",
+    "pages/login/login",
+    "pages/selectRole/selectRole",
+    "pages/news/news",
+    "pages/search/search",
+    "pages/mine/mine",
+    "pages/vendorInformation/vendorInformation",
+    "pages/Tindex/Tindex",
+    "pages/webview/webview",
+    "pages/detail/detail",
     "pages/logs/logs",
     "pages/linkhref/linkhref"
-  
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#fff",
+    "enablePullDownRefresh": true
   }
 }

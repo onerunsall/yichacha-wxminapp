@@ -1,0 +1,188 @@
+/* pages/vendorInformation/vendorInformation.wxss */
+page{
+  width: 750rpx;
+  overflow-x: hidden;
+}
+.DExhibitionHall{
+  width:686rpx;
+  height: 360rpx;
+  margin: 0 auto;
+  border-radius: 10rpx; 
+}
+.DExhibitionHall image{
+  width: 98rpx;
+  height: 98rpx;
+  margin:131rpx  294rpx ;
+}
+.DExhibitionHall text{
+  float: right;
+  display: inline-block;
+  width: 120rpx;
+  height: 30rpx;
+  background: rgba(0,0,0,0.5);
+  border:1px solid  rgba(72,72,72,0.8);
+  font-size: 22rpx;
+  line-height: 30rpx;
+  text-align: center;
+  margin-top: -55rpx;
+  margin-right: 20rpx;
+  color: #fff;
+}
+
+.manufacturer>text:nth-child(1){
+  display: block;
+  font-size: 40rpx;
+  color: rgb(51,51,51);
+  line-height: 40rpx;
+  /* height: 40rpx; */
+  margin: 44rpx 32rpx 24rpx;
+}
+.manufacturer>view:nth-child(2) {
+  width: 686rpx;
+  margin:  0 32rpx;
+  border-bottom: 1rpx solid rgb(238,238,238);
+  height: 30rpx;
+  line-height: 30rpx;
+  padding: 0 0 24rpx 0;
+}
+.manufacturer>view:nth-child(2) image{
+  width: 34rpx;
+  height: 30rpx;
+  float: left;
+  margin-right: 8rpx;
+}
+
+.manufacturer>view:nth-child(2) text{
+  font-size: 24rpx;
+  line-height: 30rpx;
+  color: rgb(251,119,0);
+  float: left;
+}
+.addPhone{
+  /* height: 32rpx; */
+  width: 686rpx;
+  margin:  0 32rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid rgb(238,238,238);
+}
+.addPhone>image:nth-child(1){
+  width: 26rpx;
+  height: 28rpx;
+  float: left;
+  margin-right: 14rpx;
+  /* margin-top: 2rpx; */
+  margin-top: 38rpx;
+}
+.addPhone text{
+  margin-top: 36rpx;
+  display: inline-block;
+  font-size: 28rpx;
+  color: rgb(51,51,51);
+  float: left;
+  line-height: 32rpx;
+  width: 550rpx;
+  
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+.addPhone>.phone{
+  width: 100rpx;
+  height: 50rpx;
+  float: right;
+  margin-top: -10rpx;
+border-left:1rpx solid #e5e5e5;
+}
+.addPhone .phone>image{
+
+  width: 30rpx;
+  height: 32rpx;
+  /* float: right; */
+  float: left;
+  margin-top: 10rpx;
+  margin-left: 35rpx;
+  /* margin-right: 2rpx; */
+  /* padding: 30rpx; */
+}
+.allInstrument>text{
+  width: 686rpx;
+  display: block;
+  height: 110rpx;
+  line-height: 110rpx;
+  font-size: 34rpx;
+  color: rgb(51,51,51);
+  margin: 0 auto;
+}
+.instrumentList{
+  /* width: 750rpx; */
+  /* height: 500rpx; */
+  height: auto;
+  margin: 0 auto;
+  padding: 0 12rpx;
+  width: 726rpx;
+  /* padding: 30rpx 12rpx; */
+  background: #fff;
+}
+.instrument{
+   box-shadow:-2rpx 8rpx 10px rgba(0,0,0,0.1);
+  width: 336rpx;
+  height: 432rpx;
+  margin-left: 18rpx;
+  background: #fff;
+  margin-top: 18rpx;
+  display: inline-block;
+  float: left;
+}
+.instrument>view:first-child{
+  width: 336rpx;
+  height: 304rpx;
+  position: relative;
+}
+.instrument>view:first-child .zdl{
+width: 186rpx;
+height: 68rpx;
+position: absolute;
+top: 20rpx;
+right: 0;
+}
+.instrument>view:nth-child(2){
+  font-size: 30rpx;
+  color: rgb(51,51,51);
+  line-height: 30rpx;
+  height: 30rpx;
+  margin: 26rpx 0 20rpx 10rpx;
+
+display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+overflow:hidden;
+
+}
+.instrument>view:nth-child(3){
+  height: 30rpx;
+  margin-left: 10rpx;
+  padding: 10rpx 0 20rpx;
+}
+.instrument>view:nth-child(3) image{
+  width: 30rpx;
+  height: 30rpx;
+  float: left;
+  margin-right: 8rpx;
+}
+.instrument>view:nth-child(3) text{
+  font-size: 24rpx;
+  color: rgb(153,153,153);
+  line-height: 30rpx;
+  float: left;
+}
+.upMore{
+  color: rgb(153,153,153);
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+  /* margin: 30rpx 0; */
+  padding: 30rpx 0;
+  background: #fff;
+}

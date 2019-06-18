@@ -1,16 +1,21 @@
 // pages/detail/detail.js
+var app=getApp()
+var utils = require('../../utils/util.js');
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    imgalist: ['http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
-       'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
-       'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
-       'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg' 
+
+    swiperCurrent: 0,
+    imgalist: [
+      // 'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
+      //  'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
+      //  'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg',
+      //  'http://passion.njshangka.com/oss/yichaxun/201705170933064386274.jpg' 
     ],
-    dataDetail:[],
+    detail:[],
     phone:'',
     url:'',
     domain:'',
@@ -18,11 +23,78 @@ Page({
     showModal:false,
     urlText:'',
   },
+  sc(e){
+    var that=this
+    wx.request({
+      url: app.globalData.url + '/yichacha/client/productfavor',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: 'post',
+      data: {
+        token: that.data.token,
+        productId:that.data.id
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+        
+          that.setData({
+            favorIs:1
+          })
+        } else {
+          wx.showModal({
+            title: res.data.codeMsg
+          })
+        }
+      }
+    })
+  },
+  ysc(e) {
+    var that=this
+    wx.request({
+      url: app.globalData.url + '/yichacha/client/productunfavor',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: 'post',
+      data: {
+        token: that.data.token,
+        productId: that.data.id
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+         
+          that.setData({
+            favorIs: 0
+          })
+        } else {
+          wx.showModal({
+            title: res.data.codeMsg
+          })
+        }
+      }
+    })
+  },
 	/** 
 	 * 预览图片
 	 */
+  phoneNow(e){
+  
+      wx.makePhoneCall({
+        phoneNumber: this.data.detail.coTel,
+      })
+
+  },
+  swiperChange: function (e) {
+    this.setData({
+      swiperCurrent: e.detail.current
+    })
+  },
   previewImage: function (e) {
     var current = e.target.dataset.src;
+    console.log(current)
     wx.previewImage({
       current: current, // 当前显示图片的http链接
       urls: this.data.imgalist // 需要预览的图片http链接列表
@@ -37,20 +109,21 @@ Page({
     var that=this;
     var domain = wx.getStorageSync('domain')
     that.setData({
-      domain: domain
+      domain: domain,
+      id: id
     })
     var token = wx.getStorageSync('token')
     that.setData({
       token: token
     })
     wx.request({
-      url: domain + '/yichaxun/data/detail',
+      url: app.globalData.url + '/yichacha/client/productinfo',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       method: 'post',
       data: {
-        dataId : id,
+        productId : id,
         token:token
       },
       success: function (res) {
@@ -69,13 +142,27 @@ Page({
             }
             console.log(that.data.url, that.data.phone)
           }
-          var imgalist =''
-          if (res.data.data.dataPic){
-            imgalist= res.data.data.dataPic.split(',');
+          var imgalist =[]
+          if (res.data.data.pics){
+            imgalist= res.data.data.pics.split(',');
+            for (var i = 0; i < imgalist.length; i++) {
+              if (imgalist[i].slice(0, 1) != 'h' && imgalist[i].slice(0, 1) != '.') {
+                imgalist[i] = app.globalData.url + imgalist[i]
+              }
+            }
+          }else{
+            imgalist = imgalist.concat(app.globalData.url +'/yichacha/resource/zanwutupian@2x.png')
+          }
+          if (res.data.data.addTime != null && res.data.data.addTime != '' && res.data.data.addTime!='undefined'){
+            res.data.data.addTime = utils.formatTime(res.data.data.addTime / 1000, 'Y-M-D');
+          }
+          if (res.data.data.alterTime != null && res.data.data.alterTime != '' && res.data.data.alterTime != 'undefined') {
+            res.data.data.alterTime = utils.formatTime(res.data.data.alterTime / 1000, 'Y-M-D');
           }
             that.setData({
               imgalist: imgalist,
-              dataDetail: res.data.data.dataDetail,
+              detail:res.data.data,
+              favorIs: res.data.data.favorIs
             })
         } else {
           wx.showModal({
@@ -109,7 +196,7 @@ Page({
     })
   }else{
       wx.request({
-        url: that.data.domain + '/yichaxun/u/userinit',
+        url: app.globalData.url + '/yichaxun/u/userinit',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -164,7 +251,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    wx.stopPullDownRefresh()
   },
 
   /**

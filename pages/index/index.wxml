@@ -1,13 +1,95 @@
-<!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="top_title" style='background-image:url(https://dev.njshangka.com/yichacha/resource/BJ-shouye@2x.png);background-size:cover'>
+  
+  <!-- <navigator url='../mine/mine'> -->
+  <view class='mine' bindtap='mine'>
+    <image src='../img/mine@2x.png'></image>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <!-- </navigator> -->
+  <!-- <navigator url='../news/news'> -->
+  <view class='news' bindtap='news'>
+    <image src='../img/xiaoxi@2x.png'></image>
+    <text>{{newMsgCount}}</text>
+  </view>
+    <!-- </navigator> -->
+
+
+  <view class='esearchIcon'>
+    <image src='../img/logo1@2x.png'></image>
+    <text>医查查</text>
+  </view>
+  <view class='findQx'>找器械，就上医查查</view>
+  <!-- <navigator class='searchIs'  url='../search/search'> -->
+    <view class="searchIs search" bindtap='searchIs'>
+      <image style="position: static;vertical-align: middle;" src="../icon/search@2x.png"></image>
+      <text>请输入产品名称、注册证标号等</text>
+    </view>
+  <!-- </navigator> -->
+</view>
+<!-- <view bindtap='jumpurl' class='ggwei' data-url='{{hrefs}}'>
+  
+  <image src='{{adverCover}}'></image>
+
+</view> -->
+
+<!-- <view class="productList bottom">
+  <text>产品列表</text>
+</view> -->
+<!-- 产品列表 -->
+<view class="productList_list lf">
+  <view class="contain">
+    <view >
+      <!-- <navigator url='../detail/detail?id={{item.product.productId}}'> -->
+        <view wx:for="{{list}}"   bindtap='jumpDetail' data-url='../detail/detail?id={{item.product.productId}}'  wx:if="{{item.product.pics!=''&&item.product.pics!=null&&item.product.pics!=undefinde}}" style="background:#fff" class="productList_list_pic bottom lf">
+          <view  class="productList_list_pic lf">
+            <view class='csTitle'>
+              <view wx:if='{{item.product.coName!=""}}'>
+                <text>{{item.product.coName||''}}</text>
+                <view wx:if='{{item.product.coVipIs==1}}'>
+                  <image src='../img/V@2x.png'></image>
+                  <text>认证厂商</text>
+                </view>
+                 <!-- <view wx:if='{{item.product.coVipIs!=1}}'>
+                  <image src='../img/V-grey@2x.png'></image>
+                  <text style='color:rgb(153,153,153)'>未认证</text>
+                </view> -->
+              </view>
+              <view>
+                <text >{{item.product.name}} </text>
+                 <!-- <text >{{item.intro}} </text> -->
+              </view>
+            </view>
+            <view  name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
+              <view  style='background:url({{item.pic1}}) no-repeat;background-size:cover;background-position: center;'  class="dis1 img1 color_c"></view>
+              <view style='background:url({{item.pic2}}) no-repeat;background-size:cover;background-position: center;'  class="dis2 img2 color_c"></view>
+              <view style='background:url({{item.pic3}}) no-repeat;background-size:cover;background-position: center;'  class="dis3 img3 color_c"></view>
+              <!-- <image src="{{item.pic1}}" alt="" class="dis1 img1 color_c"></image>
+              <image src="{{item.pic2}}" alt="" class="dis2 img2 color_c"></image>
+              <image src="{{item.pic3}}" alt="" class="dis3 img3 color_c"></image> -->
+            </view>
+          </view>
+        </view>
+      <!-- </navigator>
+
+
+      <navigator url='../detail/detail?id={{item.product.productId}}'> -->
+        <view  wx:for="{{list}}"  wx:if="{{item.product.pics==null}}" bindtap='jumpDetail' data-url='../detail/detail?id={{item.product.productId}}' style="background:#fff" class="productList_list_text bottom lf">
+          <view class='csTitle' wx:if='{{item.product.coName}}'>
+              <view>
+                <text>{{item.product.coName||''}}</text>
+                <view wx:if='{{item.product.coVipIs==1}}'>
+                  <image src='../img/V@2x.png'></image>
+                  <text>认证厂商</text>
+                </view>
+              </view>
+            </view>
+          <view class="productList_list_text_lf lf">
+            <text class='text1' style="margin-bottom: 24rpx;margin-top:24rpx;">{{item.product.name}}</text>
+            <text class='text1'wx:if='{{item.product.intro}}' style="margin-bottom:24rpx;">{{item.product.intro}}</text>
+          </view>
+        </view>
+      <!-- </navigator> -->
+    </view>
   </view>
 </view>
+<!-- <view class='upMore'>——  {{learnMore}} ——</view> -->
+

@@ -1,0 +1,29 @@
+<!--pages/mycollection/mycollection.wxml-->
+<view wx:if='{{show==0}}' class='withoutNone'>
+  <image src='../img/quesheng@2x.png'></image>
+  <text>您尚未收藏任何器械</text>
+</view>
+
+<view wx:if='{{show==1}}' class='instrumentList'>
+  <!-- <navigator style='display:inline-block'  wx:for='{{list}}' url='../detail/detail?id={{item.product.productId}}'> -->
+  <view class='instrument' wx:for='{{list}}'>
+    <view bindtap='jumpDetail' data-url='../detail/detail?id={{item.product.productId}}' style='background:url({{item.product.cover}}) no-repeat;background-size:cover;background-position: center;'>
+      <view class='zdl' wx:if='{{item.product.wantAgentIs==1}}'>
+        <image src='../img/green2@2x.png'></image>
+        <text>招代理</text>
+      </view>
+    </view>
+    <view>{{item.product.name}}</view>
+    <view data-id='{{item.favorId}}'>
+      <image src='../img/love2@2x.png'></image>
+      <text>收藏</text>
+    </view>
+
+    <view class='refuseSc' bindtap='removeSc' data-id='{{item.favorId}}'>
+
+    </view>
+  </view>
+  <!-- </navigator> -->
+
+</view>
+<view class='upMore' style='clear:both' wx:if='{{show==1}}'>—— {{learnMore}} ——</view>

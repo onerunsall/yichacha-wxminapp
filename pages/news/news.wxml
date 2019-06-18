@@ -1,0 +1,35 @@
+<!--pages/news/news.wxml-->
+<view class='topLine' wx:if='{{show==0}}'>
+  <text>接收系统推送</text>
+  <view class="body-view">
+    <switch checked='{{skinSwitch}}' bindchange="switchChange" />
+  </view>
+</view>
+<view class='newsNone'  wx:if='{{showIs==false}}'>
+  <image src='../img/message.png'></image>
+  <!-- <text>您暂无任何消息</text> -->
+  <text>您没有打开消息推送</text>
+</view>
+<view class='newList'  wx:if='{{showIs==true&&newItem!=0}}'>
+  <view class='newItem' wx:for='{{list}}'>
+    <view>
+      <view>
+        <text>用户{{item.visitorPhoneIs}}访问</text>
+        <text>{{item.productName}}</text>
+      </view>
+      <view>{{item.addTime}}</view>
+    </view>
+    <view bindtap='visitorPhone' data-tel='{{item.visitorPhone}}'>
+      <image src='../img/phone@2x.png'></image>
+    </view>
+    <text class='round' wx:if='{{item.lookIs==0}}'></text>
+  </view>
+
+
+
+</view>
+<view class='newsNone'  wx:if='{{showIs==true&&newItem==0}}'>
+  <image src='../img/message.png'></image>
+  <!-- <text>您暂无任何消息</text> -->
+  <text>您暂时没有任何消息</text>
+</view>
