@@ -275,12 +275,15 @@ swiper-item image {
   margin-left: 20rpx;
 }
 .connectNow{
-  width: 678rpx;
+  display: inline-block;
+  width: 460rpx;
+  /* width: 678rpx; */
   height: 84rpx;
   border-radius: 42rpx;
   background: rgb(2,175,101);
   color: #fff;
-  margin: 30rpx auto;
+  float: left;
+  margin: 30rpx 22rpx 30rpx 36rpx;
   text-align: center;
   line-height: 84rpx;
 }
@@ -352,4 +355,24 @@ float: left;line-height: 30rpx;
   text-align: right;
   float: right;
   margin-right: 32rpx;
+}
+
+.favorsIs{
+  float: left;
+  margin: 30rpx 0;
+  width: 194rpx;
+  border: 1rpx solid rgb(242,67,67);
+  height: 82rpx;
+  display: inline-block;
+  border-radius: 41rpx;
+  color: rgb(2422,67,67);
+  font-size: 32rpx;
+  text-align: center;
+  line-height: 82rpx;
+}
+.favorsIs image{
+  width: 42rpx;
+  height: 40rpx;
+  vertical-align: middle;
+  margin-right: 15rpx;
 }

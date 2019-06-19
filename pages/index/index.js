@@ -17,20 +17,35 @@ Page({
     userInfo: {},
     code: '',
     learnMore: '上拉加载更多',
-    newMsgCount:0
+    newMsgCount: 0,
+    className: ''
   },
   nook: function(e) {
     this.setData({
       showModal: false
     })
   },
- 
+  onPageScroll: function(e) {
+    let that = this;
+    if (e.scrollTop <40) {
+      that.setData({
+        isScroll: false,
+        className: ''
+      })
+    } else {
+      that.setData({
+        isScroll: true,
+        className: 'active'
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
 
     var that = this;
+    that.onPageScroll()
     var domain = 'https://www.njshangka.com';
     wx.setStorageSync('domain', domain);
     // wx.removeStorageSync('token')
@@ -54,7 +69,7 @@ Page({
             data: {
               code: app.globalData.code,
             },
-            success: function (res) {
+            success: function(res) {
               wx.hideToast()
               if (res.data.code == 0) {
                 app.globalData.loginIs = 1
@@ -68,18 +83,18 @@ Page({
                   data: {
                     token: wx.getStorageSync('token')
                   },
-                  success: function (res) {
+                  success: function(res) {
                     wx.hideToast()
                     if (res.data.code == 0) {
-                      if (res.data.data.identity == '' || res.data.data.identity == null || res.data.data.identity ==undefined){
+                      if (res.data.data.identity == '' || res.data.data.identity == null || res.data.data.identity == undefined) {
                         wx.showToast({
                           title: '请绑定身份',
                         })
-                        setTimeout(function(){
-                              wx.navigateTo({
-                                url: '../selectRole/selectRole',
-                              })
-                        },1000)
+                        setTimeout(function() {
+                          wx.navigateTo({
+                            url: '../selectRole/selectRole',
+                          })
+                        }, 1000)
                       }
                       app.globalData.msgNotifyIs = res.data.data.msgNotifyIs
                       that.setData({
@@ -119,19 +134,6 @@ Page({
         }
       }
     })
-
-  
-    // if (wx.getStorageSync('isBind') == 1) {
-    //   wx.showToast({
-    //     title: '请登录',
-    //   })
-    //   setTimeout(function() {
-    //     wx.navigateTo({
-    //       url: '../login/login',
-    //     })
-    //   }, 1000)
-    // }
-   
     that.lastPage(1, 200)
   },
   lastPage: function(pageNo, pageSize) {
@@ -139,7 +141,7 @@ Page({
     wx.request({
       url: app.globalData.url + '/yichacha/client/page/3-0-1',
       method: 'post',
-      async:true,
+      async: true,
       data: {
         // dataOnHome: 1,
         pn: pageNo,
@@ -203,12 +205,12 @@ Page({
   },
 
 
-  news: function (e) {
+  news: function(e) {
     if (app.globalData.loginIs == 0) {
       wx.showToast({
         title: '请登录',
       })
-      setTimeout(function () {
+      setTimeout(function() {
         wx.navigateTo({
           url: '../login/login',
         })
@@ -220,12 +222,12 @@ Page({
       })
     }
   },
-  mine: function (e) {
+  mine: function(e) {
     if (app.globalData.loginIs == 0) {
       wx.showToast({
         title: '请登录',
       })
-      setTimeout(function () {
+      setTimeout(function() {
         wx.navigateTo({
           url: '../login/login',
         })
@@ -237,18 +239,18 @@ Page({
       })
     }
   },
-  searchIs: function (e) {
+  searchIs: function(e) {
     if (app.globalData.loginIs == 0) {
       wx.showToast({
         title: '请登录',
       })
-      setTimeout(function () {
+      setTimeout(function() {
         wx.navigateTo({
           url: '../login/login',
         })
       }, 1000)
     } else {
-      
+
       wx.navigateTo({
         url: '../search/search'
       })
@@ -266,11 +268,11 @@ Page({
         })
       }, 1000)
     } else {
-        var url = e.currentTarget.dataset.url
-        wx.navigateTo({
-          url: url
-        })
-      }
+      var url = e.currentTarget.dataset.url
+      wx.navigateTo({
+        url: url
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -321,7 +323,7 @@ Page({
       data: {
         token: wx.getStorageSync('token')
       },
-      success: function (res) {
+      success: function(res) {
         wx.hideToast()
         if (res.data.code == 0) {
           app.globalData.msgNotifyIs = res.data.data.msgNotifyIs

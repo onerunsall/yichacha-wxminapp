@@ -13,11 +13,12 @@ page {
 }
 
 .header {
-  position: fixed;top: 0;
+  position: fixed;
+  top: 0;
   width: 100%;
   left: 0;
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 80rpx;
+  line-height: 80rpx;
   background: #fff;
 }
 
@@ -31,22 +32,27 @@ page {
 }
 
 .input_box {
-  display: inline-block;
-  position: relative;
+  width: 674rpx;
+  border: 2rpx solid rgb(48, 205, 107);
+  height: 76rpx;
+  margin-left: 36rpx;
+  border-radius: 10rpx;
+  line-height: 80rpx;
   color: rgba(153, 153, 153, 0.89);
-  background: rgb(243, 243, 243);
-  left: 30rpx;
-  width: 560rpx;
-  height: 70rpx;
-  border-radius: 35rpx;
-  border: 0;
-  padding-left: 26rpx;
-  line-height: 70rpx;
+  position: relative;
 }
 
 .input_box_view {
-  width: 520rpx;
-  padding-left: 44rpx;
+  width: 420rpx;
+  padding-left: 76rpx;
+}
+
+.del {
+  position: absolute;
+  right: 112rpx;
+  width: 30rpx;
+  height: 32rpx;
+  top: 22rpx;
 }
 
 .place_holder {
@@ -76,34 +82,52 @@ page {
 }
 
 .top .refuse {
+  position: absolute;
+  right: 24rpx;
   font-size: 32rpx;
   color: rgb(51, 51, 51);
-  line-height: 70rpx;
+  line-height: 76rpx;
   float: right;
-  margin-right: 32rpx;
+  /* margin-right: 32rpx; */
 }
 
 /* 热门搜索 */
 
+#textList {
+  width: 710rpx;
+  margin: 0 20rpx;
+}
+
 .hot_search {
-  margin-top: 70rpx;
+  margin-top: 80rpx;
   width: 750rpx;
 }
 
 .hot_search_title {
   background-color: #fff;
   height: 120rpx;
-  line-height: 120rpx;
+  line-height: 132rpx;
 }
 
 .hot_search_title text {
-  margin-left: 30rpx;
+  margin-left: 32rpx;
   font-size: 36rpx;
-  color: #000;
+  color: rgb(255, 149, 27);
 }
 
 .hot_search_text {
   background-color: #fff;
+}
+
+.hot_search_text>text {
+  display: inline-block;
+  height: 64rpx;
+  /* background: rgb(245, 245, 245); */
+  font-size: 30rpx;
+  line-height: 64rpx;
+  padding: 0 30rpx;
+  border-radius: 6rpx;
+  margin: 12rpx;
 }
 
 .hot_search_text>view {
@@ -201,137 +225,358 @@ page {
 }
 
 .productList_list_pic text {
-  /* width: 690rpx; */
-  /* display: inline-block;
+  /* width: 690rpx; *//* display: inline-block;
     margin-left: 30rpx;
     font-size: 32rpx;
     color: #333333;
     margin-top: 34rpx;
     margin-bottom: 30rpx; */
 }
+
 .productList_list_pic_ps {
-    width: 100%;
+  width: 100%;
 }
 
 .productList_list_pic_ps>view {
   display: inline-block;
-    width: 216rpx;
-    margin-bottom: 20rpx;
-    height: 150rpx;
-    margin-left: 20rpx;
-}
-.color_c {
-    color: #999 !important;
-}
-.img1 {
-    margin-left: 15px !important;
+  width: 216rpx;
+  margin-bottom: 20rpx;
+  height: 150rpx;
+  margin-left: 20rpx;
 }
 
-.productList_list_text,.productList_list_pic{
+.color_c {
+  color: #999 !important;
+}
+
+.img1 {
+  margin-left: 15px !important;
+}
+
+.productList_list_text, .productList_list_pic {
   width: 100%;
 }
+
 .productList_list_text_lf {
-    width: 750rpx;
+  width: 750rpx;
 }
+
 .productList_list_text_lf .text {
   display: inline-block;
-    margin-left: 30rpx;
-    font-size: 32rpx;
-    color: #333333;
-    margin-top: 34rpx;
-    margin-bottom: 34rpx;
+  margin-left: 30rpx;
+  font-size: 32rpx;
+  color: #333;
+  margin-top: 34rpx;
+  margin-bottom: 34rpx;
 }
-.productList_list_text_lf .text1:nth-child(1){
-   text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    color: #000;
-}
-.productList_list_text_lf .text1 {
-    font-size: 28rpx;
-    color: #999;
-    margin-left: 30rpx;
-    display: inline-block;
-    overflow: hidden;
-    margin-right: 30rpx;
 
+.productList_list_text_lf .text1:nth-child(1) {
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #000;
 }
+
+.productList_list_text_lf .text1 {
+  font-size: 28rpx;
+  color: #999;
+  margin-left: 30rpx;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 30rpx;
+}
+
 .productList_list_text_rt {
   margin-top: 20%;
 }
+
 .productList_list_text_rt image {
-    width: 13rpx;
-    margin-right: 30rpx;
-    height: 24rpx;
-    vertical-align: middle;
+  width: 13rpx;
+  margin-right: 30rpx;
+  height: 24rpx;
+  vertical-align: middle;
 }
+
 /* 弹出层里面的文字 */
-.text{
+
+.text {
   text-align: left;
   font-size: 32rpx;
   color: #666;
   width: 650rpx;
   margin-top: 40rpx;
 }
-.csTitle{
+
+.csTitle {
   margin-top: 36rpx;
 }
-.csTitle>view:first-child{
-  
-  line-height: 30rpx;
-  height: 30rpx;
-  
 
-}
-.csTitle>view:first-child>text:nth-child(1){
-  max-width: 530rpx;
-  display: inline-block;
-  display:-webkit-box;
--webkit-line-clamp:1;
--webkit-box-orient:vertical;
-overflow:hidden;
-}
-.csTitle>view:first-child>text{
-  display: inline-block;
-  font-size: 30rpx;
-  height: 30rpx;
+.csTitle>view:first-child {
   line-height: 30rpx;
-  color: rgb(51,51,51);
-  float: left;
-  font-weight: 300;
-  margin-left: 30rpx;
-  
+  height: 30rpx;
+  width: 560rpx;
+  /* display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical; */
+  overflow: hidden;
 }
-.csTitle>view:first-child>view{
+
+.csTitle>view:nth-child(2) {
   display: inline-block;
   float: left;
   font-size: 22rpx;
-  color: rgb(251,119,0)
+  color: rgb(251, 119, 0);
 }
-.csTitle>view:first-child>view>image{
+
+.csTitle>view:nth-child(2) image {
   width: 34rpx;
   height: 30rpx;
   margin-left: 24rpx;
   margin-right: 8rpx;
   float: left;
 }
-.csTitle>view:nth-child(2) text{
+
+.csTitle>view:first-child>text:nth-child(1) {
+  max-width: 530rpx;
+  display: inline-block;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.csTitle>view:first-child>text:nth-child(1) {
+  margin-left: 30rpx;
+}
+
+.csTitle>view:first-child>text {
+  display: inline-block;
+  font-size: 32rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  color: rgb(51, 51, 51);
+  float: left;
+  font-weight: 300;
+}
+
+.csTitle>view:first-child>view {
+  display: inline-block;
+  float: left;
+  font-size: 22rpx;
+  color: rgb(251, 119, 0);
+}
+
+.csTitle>view:first-child>view>image {
+  width: 34rpx;
+  height: 30rpx;
+  margin-left: 24rpx;
+  margin-right: 8rpx;
+  float: left;
+}
+
+.csTitle>view:nth-child(2) text {
   font-size: 28rpx;
   height: 28rpx;
-  color: rgb(51,51,51);
+  color: rgb(51, 51, 51);
   /* margin-left: 30rpx; */
   margin: 32rpx 30rpx;
   line-height: 28rpx;
-display:-webkit-box;
--webkit-line-clamp:1;
--webkit-box-orient:vertical;
-overflow:hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.upMore{
-  color: rgb(153,153,153);
+
+.upMore {
+  color: rgb(153, 153, 153);
   font-size: 24rpx;
   width: 100%;
   text-align: center;
   margin: 30rpx 0;
+}
+
+.searchIs2_0Box {
+  width: 750rpx;
+  height: 80rpx;
+  background: #fff;
+  line-height: 76rpx !important;
+}
+
+.searchIs2_0 {
+  width: 674rpx;
+  border: 2rpx solid rgb(48, 205, 107);
+  height: 76rpx;
+  margin-left: 36rpx;
+  border-radius: 10rpx;
+  line-height: 80rpx;
+}
+
+.searchIs2_0>text {
+  line-height: 76rpx;
+  font-size: 30rpx;
+  float: left;
+}
+
+.navbar {
+  position: fixed;
+  top: 80rpx;
+  height: 96rpx;
+  width: 678rpx;
+  left: 36rpx;
+  border-bottom: 2rpx solid rgb(243, 243, 243);
+}
+
+.navbar>view.active {
+  color: rgb(51, 51, 51);
+  font-size: 34rpx;
+}
+
+.navbar>view {
+  position: relative;
+  padding-top: 38rpx;
+  padding-right: 80rpx;
+  /* margin-top: 38rpx; */
+  font-size: 28rpx;
+  color: rgb(51, 51, 51);
+  /* border-bottom: 4rpx solid rgb(255,149,27); */
+  display: inline-block;
+  /* position: fixed; */
+  flex: auto;
+  /* width: 34rpx; */
+  /* margin-right: 80rpx; */
+}
+
+.navbar >view.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 92rpx;
+  left: 17rpx;
+  width: 34rpx;
+  height: 6rpx;
+  background: rgb(255, 149, 27);
+}
+
+.register {
+  font-size: 28rpx;
+  color: rgb(153, 153, 153);
+  height: 28rpx;
+  line-height: 28rpx;
+}
+
+.register>text {
+  /* display: inline-block; */
+  width: 460rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height:28rpx;
+line-height:28rpx;
+
+}
+
+.register1 {
+  margin: 32rpx 0 24rpx;
+  padding: 0 26rpx;
+}
+
+.register2 {
+  margin-bottom: 30rpx;
+  padding: 0 26rpx;
+}
+
+.register text {
+  display: inline-block;
+  margin-left: 20rpx;
+  color: rgb(51, 51, 51);
+}
+
+.csTitleIs {
+  
+  width: 690rpx;
+  height: 106rpx;
+  /* box-shadow: -2rpx 8rpx 10px rgba(0, 0, 0, 0.1); */
+  /* box-shadow: 0 0 16rpx  rgba(0, 0, 0, 0.1); */
+  box-shadow: 2rpx 2rpx 16rpx rgba(0, 0, 0, 0.1);
+  margin: 30rpx 30rpx 0 30rpx;
+  padding-top: 34rpx;
+}
+
+.csTitleIs>view {
+  width: 570rpx;
+  height: 32rpx;
+  line-height: 32rpx;
+  margin: 0 30rpx 16rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 32rpx;
+  color: rgb(51, 51, 51);
+}
+.csTitleIs>view:nth-child(2){
+  height: 30rpx;
+  line-height: 30rpx;
+display: inline-block;
+  float: left;
+  font-size: 22rpx;
+  color: rgb(251, 119, 0);
+}
+
+
+.csTitleIs>view:nth-child(2)>image {
+  width: 34rpx;
+  height: 30rpx;
+  /* margin-left: 24rpx; */
+  margin-right: 8rpx;
+  float: left;
+}
+.rightIcon{
+  width: 60rpx;
+  height: 140rpx;
+  float: right;
+  position: absolute;
+  right: 30rpx;
+  bottom: 0;
+}
+.rightIcon image{
+  float: right;width: 16rpx;
+  height: 26rpx;
+  margin-right: 30rpx;
+  margin-top: 57rpx;
+}
+.csTitleIsNo{
+    width: 690rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+  box-shadow: 2rpx 2rpx 16rpx rgba(0, 0, 0, 0.1);
+  margin: 20rpx 30rpx 10rpx 30rpx;
+}
+.csTitleIsNo>view {
+  width: 570rpx;
+  height: 140rpx;
+  line-height: 140rpx;
+  margin: 0 30rpx;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 32rpx;
+  color: rgb(51, 51, 51);
+}
+.rightIcons{
+  width: 60rpx;
+  height: 140rpx;
+  float: right;
+  position: absolute;
+  right: 30rpx;
+  bottom: 10rpx;
+}
+.rightIcons image{
+  float: right;width: 16rpx;
+  height: 26rpx;
+  margin-right: 30rpx;
+  margin-top: 57rpx;
 }
