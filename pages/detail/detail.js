@@ -150,7 +150,13 @@ Page({
                 imgalist[i] = app.globalData.url + imgalist[i]
               }
             }
+            that.setData({
+              imgalistIf: 1
+            })
           }else{
+            that.setData({
+              imgalistIf:0
+            })
             imgalist = imgalist.concat(app.globalData.url +'/yichacha/resource/zanwutupian@2x.png')
           }
           if (res.data.data.addTime != null && res.data.data.addTime != '' && res.data.data.addTime!='undefined'){

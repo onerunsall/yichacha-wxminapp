@@ -16,9 +16,8 @@ page {
 .mine{
   width: 46rpx;
   height: 44rpx;
-  padding:22rpx 23rpx;
-  margin-top: 10rpx;
-  float: left;
+  padding:0  20rpx  20rpx  20rpx;
+  float: right;
 }
 .mine image{
   width: 46rpx;
@@ -28,18 +27,16 @@ page {
   float: right;
   width: 38rpx;
   height: 44rpx;
-  padding: 19rpx 22rpx;
-  margin-top: 11rpx;
+  padding: 0 36rpx 20rpx 20rpx;
   position: relative;
 }
 .news image{
   width: 38rpx;
   height: 44rpx;
-  position: absolute;
-  right: 20rpx;
 }
 .news text{
   position: absolute;
+  right: 34rpx;
   display: inline-block;
   width:24rpx;
   height: 24rpx;
@@ -49,7 +46,7 @@ page {
   border-radius: 50%;
   text-align: center;
   line-height: 24rpx;
-  right: 16rpx;
+  /* right: 16rpx; */
 }
 .esearchIcon{
   width: 100%;
@@ -101,8 +98,10 @@ page {
 .search image{
   width: 32rpx;
   height: 32rpx;
+  float: left;
+  margin-top: 22rpx;
   margin-left: 30rpx;
-  margin-right: 30rpx;
+  margin-right: 20rpx;
 }
 
 .ggwei{
@@ -134,7 +133,7 @@ page {
 .productList_list {
     width: 100%;
     padding-bottom: 20rpx;
-    /* margin-top: -118rpx; */
+    margin-top: 10rpx;
 }
 
 .productList_list_pic text {
@@ -270,10 +269,12 @@ page {
   margin-top: 40rpx;
 }
 .csTitle{
-  margin-top: 36rpx;
+  margin-top: 38rpx;
+  margin-bottom: 36rpx;
+  height: 32rpx;
+  line-height: 32rpx;
 }
 .csTitle>view:first-child{
-  
   line-height: 30rpx;
   height: 30rpx;
   overflow-y: hidden;
@@ -287,11 +288,11 @@ display:-webkit-box;
 overflow:hidden;
 }
 .csTitle>view:first-child>text{
-  height: 30rpx;
-  line-height: 30rpx;
+  height: 32rpx;
+  line-height: 32rpx;
   vertical-align: bottom;
   display: inline-block;
-  font-size: 30rpx;
+  font-size: 32rpx;
   color: rgb(51,51,51);
   float: left;
   font-weight: 300;
@@ -343,4 +344,51 @@ overflow:hidden;
   width: 100%;
   text-align: center;
   margin: 30rpx 0;
+}
+
+/* 改版头 */
+.topLine2_0{
+  height: 46rpx;
+  padding-bottom: 34rpx;
+}
+.topLine2_0>view:nth-child(1) image{
+  width: 46rpx;
+  height: 46rpx;
+  margin-left: 36rpx;
+  float: left;
+}
+.topLine2_0>view:nth-child(1)  text{
+  font-size: 34rpx;
+  color: rgb(48,205,107);
+  line-height: 46rpx;
+  margin-left: 10rpx;
+   float: left;
+}
+.searchIs2_0Box{
+  width: 750rpx;
+  height: 80rpx;
+  background: #fff;
+}
+.searchIs2_0{
+  width: 674rpx;
+  border: 2rpx solid rgb(48,205,107);
+  height: 76rpx;
+  margin-left: 36rpx;
+  border-radius: 10rpx;
+  line-height: 80rpx;
+}
+.searchIs2_0>text{
+  line-height: 76rpx;
+  font-size: 30rpx;
+  float: left;
+}
+
+
+.active{
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.activeIs{
+  margin-top: 90rpx !important;
 }

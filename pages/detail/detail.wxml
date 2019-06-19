@@ -1,11 +1,11 @@
 <!--pages/detail/detail.wxml-->
-<view class="swiper-container">
- <view class='favors' bindtap='sc' wx:if='{{favorIs==0}}'>
+<view class="swiper-container" wx:if='{{imgalistIf==1}}'>
+ <!-- <view class='favors' bindtap='sc' wx:if='{{favorIs==0}}'>
       <image src='../img/Shape@2x.png'></image>
     </view>
      <view class='favors'  bindtap='ysc' wx:if='{{favorIs==1}}'>
       <image src='../img/love2@2x.png'></image>
-    </view>
+    </view> -->
 
   <view class='zdl' wx:if='{{detail.wantAgentIs}}'>
     <image src='../img/Rectangle 23@2x.png'></image>
@@ -131,8 +131,15 @@
   <image src='../img/Combined Shape@2x.png'></image>
   <text>立即联系</text>
 </view>
-
-<navigator wx:if='{{detail.coName!=""&&detail.coName!=null&&detail.coName!=undefined}}' url='../vendorInformation/vendorInformation?id={{detail.coId}}'>
+<view class='favorsIs' bindtap='sc' wx:if='{{favorIs==0}}'>
+      <image src='../img/Shape@2x.png'></image>
+      <text>收藏</text>
+    </view>
+     <view class='favorsIs'  bindtap='ysc' wx:if='{{favorIs==1}}'>
+      <image src='../img/love2@2x.png'></image>
+      <text>收藏</text>
+    </view>
+<navigator style='clear:both' wx:if='{{detail.coName!=""&&detail.coName!=null&&detail.coName!=undefined}}' url='../vendorInformation/vendorInformation?id={{detail.coId}}'>
   <view class='contury'>
     <view class='conturyTitle'>
       <text>{{detail.coName||''}}</text>

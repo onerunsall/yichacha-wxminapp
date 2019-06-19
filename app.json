@@ -1,11 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+        "pages/search/search",
+   
     "pages/mycollection/mycollection",
     "pages/login/login",
     "pages/selectRole/selectRole",
     "pages/news/news",
-    "pages/search/search",
+
     "pages/mine/mine",
     "pages/vendorInformation/vendorInformation",
     "pages/Tindex/Tindex",
