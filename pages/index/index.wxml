@@ -19,9 +19,9 @@
     </view>
 </view> -->
 
-<view wx:if='{{ads==1}}'>
+<view >
   <view class='topLine2_0'>
-    <view>
+    <view style="display:none">
       <image src='../img/logo-small@2x.png'></image>
       <text>医查查</text>
     </view>
@@ -33,7 +33,11 @@
       <image src='../img/mine@2x.png'></image>
     </view>
   </view>
-  <view class='searchIs2_0Box {{className}}'>
+  <view class="logo">
+      <image src='../img/logo-small@2x.png'></image>
+      <text>医查查</text>
+    </view>
+  <view class='searchIs2_0Box {{className}}' style="margin-top:40rpx">
     <view class="searchIs2_0 search " bindtap='searchIs'>
       <image style="position: static;vertical-align: middle;" src="../img/search@2x.png"></image>
       <text>{{productCount}}器械，{{coCount}}厂商</text>
@@ -41,28 +45,7 @@
   </view>
 
 </view>
-<view wx:if='{{ads!=1}}' class='bgBox' style='height:406rpx;width:100%;background:url("https://yichacha.njshangka.com/resource/new-bj@2x.png") no-repeat;background-size:cover;background-position: center;'>
-  <view class='topLine2_0'>
-    <view>
-      <image src='../img/logo-small@2x.png'></image>
-      <text>医查查</text>
-    </view>
-    <view class='news' bindtap='news'>
-      <image src='../img/xiaoxi@2x.png'></image>
-      <text>{{newMsgCount}}</text>
-    </view>
-    <view class='mine' bindtap='mine'>
-      <image src='../img/mine@2x.png'></image>
-    </view>
-  </view>
-  <view class='searchIs2_0Box {{className}}'>
-    <view class="searchIs2_0 search " bindtap='searchIs'>
-      <image style="position: static;vertical-align: middle;" src="../img/search@2x.png"></image>
-      <text>{{productCount}}器械，{{coCount}}厂商</text>
-    </view>
-  </view>
-  <view bindtap='forSale' style='width:100%;height:212rpx;'></view>
-</view>
+<!-- w -->
 <!-- <view bindtap='jumpurl' class='ggwei' data-url='{{hrefs}}'>
   
   <image src='{{adverCover}}'></image>
@@ -73,7 +56,7 @@
   <text>产品列表</text>
 </view> -->
 <!-- 产品列表 -->
-<view class="productList_list lf {{className}}Is">
+<view class="productList_list lf {{className}}Is" hidden='true'>
   <view class="contain">
     <view wx:for="{{list}}">
       <view wx:if="{{item.pics==null||item.pics==''||item.pics==undefinde}}" bindtap='jumpDetail' data-url='../detail/detail?id={{item.guochanyiliaoqixieId}}' style="background:#fff" class="productList_list_text bottom lf">
