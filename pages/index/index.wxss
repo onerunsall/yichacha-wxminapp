@@ -96,12 +96,19 @@ page {
     color: #999999;
 }
 .search image{
-  width: 32rpx;
+  /* width: 32rpx;
   height: 32rpx;
   float: left;
   margin-top: 22rpx;
   margin-left: 30rpx;
-  margin-right: 20rpx;
+  margin-right: 20rpx; */
+  width: 60rpx;
+height: 62rpx;
+float: left;
+margin-top: 10rpx;
+margin-left: 27rpx;
+margin-right: 20rpx;
+
 }
 
 .ggwei{
@@ -182,7 +189,7 @@ page {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
-    color: #000;
+    /* color: #000; */
 }
 .productList_list_text_lf .text1 {
     font-size: 28rpx;
@@ -275,12 +282,12 @@ page {
   line-height: 32rpx;
 }
 .csTitle>view:first-child{
-  line-height: 30rpx;
-  height: 30rpx;
-  overflow-y: hidden;
+  line-height: 32rpx;
+  height: 32rpx;
+  /* overflow-y: hidden; */
 }
 .csTitle>view:first-child>text:nth-child(1){
-  max-width: 530rpx;
+  max-width: 580rpx;
   
 display:-webkit-box;
 -webkit-line-clamp:1;
@@ -288,6 +295,7 @@ display:-webkit-box;
 overflow:hidden;
 }
 .csTitle>view:first-child>text{
+  max-width: 580rpx;
   height: 32rpx;
   line-height: 32rpx;
   vertical-align: bottom;
@@ -351,6 +359,9 @@ overflow:hidden;
   height: 46rpx;
   padding-bottom: 34rpx;
 }
+.topLine2_0>view:nth-child(1) {
+  display: inline-block;
+}
 .topLine2_0>view:nth-child(1) image{
   width: 46rpx;
   height: 46rpx;
@@ -390,5 +401,68 @@ overflow:hidden;
   left: 0;
 }
 .activeIs{
-  margin-top: 90rpx !important;
+  margin-top: 0rpx !important;
+}
+
+.popWindow{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  background: rgba(0,0,0,0.3);
+}
+.needSq{
+  position: fixed;
+  width: 579rpx;
+  height: 775rpx;
+  top: 150rpx;
+  left: 85.5rpx;
+  /* margin: 150rpx 85.5rpx; */
+  background: #fff;
+  border-radius: 10rpx;
+  z-index: 4;
+}
+.needSq>view:nth-child(1){
+  height: 86rpx;
+  border-bottom: 1rpx solid #e5e5e5;
+  line-height: 86rpx;
+  font-size: 28rpx;
+  color: rgb(51,51,51);
+  text-align: center;
+}
+.needSq>view:nth-child(2) text{
+  display: block;
+  width: 100%;
+  font-size: 26rpx;
+  color: rgb(102,102,102);
+  text-align: center;
+  height: 26rpx;
+  line-height: 26rpx;
+}
+.needSq>view:nth-child(2) text:nth-child(1){
+  margin: 40rpx 0 10rpx;
+}
+.needSq>view:nth-child(2) text:nth-child(2){
+  margin-bottom: 60rpx;
+}
+.needSq>view:nth-child(2) image{
+  width: 360rpx;
+  height: 312rpx;
+  margin: 0 109.5rpx;
+}
+ .souquan{
+   width: 430rpx;
+  height: 68rpx;
+  border-radius: 68rpx;
+  margin: 72rpx 74.5rpx;
+  background: rgb(2,175,101);
+  line-height: 68rpx;
+  font-size: 32rpx;
+  color: #fff;
+ }
+ button::after {
+    border-radius: 0;
+    border: 0;
 }

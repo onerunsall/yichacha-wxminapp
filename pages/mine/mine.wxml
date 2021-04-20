@@ -29,9 +29,29 @@
       <image src='../img/right@2x.png'></image>
     </view>
   </navigator>
+
+  <view bindtap='feedBack'>
+      <image src='../img/Group@2x.png'></image>
+      <text>意见反馈</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+
     <view bindtap='serviceTel'>
       <image src='../img/kefu@2x.png'></image>
-      <text>客服</text>
+      <text>联系我们</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+
+
+     <view bindtap='applyCount'>
+      <image src='../img/dingdan@2x.png'></image>
+      <text>申请表</text>
+      <image src='../img/right@2x.png'></image>
+    </view>
+
+    <view bindtap='changeZh'>
+      <image src='../img/shezhi@2x.png'></image>
+      <text>切换账号</text>
       <image src='../img/right@2x.png'></image>
     </view>
    <!-- <navigator url='../login/login'>
@@ -41,4 +61,5 @@
       <image src='../img/right@2x.png'></image>
     </view>
   </navigator> -->
-</view>
+
+</view>  <text class='Version'>版本号：{{Version}}</text>

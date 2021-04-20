@@ -27,3 +27,9 @@
 
 </view>
 <view class='upMore' style='clear:both' wx:if='{{show==1}}'>—— {{learnMore}} ——</view>
+
+<!-- <view class='upMore' wx:if='{{learnMore!="当前没有数据"}}' style='margin-top:{{marginTop}}rpx;clear:both'>—— {{learnMore}} ——</view>
+<view  wx:if='{{learnMore=="当前没有数据"}}'  class='upMoreNone newsNone'>
+    <image src='../img/bug.png'></image>
+    <text>当前没有数据</text>
+  </view> -->

@@ -1,0 +1,14 @@
+<!--pages/bidding/bidding.wxml-->
+<view class='bidList'>
+  <view class='bidItem'>
+    <view class='bidItemLf'>
+      <text>爱上了疯狂啦发生了开发暗示法来看结婚三方啥风口浪尖爱上了疯狂啦发生了开发暗示法来看结婚三方啥风口浪尖</text>
+      <view><text>类型：</text>中标公告</view>
+      <view><text>发布日期：</text>2018-09-07</view>
+      <view><text>所在地区：</text>河北</view>
+    </view>
+    <view class='bidItemRt'>
+      <image src='../img/you.png'></image>
+    </view>
+  </view>
+</view>

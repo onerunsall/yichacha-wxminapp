@@ -1,0 +1,7 @@
+<!--pages/shareholders/shareholders.wxml-->
+<view class='shareList'>
+  <view class='shareItem'>张红伟</view>
+  <view class='shareItem'>张红伟</view>
+  <view class='shareItem'>张红伟</view>
+  <view class='shareItem'>张红伟</view>
+</view>

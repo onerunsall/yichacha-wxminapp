@@ -21,12 +21,18 @@
   <image bindtap='yes' wx:if='{{read==0}}' src='../img/Not-selected@2x.png'></image>
   <image bindtap='no' wx:if='{{read==1}}' src='../img/select@2x.png'></image>
   <text>我已经阅读并同意</text>
-  <navigator url='../webview/webview?href=https://www.njshangka.com/yichacha/client/userprotocol.html'>
+  <navigator url='../webview/webview?href=https://yichacha.njshangka.com/oss/page/userprotocol.html'>
     <text>《应用服务条款》</text>
   </navigator>
+<!-- 
+   <button class='souquan'
+ wx:if="{{canIUse}}"
+ 
+ open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber"
+>授权获取号码</button> -->
 </view>
 
-<view class='loginBtn' bindtap='loginBtn'>登录</view>
+<view class='loginBtn' bindtap='loginBtn' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">登录</view> 
 
 
 <!-- 遮罩层 -->

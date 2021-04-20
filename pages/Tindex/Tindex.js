@@ -32,7 +32,7 @@ Page({
     })
 
     wx.request({
-      url: that.data.domain + '/yichaxun/u/ycc/ua/wxminapplogin',
+      url: that.data.domain + '/u/ycc/ua/wxminapplogin',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -65,7 +65,7 @@ Page({
   onLoad: function(options) {
 
     var that = this;
-    var domain = 'https://www.njshangka.com';
+    var domain = 'https://yichacha.njshangka.com';
     wx.setStorageSync('domain', domain);
     that.setData({
       domain: domain
@@ -124,7 +124,7 @@ Page({
             hasUserInfo: true
           })
           wx.request({
-            url: that.data.domain + '/yichaxun/u/ycc/ua/wxminapplogin',
+            url: that.data.domain + '/u/ycc/ua/wxminapplogin',
             header: {
               "Content-Type": "application/x-www-form-urlencoded",
             },
@@ -161,7 +161,7 @@ Page({
 
     
     wx.request({
-      url: domain + '/yichaxun/u/homeadlist',
+      url: domain + '/u/homeadlist',
       header: {
         'Content-type': 'application/json'
       },
@@ -193,7 +193,7 @@ Page({
 
           that.setData({
             adverCover: homeAdPic,
-            // hrefs: 'https://passion.njshangka.com/yichaxun/weixin/newsDetails.html'
+            // hrefs: 'https://yichacha.njshangka.com/weixin/newsDetails.html'
           })
         } else {
           wx.showModal({
@@ -211,7 +211,7 @@ Page({
 
 
     wx.request({
-      url: that.data.domain+'/yichaxun/data/list',
+      url: that.data.domain+'/data/list',
       method: 'post',
       data: {
         dataOnHome:1,
@@ -252,17 +252,17 @@ Page({
               if (that.data.list[i].dataPic) {
                 var dataPic = that.data.list[i].dataPic.split(',')
                 if (dataPic.length == 1) {
-                  pic1 = 'http://www.njshangka.com'+dataPic;
+                  pic1 = 'http://yichacha.njshangka.com'+dataPic;
                   pic2 = '';
                   pic3 = '';
                 } else if (dataPic.length == 2) {
-                  pic1 = 'http://www.njshangka.com' +dataPic[0];
-                  pic2 = 'http://www.njshangka.com' +dataPic[1];
+                  pic1 = 'http://yichacha.njshangka.com' +dataPic[0];
+                  pic2 = 'http://yichacha.njshangka.com' +dataPic[1];
                   pic3 = '';
                 } else {
-                  pic1 = 'http://www.njshangka.com' +dataPic[0];
-                  pic2 = 'http://www.njshangka.com' +dataPic[1];
-                  pic3 = 'http://www.njshangka.com' +dataPic[2];
+                  pic1 = 'http://yichacha.njshangka.com' +dataPic[0];
+                  pic2 = 'http://yichacha.njshangka.com' +dataPic[1];
+                  pic3 = 'http://yichacha.njshangka.com' +dataPic[2];
                 }
               }
                 that.data.list[i].pic1 = pic1
@@ -342,6 +342,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '医查查在线',
+      desc: '推荐你一款专业的医疗器械和厂商查询工具,各大医院厂商都在用',
+      path: 'pages/index/index?shareUserId=' + app.globalData.userId
+    }
   }
 })

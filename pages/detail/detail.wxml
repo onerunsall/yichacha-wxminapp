@@ -1,17 +1,14 @@
 <!--pages/detail/detail.wxml-->
 <view class="swiper-container" wx:if='{{imgalistIf==1}}'>
- <!-- <view class='favors' bindtap='sc' wx:if='{{favorIs==0}}'>
+  <!-- <view class='favors' bindtap='sc' wx:if='{{favorIs==0}}'>
       <image src='../img/Shape@2x.png'></image>
     </view>
      <view class='favors'  bindtap='ysc' wx:if='{{favorIs==1}}'>
       <image src='../img/love2@2x.png'></image>
     </view> -->
 
-  <view class='zdl' wx:if='{{detail.wantAgentIs}}'>
-    <image src='../img/Rectangle 23@2x.png'></image>
-    <text>招代理</text>
-  </view>
-  <swiper bindchange="swiperChange" class="swiper" current="{{swiperCurrent}}" autoplay="false" interval="5000" duration="1000">
+
+  <swiper bindchange="swiperChange" class="swiper" current="{{swiperCurrent}}" autoplay="false" interval="2000" duration="100">
     <block wx:for="{{imgalist}}">
       <swiper-item style='background:url({{item}}) no-repeat;background-size:cover;background-position: center;'>
         <!-- <image src="{{item}}" class="slide-image" mode="aspectFill" /> -->
@@ -29,135 +26,238 @@
 
 
   <view class='productTitle'>
-    <text>{{detail.name}}</text>
-  
+    <text>{{detail.chanpinmingcheng}}</text>
+
+  </view>
+  <view class='zdl'>
+    <image  bindtap='zdl' wx:if='{{detail.wantAgentIs}}' src='../img/mark@2x.png'></image>
+    <text  bindtap='zdl' wx:if='{{detail.wantAgentIs}}'>招代理</text>
+    <text class='relatePro'>{{detail.relatedCount||0}}相关产品</text>
   </view>
   <!-- <view id="dataList"  >
     <view class="details" wx:for="{{dataDetail}}"  wx:key="dataDetail" data-index="{{index}}">
       <text class="name">[{{item.name}}]</text>
-      <text class="value">{{item.value}}</text>
+      <view class="value">{{item.value}}</text>
     </view>
   </view> -->
 
   <view id="dataList">
-    <view class="details">
+    <view class="details" wx:if='{{detail.zhucezhengbianhao!=""&&detail.zhucezhengbianhao!=null&&detail.zhucezhengbianhao!=undefined}}'>
       <text class="name">[注册证编号]</text>
-      <text class="value">{{detail.registerNo||''}}</text>
+      <text class="value">{{detail.zhucezhengbianhao||''}}</text>
     </view>
-    <view class="details">
+    <view class="details" wx:if='{{detail.zhucerenmingcheng!=""&&detail.zhucerenmingcheng!=null&&detail.zhucerenmingcheng!=undefined}}'>
       <text class="name">[注册人名称]</text>
-      <text class="value">{{detail.coName||''}}</text>
+      <text class="value"bindtap='phoneNow'data-tel='{{detail.zhucerenCoTel}}' style='color:rgb(2,175,101)'>{{detail.zhucerenmingcheng||''}}</text>
+      <image wx:if='{{detail.zhucerenmingcheng}}' data-tel='{{detail.zhucerenCoTel}}' class='phoneNum' bindtap='phoneNow' src='../img/telephone@2x.png'></image>
     </view>
-    <view class="details">
+    <!-- <view class="details">
       <text class="name">[注册人住所]</text>
-      <text class="value">{{detail.coAddress||''}}</text>
-    </view>
-    <view class="details">
-      <text class="name">[生产地址]</text>
-      <text class="value">{{detail.produceAddress||''}}</text>
-    </view>
-    <view class="details">
+      <view class="value">{{detail.zhucerenzhusuo||''}}</text>
+    </view> -->
+
+    <view class="details" wx:if='{{detail.dailirenmingcheng!=""&&detail.dailirenmingcheng!=null&&detail.dailirenmingcheng!=undefined}}'>
       <text class="name">[代理人名称]</text>
-      <text class="value">{{detail.agencyName||''}}</text>
+      <text class="value" style='color:rgb(43,119,239)'bindtap='phoneNow' data-tel='{{detail.dailirenCoTel}}'>{{detail.dailirenmingcheng||''}}</text>
+      <image wx:if='{{detail.dailirenmingcheng}}'  data-tel='{{detail.dailirenCoTel}}'  bindtap='phoneNow' class='phoneNum' src='../img/teltphone-blue@2x.png'></image>
     </view>
-    <view class="details">
+    <!-- <view class="details">
       <text class="name">[代理人住所]</text>
-      <text class="value">{{detail.agencyAddress||''}}</text>
+      <view class="value">{{detail.dailirenzhusuo||''}}</text>
     </view>
     <view class="details">
       <text class="name">[产品名称]</text>
-      <text class="value">{{detail.name||''}}</text>
-    </view>
-    <view class="details">
-      <text class="name">[型号、规格]</text>
-      <text class="value">{{detail.productModel||''}}</text>
-    </view>
-    <view class="details">
-      <text class="name">[结构及组成]</text>
-      <text class="value">{{detail.ingredient||''}}</text>
-    </view>
-    <view class="details">
+      <text class="value">{{detail.chanpinmingcheng||''}}</text>
+    </view> -->
+    <view class="details" wx:if='{{detail.shiyongfanwei!=""&&detail.shiyongfanwei!=null&&detail.shiyongfanwei!=undefined}}'>
       <text class="name">[适用范围]</text>
-      <text class="value">{{detail.scopeApplication||''}}</text>
+      <text class="value  {{height1}}">{{detail.shiyongfanwei||''}}</text>
+      <image class='lookDetail'bindtap='look1' wx:if='{{detail.height1==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look1a' wx:if='{{detail.height1==2}}' src='../img/up2x.png'></image>
     </view>
-    <view class="details">
-      <text class="name">[其他内容]</text>
-      <text class="value">{{detail.otherContent||''}}</text>
+    <view class="details" wx:if='{{detail.xinghaoguige!=""&&detail.xinghaoguige!=null&&detail.xinghaoguige!=undefined}}'>
+      <text class="name">[型号、规格]</text>
+      <text class="value  {{height2}}">{{detail.xinghaoguige||''}}</text>
+      <image class='lookDetail'bindtap='look2' wx:if='{{detail.height2==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look2a' wx:if='{{detail.height2==2}}' src='../img/up2x.png'></image>
     </view>
-    <view class="details">
-      <text class="name">[备注]</text>
-      <text class="value">{{detail.remark||''}}</text>
+    <view class="details" wx:if='{{detail.jiegoujizucheng!=""&&detail.jiegoujizucheng!=null&&detail.jiegoujizucheng!=undefined}}'>
+      <text class="name">[结构及组成]</text>
+      <text class="value  {{height3}}">{{detail.jiegoujizucheng||''}}</text>
+      <image class='lookDetail'bindtap='look3' wx:if='{{detail.height3==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look3a' wx:if='{{detail.height3==2}}' src='../img/up2x.png'></image>
     </view>
-    <view class="details">
-      <text class="name">[批准日期]</text>
-      <text class="value">{{detail.ratifyDate||''}}</text>
-    </view>
-    <view class="details">
+    <view class="details" wx:if='{{detail.youxiaoqizhi!=""&&detail.youxiaoqizhi!=null&&detail.youxiaoqizhi!=undefined}}'>
       <text class="name">[有效期至]</text>
-      <text class="value">{{detail.expireTime||''}}</text>
+      <text class="value">{{detail.youxiaoqizhi||''}}</text>
+      <!-- <image class='lookDetail' src='../img/down2x.png'></image> -->
     </view>
-    <view class="details">
+    <view class="details" wx:if='{{detail.zhuyaozuchengchengfen!=""&&detail.zhuyaozuchengchengfen!=null&&detail.zhuyaozuchengchengfen!=undefined}}'>
+      <text class="name">[主要成分]</text>
+      <text class="value  {{height4}}">{{detail.zhuyaozuchengchengfen||''}}</text>
+      <image class='lookDetail'bindtap='look4'wx:if='{{detail.height4==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look4a' wx:if='{{detail.height4==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details 1111" wx:if='{{detail.yuqiyongtu!=""&&detail.yuqiyongtu!=null&&detail.yuqiyongtu!=undefined}}'>
+      <text class="name">[预期用途]</text>
+      <text class="value  {{height5}}">{{detail.yuqiyongtu||''}}</text>
+      <image class='lookDetail'bindtap='look5'wx:if='{{detail.height5==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look5a' wx:if='{{detail.height5==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details" wx:if='{{detail.chanpinchucuntiaojianjiyouxiaoqi!=""&&detail.chanpinchucuntiaojianjiyouxiaoqi!=null&&detail.chanpinchucuntiaojianjiyouxiaoqi!=undefined}}'>
+      <text class="name">[储存条件]</text>
+      <text class="value  {{height6}}">{{detail.chanpinchucuntiaojianjiyouxiaoqi||''}}</text>
+      <image class='lookDetail' bindtap='look6' wx:if='{{detail.height6==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look6a' wx:if='{{detail.height6==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details" wx:if='{{detail.chanpinbiaozhun!=""&&detail.chanpinbiaozhun!=null&&detail.chanpinbiaozhun!=undefined}}'>
       <text class="name">[产品标准]</text>
-      <text class="value">{{detail.standard||''}}</text>
+      <text class="value  {{height7}}">{{detail.chanpinbiaozhun||''}}</text>
+      <image class='lookDetail'bindtap='look7' wx:if='{{detail.height7==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look7a' wx:if='{{detail.height7==2}}' src='../img/up2x.png'></image>
     </view>
-    <view class="details">
-      <text class="name">[变更日期]</text>
-      <text class="value">{{detail.changeDate||''}}</text>
+    <view class="details" wx:if='{{detail.shengchandizhi!=""&&detail.shengchandizhi!=null&&detail.shengchandizhi!=undefined}}'>
+      <text class="name">[生产地址]</text>
+      <text class="value  {{height8}}">{{detail.shengchandizhi||''}}</text>
+      <image class='lookDetail' bindtap='look8' wx:if='{{detail.height8==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look8a' wx:if='{{detail.height8==2}}' src='../img/up2x.png'></image>
     </view>
-    <view class="details">
-      <text class="name">[主要组成成分(体外诊断试剂)]</text>
-      <text class="value">{{detail.ingredient||''}}</text>
+    <view class="details" wx:if='{{detail.pizhunriqi!=""&&detail.pizhunriqi!=null&&detail.pizhunriqi!=undefined}}'>
+      <text class="name">[批准日期]</text>
+      <text class="value">{{detail.pizhunriqi||''}}</text>
     </view>
-    <!-- <view class="details 1111">
-      <text class="name">[预期用途(体外诊断试剂)]</text>
-      <text class="value">{{detail.ingredient||''}}</text>
-    </view> -->
-    <view class="details">
-      <text class="name">[产品储存条件及有效期]</text>
-      <text class="value">{{detail.condition||''}}</text>
-    </view>
-    <view class="details">
-      <text class="name">[产品简介]</text>
-      <text class="value">{{detail.intro||''}}</text>
-    </view>
-    <!-- <view class="details">
-      <text class="name">[排序号]</text>
-      <text class="value">{{detail.orderNo||''}}</text>
-    </view> -->
 
+
+    <!-- <view class="details">
+      <text class="name">[邮编]</text>
+      <view class="value">{{detail.youbian||''}}</text>
+    </view>
+     -->
+
+    <view class="details" wx:if='{{detail.shenpibumen!=""&&detail.shenpibumen!=null&&detail.shenpibumen!=undefined}}'>
+      <text class="name">[审批部门]</text>
+      <text class="value  {{height9}}">{{detail.shenpibumen||''}}</text>
+      <image class='lookDetail' bindtap='look9' wx:if='{{detail.height9==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look9a' wx:if='{{detail.height9==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details" wx:if='{{detail.biangengriqi!=""&&detail.biangengriqi!=null&&detail.biangengriqi!=undefined}}'>
+      <text class="name">[变更日期]</text>
+      <text class="value">{{detail.biangengriqi||''}}</text>
+    </view>
+    <view class="details 1111" wx:if='{{detail.biangengqingkuang!=""&&detail.biangengqingkuang!=null&&detail.biangengqingkuang!=undefined}}'>
+      <text class="name">[变更情况]</text>
+      <text class="value  {{height10}}">{{detail.biangengqingkuang||''}}</text>
+      <image class='lookDetail' bindtap='look10' wx:if='{{detail.height10==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look10a' wx:if='{{detail.height10==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details" wx:if='{{detail.beizhu!=""&&detail.beizhu!=null&&detail.beizhu!=undefined}}'>
+      <text class="name">[备注]</text>
+      <text class="value  {{height11}}">{{detail.beizhu||''}}</text>
+      <image class='lookDetail' bindtap='look11' wx:if='{{detail.height11==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look11a' wx:if='{{detail.height11==2}}' src='../img/up2x.png'></image>
+    </view>
+    <view class="details" wx:if='{{detail.qitaneirong!=""&&detail.qitaneirong!=null&&detail.qitaneirong!=undefined}}'>
+      <text class="name">[其他内容]</text>
+      <text class="value  {{height12}}">{{detail.qitaneirong||''}}</text>
+      <image class='lookDetail' bindtap='look12' wx:if='{{detail.height12==1}}'src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look12a' wx:if='{{detail.height12==2}}' src='../img/up2x.png'></image>
+    </view>
   </view>
 </view>
-<view class='connectNow' bindtap='phoneNow'>
+<view class='connectNow' bindtap='phoneNows'>
   <image src='../img/Combined Shape@2x.png'></image>
   <text>立即联系</text>
 </view>
 <view class='favorsIs' bindtap='sc' wx:if='{{favorIs==0}}'>
-      <image src='../img/Shape@2x.png'></image>
-      <text>收藏</text>
-    </view>
-     <view class='favorsIs'  bindtap='ysc' wx:if='{{favorIs==1}}'>
-      <image src='../img/love2@2x.png'></image>
-      <text>收藏</text>
-    </view>
-<navigator style='clear:both' wx:if='{{detail.coName!=""&&detail.coName!=null&&detail.coName!=undefined}}' url='../vendorInformation/vendorInformation?id={{detail.coId}}'>
+  <image src='../img/Shape@2x.png'></image>
+  <text>收藏</text>
+</view>
+<view class='favorsIs' bindtap='ysc' wx:if='{{favorIs==1}}'>
+  <image src='../img/love2@2x.png'></image>
+  <text>收藏</text>
+</view>
+
+<navigator wx:if='{{detail.dailirenCoId!=""&&detail.dailirenCoId!=null&&detail.dailirenCoId!=undefined&&detail.dailirenCoName!=""&&detail.dailirenCoName!=null&&detail.dailirenCoName!=undefined}}' style='clear:both' url='../vendorInformation/vendorInformation?id={{detail.dailirenCoId}}'>
   <view class='contury'>
     <view class='conturyTitle'>
-      <text>{{detail.coName||''}}</text>
-      <image src='../img/in@2x.png'></image>
+      <text>{{detail.dailirenCoName||''}}</text>
+      <view class='fuckBoxDlr'>
+        <text>代理人</text>
+        <view wx:if='{{detail.dailirenCoVipIs==1}}'>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+        
+      </view>
     </view>
     <view class='authentication'>
-      <view wx:if='{{detail.coVipIs==1}}'>
-        <image src='../img/V@2x.png'></image>
-        <text>认证厂商</text>
-      </view>
-      <view wx:if='{{detail.coVipIs==0}}'>
-        <image src='../img/V-grey@2x.png'></image>
-        <text style='color:rgb(153,153,153)'>未认证</text>
-      </view>
-      <view class='join'>进入</view>
+      <image src='../img/in-blue@2x.png'></image>
+      <image src='../img/jianbian-blue@2x.png'></image>
     </view>
   </view>
 </navigator>
+
+<navigator wx:if='{{detail.dailirenCoId==""||detail.dailirenCoId==null||detail.dailirenCoId==undefined&&detail.dailirenCoName!=""&&detail.dailirenCoName!=null&&detail.dailirenCoName!=undefined}}' style='clear:both'>
+   <!-- <view class='contury'>
+    <view class='conturyTitle'>
+      <text>{{detail.dailirenCoName||''}}</text>
+      <view class='fuckBoxDlr'>
+        <text>代理人</text>
+        <view wx:if='{{detail.dailirenCoVipIs==1}}'>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='authentication'>
+      <image src='../img/in-blue@2x.png'></image>
+      <image src='../img/jianbian-blue@2x.png'></image>
+    </view>
+  </view> -->
+</navigator>
+
+<navigator wx:if='{{detail.zhucerenCoId!=""&&detail.zhucerenCoId!=null&&detail.zhucerenCoId!=undefined}}' style='clear:both' url='../vendorInformation/vendorInformation?id={{detail.zhucerenCoId}}'>
+  <view class='contury'>
+    <view class='conturyTitle'>
+      <text>{{detail.zhucerenCoName||''}}</text>
+      <view class='fuckBox'>
+        <text>注册人</text>
+        <view wx:if='{{detail.zhucerenCoVipIs==1}}'>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='authentication'>
+      <image src='../img/in@2x.png'></image>
+      <image src='../img/jiabian-green@2x.png'></image>
+    </view>
+  </view>
+</navigator>
+<navigator wx:if='{{detail.zhucerenCoId==""||detail.zhucerenCoId==null||detail.zhucerenCoId==undefined}}' style='clear:both'>
+  <view class='contury'>
+    <view class='conturyTitle'>
+      <text>{{detail.zhucerenCoName||''}}</text>
+      <view class='fuckBox'>
+        <text>注册人</text>
+        <view wx:if='{{detail.zhucerenCoVipIs==1}}'>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+        
+      </view>
+    </view>
+    <view class='authentication'>
+      <image src='../img/in@2x.png'></image>
+      <image src='../img/jiabian-green@2x.png'></image>
+    </view>
+  </view>
+</navigator>
+
+
+
 <!-- 遮罩层 -->
 <view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
 <!-- 弹出层 -->
@@ -166,4 +266,44 @@
   <text style='text-align:center;color:#333;font-size:30rpx;margin-top:40rpx;'>请长按复制网址</text>
   <text class="text" selectable="true" style='text-align:center'>{{urlText}}</text>
   <view bindtap="ok" class="ok">确认</view>
+</view>
+
+
+<view class='phoneBox' wx:if='{{makephone==1}}'>
+  <view class='phoneBoxTop'>
+    <view wx:if='{{zhucerenCoTel==""}}' class='phoneBoxTop1'>当前厂商尚未设置号码</view>
+    <view wx:if='{{detail.zhucerenCoVipIs==0&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于网络，请核实</view>
+    <view wx:if='{{detail.zhucerenCoVipIs==1&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于厂商，已核实</view>
+    <view wx:for='{{zhucerenCoTel}}' bindtap='makePhone' data-tel='{{item}}' class='phoneBoxTop2'>{{item}}</view>
+  </view>
+  <view bindtap='phoneClose' class='phoneBoxBottom'>取消</view>
+</view>
+
+<view class='phoneBox' wx:if='{{makephones==1}}'>
+  <view class='phoneBoxTop'>
+    <view wx:if='{{zhucerenCoTel==""}}' class='phoneBoxTop1'>当前厂商尚未设置号码</view>
+    <view wx:if='{{detail.zhucerenCoVipIs==0&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于网络，请核实</view>
+    <view wx:if='{{detail.zhucerenCoVipIs==1&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于厂商，已核实</view>
+    <view wx:for='{{dailirenCoTel}}' bindtap='makePhone' data-tel='{{item}}' class='phoneBoxTop2'><text style='color:rgb(102,102,102)'>代理人：</text>{{item}}</view>
+     <view wx:for='{{zhucerenCoTel}}' bindtap='makePhone' data-tel='{{item}}' class='phoneBoxTop2'><text style='color:rgb(102,102,102)'>注册人：</text>{{item}}</view>
+  </view>
+  <view bindtap='phoneClose' class='phoneBoxBottom'>取消</view>
+</view>
+
+<view class='zdlWindow' style='display:{{dlzcDIs}}'>
+  <view class='popBox'>
+    <view class='boxTitle'>
+      <text>代理政策</text>
+      <image bindtap='closeP' src='../img/closeP.png'></image>
+    </view>
+    <view class='boxIndex'>
+    {{detail.dailizhengce||''}}
+    </view>
+  </view>
+</view>
+
+
+<!-- 加载中 -->
+<view class="downLoad" wx:if='{{showIf}}'>
+  <image src="../img/20130527034920629.gif"></image>
 </view>

@@ -1,0 +1,51 @@
+<!--pages/brandDirect/brandDirect.wxml-->
+<view class='topLine'>
+  <!-- <view class='search'>
+    <image src='../img/search1.png'></image>
+  </view> -->
+
+
+
+  <view class="navbar">
+    <!-- <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</view> -->
+ <view  data-idx="0" class="item {{currentTab==0 ? 'active ' : ''}}" wx:key="unique" bindtap="navbarTap">全部</view>
+  <view  data-idx="1" class="item {{currentTab==1 ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">销量</view>
+   <view data-idx="2" data-price="{{priceIf}}" class="item {{currentTab==2 ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">
+   <text class='priceI'>价格</text>
+   <view  class='priceIs' >
+   <image wx:if='{{priceIsPx==1}}' src='../img/price3@2x.png'></image>
+   <image wx:if='{{priceIsPx==2}}' src='../img/price@2x.png'></image>
+   <image wx:if='{{priceIsPx==3}}' src='../img/price2@2x.png'></image>
+   </view>
+   </view>
+  </view>
+</view>
+<view class='proBox' style='height:{{proHeight}}px'>
+  <view style='height:{{proHeight}}px'>
+    <view class='proList' style='height:{{proHeight}}px'>
+      <view bindtap='detail' wx:for='{{list}}' data-id='{{item.commodityId}} ' class='proItem'>
+        <view class='imageItem' style='background:url({{item.cover}}) no-repeat;background-size: cover;background-position: center;'></view>
+        <view class='itemRight'>
+          <text class='title'>{{item.name}}</text>
+          <view class='progress'>
+            <view wx:if='{{item.percent<100}}' style='width:{{item.percent||0}}%;'></view>
+            <view wx:if='{{item.percent==100}}' style='width:100%;background:rgb(255,255,255)'></view>
+            <text style='width:50%;'>已售{{item.percent||0}}%</text>
+          </view>
+          <view class='saleItem'>
+            惠 | 平台补贴￥{{item.pingtaibutiejia||0}}
+          </view>
+          <view class='priceBuy'>
+            <view>
+              <text>￥</text>{{item.price||0}}</view>
+            <view style='text-decoration:line-through;' class=''>
+              <text>￥</text>{{item.originalPrice||0}}</view>
+            <view>去抢购</view>
+          </view>
+        </view>
+
+      </view>
+
+    </view>
+  </view>
+</view>

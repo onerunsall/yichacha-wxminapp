@@ -12,16 +12,64 @@ Page({
     skinSwitch:true,
     list:[],
   },
+  jump(e){
+    wx.navigateTo({
+      url: '../detail/detail?id=' + e.currentTarget.dataset.url,
+    })
+    wx.request({
+      url: app.globalData.url + '/client/msginfo',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: 'post',
+      data: {
+        token: wx.getStorageSync('token'),
+        msgId: e.currentTarget.dataset.msgid
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
 
+        } else {
+          // wx.showToast({
+          //   title: res.data.codeMsg
+          // })
+        }
+      }
+    })
+  },
   visitorPhone(e){
+    
+    wx.request({
+      url: app.globalData.url + '/client/msginfo',
+      header: {
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      method: 'post',
+      data: {
+        token: wx.getStorageSync('token'),
+        msgId: e.currentTarget.dataset.msgid
+      },
+      success: function (res) {
+        wx.hideToast()
+        if (res.data.code == 0) {
+         
+        } else {
+          // wx.showToast({
+          //   title: res.data.codeMsg
+          // })
+        }
+      }
+    })
     wx.makePhoneCall({
       phoneNumber: e.currentTarget.dataset.tel,
     })
+  
   },
  lastPage: function (pageNo, pageSize) {
     var that = this;
     wx.request({
-      url: app.globalData.url + '/yichacha/client/msgs',
+      url: app.globalData.url + '/client/msgs',
       method: 'post',
       data: {
         token: wx.getStorageSync('token'),
@@ -75,7 +123,7 @@ Page({
     
     if (e.detail.value==true){
       wx.request({
-        url: app.globalData.url + '/yichacha/client/openmsgnotify',
+        url: app.globalData.url + '/client/openmsgnotify',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -99,7 +147,7 @@ Page({
       })
     }else{
       wx.request({
-        url: app.globalData.url + '/yichacha/client/closemsgnotify',
+        url: app.globalData.url + '/client/closemsgnotify',
         header: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
@@ -189,13 +237,22 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    var that = this
+    that.setData({
+      learnMore: '加载中'
+    });
+    var pageNo = that.data.pageNo;
+    that.lastPage(pageNo, 15)
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '医查查在线',
+      desc: '推荐你一款专业的医疗器械和厂商查询工具,各大医院厂商都在用',
+      path: 'pages/index/index?shareUserId=' + app.globalData.userId
+    }
   }
 })

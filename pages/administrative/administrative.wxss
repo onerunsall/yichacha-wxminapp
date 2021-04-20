@@ -1,0 +1,94 @@
+/* pages/administrative/administrative.wxss */
+page{
+  background: #f2f2f2;
+}
+.navbar {
+  width: 100%;
+  flex: none;
+  display: flex;
+  background: #fff;
+  height: 94rpx;
+  line-height: 94rpx;
+  border-top: 1rpx solid #e5e5e5;
+  /* margin-top: 157rpx; */
+  /* position: fixed; */
+}
+
+.navbar .item {
+  position: relative;
+  flex: auto;
+  width: 375rpx;
+  text-align: center;
+  line-height: 94rpx;
+  color: rgb(51,51,51);
+  font-size: 30rpx;
+  font-family: PingFamhSc-Regular;
+}
+
+.navbar .item.active {
+  color: rgb(2,175,101);
+}
+
+.navbar .item.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  /* bottom: 0; */
+  top: 88rpx;
+  left: 149.5rpx;
+  right: 149.5rpx;
+  width: 76rpx;
+  height: 6rpx;
+  border-radius: 6rpx;
+  background: rgb(2,175,101);
+}
+
+.licenseList{
+  /* width: 750rpx;
+  height: auto;
+  background: #fff;
+  margin-top: 24rpx; */
+}
+.licenseItem{
+  width: 750rpx;
+  height: auto;
+  background: #fff;
+  margin-top: 24rpx;
+  float: left;
+}
+.licenseLeft{
+  width: 708rpx;
+  float: left;
+}
+.licenseLeftItem{
+  height: 26rpx;
+  line-height: 26rpx;
+  margin: 26rpx 0 0 24rpx;
+  font-size: 26rpx;
+  color: rgb(153,153,153);
+   display:-webkit-box;
+-webkit-line-clamp:1;
+-webkit-box-orient:vertical;
+overflow:hidden;
+}
+.licenseLeftItem>text:nth-child(2){
+  color: rgb(51,51,51);
+  margin-left: 10rpx;
+}
+.licenseLeftItem:nth-child(1){
+  margin-top: 30rpx;
+}
+.licenseLeftItem:nth-child(4){
+  margin-bottom: 30rpx;
+}
+.righticon{
+  width: 42rpx;
+  height: 242rpx;
+  float: left;
+}
+.righticon>image{
+  margin-top: 105rpx;
+  margin-right: 24rpx;
+  width: 20rpx;
+  height: 32rpx;
+}
