@@ -1,0 +1,134 @@
+<!--pages/brandDirectDetail/brandDirectDetail.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<view class="swiper-container" wx:if='{{imgalistIf==1}}'>
+  <swiper bindchange="swiperChange" class="swiper" current="{{swiperCurrent}}" autoplay="false" interval="2000" duration="100" display-multiple-items="1">
+    <block wx:for="{{imgalist}}">
+      <swiper-item style='background:url({{item}}) no-repeat;background-size:cover;background-position: center;'>
+        <!-- <image src="{{item}}" class="slide-image" mode="aspectFill" /> -->
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="dots">
+    <block wx:for="{{imgalist}}" wx:key="unique">
+      <view class="dot{{index == swiperCurrent ? ' active' : ''}}"></view>
+    </block>
+  </view>
+</view>
+<view class='lineTip'>
+  <view class='lineTipLf'>
+    <view>
+      <view>￥
+        <text>{{detail.price||0}}</text>
+      </view>
+      <view style='margin-left:10rpx;'>￥
+        <text style='text-decoration:line-through;'>{{detail.originalPrice||0}}</text>
+      </view>
+    </view>
+    <view>
+      <text>{{detail.soldCount||0}}件已售</text>
+      <text>平台补贴￥{{detail.pingtaibutiejia||0}}</text>
+    </view>
+  </view>
+  <view class='lineTipRt'>
+    <!-- <view>平台补贴￥{{detail.pingtaibutiejia||0}}</view> -->
+    <view>平台专享福利</view>
+    <!-- <view>
+      <view>
+        <view wx:if='{{detail.percent<100}}' style='width:{{detail.percent||0}}%'></view>
+        <view wx:if='{{detail.percent==100}}' style='width:100%;background:rgb(255,255,255)'></view>
+        <text style='width:50%;'>已售{{detail.percent||0}}%</text>
+      </view>
+    </view> -->
+    <view class='yishou'>已售<text>{{detail.percent||0}}</text>%</view>
+  </view>
+</view>
+
+<view class='articleDetail'>
+  <view>{{detail.name||''}}</view>
+  <text>{{detail.intro||''}}</text>
+  <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+</view>
+</view>
+
+
+<view class='bottomBtn'>
+  <view class='supplyNow' bindtap='supplyNow' style='background:rgb(2, 175, 101)' wx:if='{{detail.stock!=0}}'>立即申请</view>
+  <view class='supplyNow' style='background:rgb(194,194,194)' wx:if='{{detail.stock==0}}'>已售罄</view>
+</view>
+
+
+
+<view class='popWindow' wx:if='{{pop==1}}'>
+  <view bindtap='closeIs' style='width:100%;height:100%;'></view>
+  <view class='popDetail'>
+    <view class='qxDetail'>
+      <view class='qxImage' style='background:url({{detail.cover||""}}) no-repeat;background-size:cover;background-position: center;'></view>
+      <view class='qxRight'>
+        <text>{{detail.name||""}}</text>
+        <text>{{detail.intro||""}}</text>
+        <view>
+          <view>￥
+            <text>{{detail.price||0}}</text>
+          </view>
+          <view>￥
+            <text style='text-decoration:line-through;'>{{detail.originalPrice||0}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class='buyName'>
+      <image src='../img/xingming@2x.png'></image>
+      <text>姓名</text>
+      <input bindinput='nameNumber' placeholder='请填写姓名' placeholder-class='namePla'></input>
+    </view>
+
+    <view class='buyName'>
+      <image src='../img/dianhua@2x.png'></image>
+      <text>电话</text>
+      <view class='delOver' bindtap='delOver' style='display:{{disPlayIcon}}'>
+        <image src='../img/close@2x.png'></image>
+      </view>
+      <input bindinput='telNumber' placeholder='请填写联系号码' value='{{phone}}' placeholder-class='namePla'></input>
+
+    </view>
+
+    <view class='cpgg' style='display:none'>
+      <view>
+        <image src='../img/guige.png'></image>
+        <text>产品规格</text>
+      </view>
+      <view>
+        <text>100支/箱</text>
+        <text>1200支/箱</text>
+        <text>100支/箱</text>
+      </view>
+    </view>
+
+    <view class='buyName' style='border-bottom:0;'>
+      <image src='../img/shuliang@2x.png'></image>
+      <text wx:if='{{valuesXg!=0}}'>数量（每人限购2件 ）</text>
+      <text wx:if='{{valuesXg==0}}'>数量</text>
+      <view>
+        <image bindtap='delNum' class='del' src='../img/-@2x.png'></image>
+        <input bindinput='numberIn' maxlength='{{maxlength}}' type='number' value='{{values}}' data-vals='{{values}}' type='number'></input>
+        <image bindtap='addNum' class='add' src='../img/+@2x.png'></image>
+      </view>
+    </view>
+
+    <view class='supplySure' bindtap='supplySure'>确认提交</view>
+  </view>
+</view>
+
+<view class='popWindow' wx:if='{{pop==2}}'>
+  <view bindtap='closeIs' style='width:100%;height:100%;'></view>
+  <view class='accessPop'>
+    <image src='../img/success@2x.png'></image>
+    <text>提交成功</text>
+    <text>稍后会有客服与您电话联系</text>
+    <view>
+      <text bindtap='lookDetail'>查看详情</text>
+      <text bindtap='backIndex'>返回首页</text>
+    </view>
+  </view>
+</view>

@@ -21,7 +21,7 @@ Page({
     var id = e.currentTarget.dataset.id
     var that = this
     wx.request({
-      url: app.globalData.url + '/yichacha/client/favordel',
+      url: app.globalData.url + '/client/favordel',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -73,7 +73,7 @@ Page({
   lastPage: function (pageNo, pageSize) {
     var that = this;
     wx.request({
-      url: app.globalData.url + '/yichacha/client/favors',
+      url: app.globalData.url + '/client/favors',
       method: 'post',
       data: {
         token: wx.getStorageSync('token'),
@@ -87,6 +87,22 @@ Page({
 
 
         if (res.data.code == 0) {
+
+          if (res.data.data.items.length < pageSize) {
+            if (pageNo == 2 && res.data.data.items.length == 0) {
+              that.setData({
+                learnMore: '当前没有数据',
+              });
+            } else {
+              that.setData({
+                learnMore: '没有更多了',
+              });
+            }
+          } else {
+            that.setData({
+              learnMore: '上拉加载更多',
+            });
+          }
           pageNo++
           if (pageNo == 2 && res.data.data.items.length==0) {
             that.setData({
@@ -95,19 +111,13 @@ Page({
           }
           var list = that.data.list;
           var newlist = list.concat(res.data.data.items)
-          console.log(res.data.data.items.length,pageSize)
-          if (res.data.data.items.length < pageSize){
-            that.setData({
-              learnMore: '没有更多了'
-            });
-          }
-          console.log(res.data.data.items.length, pageNo)
+      
           for (var i = 0; i < res.data.data.items.length; i++) {
             if (res.data.data.items[i].product.cover) {
               res.data.data.items[i].product.cover = app.globalData.url + res.data.data.items[i].product.cover;
 
             } else {
-              res.data.data.items[i].product.cover = app.globalData.url + '/yichacha/resource/Group_12.png';
+              res.data.data.items[i].product.cover = app.globalData.url + '/resource/Group_12.png';
 
             }
            
@@ -116,7 +126,6 @@ Page({
             that.setData({
               list: newlist,
               pageNo: pageNo,
-              learnMore: '没有更多了'
             });
             wx.showToast({
               title: '数据已全部加载',
@@ -127,7 +136,6 @@ Page({
             that.setData({
               list: newlist,
               pageNo: pageNo,
-              learnMore: '上拉加载更多'
             });
             
             }
@@ -185,7 +193,7 @@ Page({
     that.lastPage(pageNo, 16)
     that.setData({
       list: [],
-      learnMore: '上拉加载更多'
+      learnMore: '加载中'
     })
     wx.stopPullDownRefresh()
   },
@@ -203,6 +211,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '医查查在线',
+      desc: '推荐你一款专业的医疗器械和厂商查询工具,各大医院厂商都在用',
+      path: 'pages/index/index?shareUserId=' + app.globalData.userId
+    }
   }
 })

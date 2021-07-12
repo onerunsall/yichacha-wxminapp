@@ -15,11 +15,11 @@
     <view>
       <view>
         <text>用户{{item.visitorPhoneIs}}访问</text>
-        <text>{{item.productName}}</text>
+        <text bindtap='jump' data-url='{{item.productId}}'  data-msgid='{{item.msgId}}'>{{item.productName||item.chanpinmingcheng}}</text>
       </view>
       <view>{{item.addTime}}</view>
     </view>
-    <view bindtap='visitorPhone' data-tel='{{item.visitorPhone}}'>
+    <view bindtap='visitorPhone' data-msgid='{{item.msgId}}' data-tel='{{item.visitorPhone}}'>
       <image src='../img/phone@2x.png'></image>
     </view>
     <text class='round' wx:if='{{item.lookIs==0}}'></text>

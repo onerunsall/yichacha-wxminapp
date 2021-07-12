@@ -16,6 +16,7 @@ page {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 999;
   left: 0;
   height: 80rpx;
   line-height: 80rpx;
@@ -45,6 +46,7 @@ page {
 .input_box_view {
   width: 420rpx;
   padding-left: 76rpx;
+  height: 100%;
 }
 
 .del {
@@ -63,8 +65,8 @@ page {
   width: 100% !important;
   font-size: 28rpx;
   color: #000;
-  height: 70rpx;
-  line-height: 70rpx;
+  height: 100%;
+  line-height: 100%;
   border: 0;
 }
 
@@ -75,10 +77,10 @@ page {
 
 .search_fdj {
   position: absolute;
-  left: 26rpx;
-  top: 19rpx;
-  width: 32rpx;
-  height: 32rpx;
+left: 15rpx;
+top: 12rpx;
+width: 60rpx;
+height: 62rpx;
 }
 
 .top .refuse {
@@ -310,19 +312,25 @@ page {
 
 .csTitle {
   margin-top: 36rpx;
+  height: 40rpx;
 }
 
 .csTitle>view:first-child {
-  line-height: 30rpx;
-  height: 30rpx;
-  width: 560rpx;
+  display: inline-block;
+  line-height: 40rpx;
+  height: 40rpx;
+  max-width: 600rpx;
   /* display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical; */
   overflow: hidden;
+   white-space: nowrap;
+   text-overflow: ellipsis;
+   float: left;
 }
 
 .csTitle>view:nth-child(2) {
+  margin-top: 10rpx;
   display: inline-block;
   float: left;
   font-size: 22rpx;
@@ -340,10 +348,10 @@ page {
 .csTitle>view:first-child>text:nth-child(1) {
   max-width: 530rpx;
   display: inline-block;
-  display: -webkit-box;
+  /* display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
-  overflow: hidden;
+  overflow: hidden; */
 }
 
 .csTitle>view:first-child>text:nth-child(1) {
@@ -351,23 +359,23 @@ page {
 }
 
 .csTitle>view:first-child>text {
-  display: inline-block;
+  /* display: inline-block; */
   font-size: 32rpx;
-  height: 32rpx;
-  line-height: 32rpx;
+  height: 40rpx;
+  line-height: 40rpx;
   color: rgb(51, 51, 51);
-  float: left;
+  /* float: left; */
   font-weight: 300;
 }
 
-.csTitle>view:first-child>view {
+.csTitle .vips {
   display: inline-block;
-  float: left;
+  /* float: left; */
   font-size: 22rpx;
   color: rgb(251, 119, 0);
 }
 
-.csTitle>view:first-child>view>image {
+.csTitle .vips image {
   width: 34rpx;
   height: 30rpx;
   margin-left: 24rpx;
@@ -375,28 +383,30 @@ page {
   float: left;
 }
 
-.csTitle>view:nth-child(2) text {
+/* .csTitle>view:nth-child(2) text {
   font-size: 28rpx;
   height: 28rpx;
   color: rgb(51, 51, 51);
-  /* margin-left: 30rpx; */
   margin: 32rpx 30rpx;
   line-height: 28rpx;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
+} */
 
 .upMore {
   color: rgb(153, 153, 153);
   font-size: 24rpx;
   width: 100%;
   text-align: center;
-  margin: 30rpx 0;
+  /* margin: 30rpx 0; */
 }
 
 .searchIs2_0Box {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 750rpx;
   height: 80rpx;
   background: #fff;
@@ -463,15 +473,15 @@ page {
   color: rgb(153, 153, 153);
   height: 28rpx;
   line-height: 28rpx;
+
 }
 
 .register>text {
   /* display: inline-block; */
   width: 460rpx;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
   height:28rpx;
 line-height:28rpx;
 
@@ -579,4 +589,28 @@ display: inline-block;
   height: 26rpx;
   margin-right: 30rpx;
   margin-top: 57rpx;
+}
+
+searchSpanIf{
+  background: rgb(245, 245, 245);
+  color: #fff;
+}
+
+.newsNone{
+  width: 100%;
+  height: auto;
+}
+.newsNone image{
+  width: 190rpx;
+  height: 186rpx;
+  margin: 220rpx 280rpx 0 280rpx;
+  vertical-align: bottom;
+}
+.newsNone text{
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 30rpx;
+  margin-top: 56rpx;
+  color: rgb(153, 153, 153);
 }

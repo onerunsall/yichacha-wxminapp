@@ -1,0 +1,29 @@
+<!--pages/supplyOrder/supplyOrder.wxml-->
+<view class='orderList'>
+  <view class='orderItem' wx:for='{{list}}'>
+    <text>{{item.commodityName}}</text>
+    <view>
+      <text>申请时间：</text>{{item.addTime}}</view>
+    <view>
+      <text>申请姓名：</text>{{item.ordererName}}</view>
+    <view>
+      <text>申请数量：</text>{{item.cargoCount}}</view>
+      <view class='orderPrice'>
+        <text>{{item.priceAmount}}</text>
+        <text>平台专享价:</text>
+      </view>
+  </view>
+ <!-- <view class='orderItem'>
+    <text>KP2018系列高频数字化X射线系列</text>
+    <view>
+      <text>申请时间：</text>2019/02/19 10:29</view>
+    <view>
+      <text>申请姓名：</text>贾宝玉</view>
+    <view>
+      <text>申请数量：</text>2</view>
+      <view class='orderPrice'>
+        <text>4800</text>
+        <text>平台专享价：</text>
+      </view>
+  </view> -->
+</view>

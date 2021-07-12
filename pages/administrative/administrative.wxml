@@ -1,0 +1,37 @@
+<!--pages/administrative/administrative.wxml-->
+
+<view class="navbar">
+  <!-- <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</view> -->
+  <view data-idx="0" class="item {{currentTab==0 ? 'active ' : ''}}" wx:key="unique" bindtap="navbarTap">工商局1</view>
+  <view data-idx="1" class="item {{currentTab==1 ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">信用中国5 </view>
+</view>
+
+<view class='licenseList'>
+  <view class='licenseItem'>
+    <view class='licenseLeft'>
+      <view class='licenseLeftItem'>
+        <text>许可文件编号: </text>
+        <text>苏宁食品监械经营许20140197号苏宁食品监械经营许20140197号</text>
+      </view>
+      <view class='licenseLeftItem'>
+        <text>许可文件名称: </text>
+        <text>医疗器械经营许可证</text>
+      </view>
+      <view class='licenseLeftItem'>
+        <text>许可机关: </text>
+        <text>南京市食品药品监督管理局</text>
+      </view>
+      <view class='licenseLeftItem'>
+        <text>有效期至: </text>
+        <text>2017-01-16</text>
+      </view>
+    </view>
+    <view class='righticon'>
+      <image src='../img/you.png'></image>
+    </view>
+  </view>
+</view>
+
+<view class=''>
+
+</view>

@@ -2,7 +2,7 @@
 .topBg{
   width: 750rpx;
   height: 414rpx;
-  background-image:url(https://dev.njshangka.com/yichacha/resource/index.png);background-size:cover;
+  background-image:url(https://yichacha.njshangka.com/resource/index.png);background-size:cover;
 }
 .imgBox{
   width: 180rpx;
@@ -77,4 +77,16 @@
   height: 26rpx;
   float: right;
   margin: 39rpx 36rpx;
+}
+
+.Version{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  display:block;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #e5e5e5;
+  font-size: 24rpx;
+  text-align: center;
 }

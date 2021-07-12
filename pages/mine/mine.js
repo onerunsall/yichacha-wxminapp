@@ -8,18 +8,51 @@ Page({
   data: {
     detail: '',
   },
+  changeZh(e) {
+    wx.navigateTo({
+      url: '../login/login',
+    })
+  },
+  applyCount(e){
+    wx.navigateTo({
+      url: '../supplyOrder/supplyOrder',
+    })
+  },
   serviceTel(e) {
     wx.makePhoneCall({
       phoneNumber: this.data.detail.serviceTel,
     })
   },
+  feedBack(e){
+    wx.navigateTo({
+      url: '../feedback/feedback',
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function() {
+
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function(options) {
     let that = this
+    that.setData({
+      Version: app.globalData.Version
+    })
     wx.request({
-      url: app.globalData.url + '/yichacha/client/loginrefresh',
+      url: app.globalData.url + '/client/loginrefresh',
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
@@ -27,7 +60,7 @@ Page({
       data: {
         token: wx.getStorageSync('token')
       },
-      success: function(res) {
+      success: function (res) {
         wx.hideToast()
         if (res.data.code == 0) {
           app.globalData.msgNotifyIs = res.data.data.msgNotifyIs
@@ -41,20 +74,6 @@ Page({
         }
       }
     })
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function() {
-
   },
 
   /**
@@ -89,6 +108,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '医查查在线',
+      desc: '推荐你一款专业的医疗器械和厂商查询工具,各大医院厂商都在用',
+      path: 'pages/index/index?shareUserId=' + app.globalData.userId
+    }
   }
 })

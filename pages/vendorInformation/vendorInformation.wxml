@@ -3,7 +3,7 @@
   <image src='../img/play@2x.png'></image>
   <text>3D展厅</text>
 </view>
-<view class='manufacturer'>
+<!-- <view class='manufacturer'>
   <text>{{detail.name||''}}</text>
   <view wx:if='{{detail.vipIs==1}}'>
     <image src='../img/V@2x.png'></image>
@@ -16,34 +16,147 @@
   <view class='addPhone'>
     <image src='../img/location@2x.png'></image>
     <text>{{detail.address||''}}</text>
-    <view class='phone'>
-    <image bindtap='tel' src='../img/phone@2x.png'></image>
+    <view class='phone' bindtap='tel'>
+    <image  src='../img/phone@2x.png'></image>
     </view>
   </view>
+</view> -->
+
+<view class='officeDetail'>
+  <view class='fuckBox'>
+    <view wxx:if='{{pinyinText!=""}}' class='fuckBox1'>
+      {{pinyinText}}
+    </view>
+    <view wx:if='{{pinyinText==""}}' class='fuckBox1'>
+      <image src='{{covers}}'></image>
+    </view>
+    <view class='fuckBox2'>
+      <text>{{gsName}}</text>
+      <view>
+        <image src='../img/V@2x.png'></image>
+        <text>认证</text>
+      </view>
+    </view>
+  </view>
+  <view class='fuckBq'>
+    <text wx:for='{{tags}}'>{{item}}</text>
+    <!-- <text>万东医疗</text>
+    <text>600055</text>
+    <text>高新技术企业</text>
+    <text>上市公司</text>
+    <text>万东医疗</text>
+    <text>600055</text> -->
+  </view>
 </view>
+<!-- <view>{{zhucerenCoTels}}</view> -->
+<view class='detailIntro'> 
+  <view class='detailFuck1'>
+    <view  class='detailFuck detailFuck11' wx:if='{{detail.faren!=""&&detail.faren!=null&&detail.faren!=undefined}}'>
+      <image src='../img/faren@2x.png'></image>
+      <text>法人</text>
+      <text>{{detail.faren||''}}</text>
+    </view>
+    <view  class='detailFuck detailFuck12'  wx:if='{{zhucerenCoTels!=""&&zhucerenCoTels!=null&&zhucerenCoTels!=undefined}}'>
+      <image src='../img/telephone@2x.png'></image>
+      <text>电话</text>
+      <text style='color:rgb(43,119,239)'  bindtap='tel'>{{zhucerenCoTels||''}}</text>
+    </view>
+  </view>
+  <view class='detailFuck detailFuck2' wx:if='{{detail.email!=""&&detail.email!=null&&detail.email!=undefined}}'>
+    <image style='height:22rpx;margin-top:5rpx;' src='../img/email@2x.png'></image>
+    <text>邮箱</text>
+    <text>{{detail.email||''}}</text>
+  </view>
+  <view class='detailFuck detailFuck3'wx:if='{{detail.site!=""&&detail.site!=null&&detail.site!=undefined}}'>
+    <image src='../img/www@2x.png'></image>
+    <text>网址</text>
+    <text style='color:rgb(43,119,239)' bindtap='site' data-site='{{detail.site}}'>{{detail.site||''}}</text>
+  </view>
+  <view class='detailFuck detailFuck4' style='height:auto !important;min-height:36rpx;float:left;width:100%;'wx:if='{{detail.address!=""&&detail.address!=null&&detail.address!=undefined}}'>
+    <image src='../img/location2x.png'></image>
+    <text>地址</text>
+    <text >{{detail.address||''}}</text>
+  </view>
+
+  <view class='detailFuck detailFuck5'wx:if='{{detail.intro!=""&&detail.intro!=null&&detail.intro!=undefined}}' style='height:auto !important;float:left;width:100%;position:relative'>
+    <image src='../img/jianjie@2x.png'></image>
+    <text>简介</text>
+    <text class='{{height1s}}'>{{detail.intro||''}}</text>
+    <image class='lookDetail'bindtap='look1' wx:if='{{height1==1}}' src='../img/down2x.png'></image>
+      <image class='lookDetail'bindtap='look1a' wx:if='{{height1==2}}' src='../img/up2x.png'></image>
+  </view>
+</view>
+<!-- <view class='roundList'>
+  <view bindtap='shareholders'>
+    <view>
+      <image src='../img/gudong@2x.png'></image>
+      <text>股东信息</text>
+    </view>
+    <text>数量：4</text>
+  </view>
+  <view bindtap='administrative'>
+    <view>
+      <image src='../img/xingzhengxuke@2x.png'></image>
+      <text>行政许可</text>
+    </view>
+    <text>数量：4</text>
+  </view>
+  <view bindtap='bidding'>
+    <view>
+      <image src='../img/zhaotoubiao@2x.png'></image>
+      <text>招投标</text>
+    </view>
+    <text>数量：4</text>
+  </view>
+
+</view> -->
+
+
 <view class='allInstrument'>
   <text>所有仪器</text>
 
   <view class='instrumentList'>
-    <navigator style='display:inline-block' wx:for='{{list}}' url='../detail/detail?id={{item.productId}}'>
-      <view class='instrument'>
-        <view style='background:url({{item.pic1}}) no-repeat;background-size:cover;background-position: center;'>
-          <view wx:if='{{item.coVipIs==1}}' class='zdl'></view>
+
+
+    <view wx:for="{{list}}" bindtap='hrefUrl' data-uis='1' data-pid='{{item.guochanyiliaoqixieId}}' data-url='../detail/detail?id={{item.guochanyiliaoqixieId}}' style="background:#fff;opacity:{{item.colorRead}}" class="productList_list_pic bottom lf">
+      <view class="productList_list_pic lf">
+        <view class='csTitle'>
+          <view>
+            <text>{{item.chanpinmingcheng||''}}</text>
+          </view>
         </view>
-        <view>{{item.name||''}}</view>
-        <view wx:if='{{item.favorIs==1}}'>
-          <image src='../img/love2@2x.png'></image>
-          <text>收藏</text>
+        <view class='register register1'>【注册证编号】
+          <text>{{item.zhucezhengbianhao||''}}</text>
         </view>
-        <view wx:if='{{item.favorIs==0}}'>
-          <image src='../img/love3@2x.png'></image>
-          <text>未收藏</text>
+        <view class='register register2'>【注册证名称】
+          <text>{{item.zhucerenmingcheng||''}}</text>
         </view>
       </view>
-    </navigator>
+    </view>
 
 
 
-    <view class='upMore' style='clear:both'>—— {{learnMore}} ——</view>
+
+
+
+    <view class='upMore' wx:if='{{learnMore!="当前没有数据"}}' style='margin-top:{{marginTop}}rpx;clear:both'>—— {{learnMore}} ——</view>
+    <view wx:if='{{learnMore=="当前没有数据"}}' class='upMoreNone newsNone'>
+      <image src='../img/bug.png'></image>
+      <!-- <text>您暂无任何消息</text> -->
+      <text style='margin-bottom:50rpx;'>当前没有数据</text>
+    </view>
+
   </view>
+</view>
+
+
+
+<view class='phoneBox' wx:if='{{makephone==1}}'>
+  <view class='phoneBoxTop'>
+    <view wx:if='{{zhucerenCoTel==""}}' class='phoneBoxTop1'>当前厂商尚未设置号码</view>
+    <view wx:if='{{detail.vipIs==0&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于网络，请核实</view>
+    <view wx:if='{{detail.vipIs==1&&zhucerenCoTel!=""}}' class='phoneBoxTop1'>号码来源于厂商，已核实</view>
+    <view wx:for='{{zhucerenCoTel}}' bindtap='makePhone' data-tel='{{item}}' class='phoneBoxTop2'>{{item}}</view>
+  </view>
+  <view bindtap='phoneClose' class='phoneBoxBottom'>取消</view>
 </view>

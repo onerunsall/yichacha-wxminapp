@@ -41,19 +41,19 @@
   margin-right: 48rpx;
 }
 /* .role>view:nth-child(1){
-  background: url('https://dev.njshangka.com/yichacha/resource/1@2x.png');
+  background: url('https://yichacha.njshangka.com/resource/1@2x.png');
   background-size: cover;
 }
 .role>view:nth-child(2){
-  background: url('https://dev.njshangka.com/yichacha/resource/2@2x.png');
+  background: url('https://yichacha.njshangka.com/resource/2@2x.png');
    background-size: cover;
 }
 .role>view:nth-child(3){
-  background: url('https://dev.njshangka.com/yichacha/resource/3@2x.png');
+  background: url('https://yichacha.njshangka.com/resource/3@2x.png');
    background-size: cover;
 }
 .role>view:nth-child(4){
-  background: url('https://dev.njshangka.com/yichacha/resource/4@2x.png');
+  background: url('https://yichacha.njshangka.com/resource/4@2x.png');
    background-size: cover;
 } */
 .joinIn{

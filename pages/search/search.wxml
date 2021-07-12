@@ -2,13 +2,13 @@
   <view class="top searchIs2_0Box">
     <view class="input_box">
       <view class="lf  input_box_view" style="display: inline-block">
-        <input  focus='false'  bindinput='inputUser' placeholder-class="place_holder" class="input input_dex" value='{{inputVal}}' bindconfirm='inputUserSearch' type="text" confirm-type='search' placeholder="请输入产品名称、注册证编号等"></input>
+        <input focus='false' bindinput='inputUser' placeholder-class="place_holder" class="input input_dex" value='{{inputVal}}' bindconfirm='inputUserSearch' type="text" confirm-type='search' placeholder="请输入产品名称、注册证编号等"></input>
       </view>
-      <image bindtap='searchIcon' class="search_fdj rt" src="../icon/search@2x.png" alt=""></image>
+      <image bindtap='searchIcon' class="search_fdj rt" src="../img/search@2x.png" alt=""></image>
       <image wx:if='{{showDel==1}}' class='del' bindtap='delThis' src='../img/close@2x.png'></image>
-    <text class='refuse' bindtap='refuse'>取消</text>
+      <text class='refuse' bindtap='refuse'>取消</text>
     </view>
-    
+
   </view>
   <!--热门搜索-->
   <view class="clear"></view>
@@ -19,7 +19,7 @@
     <view style="width: 100%;background-color: #ffffff;">
       <view id="textList">
         <view class="hot_search_text">
-        <text bindtap="searchSpan" data-kw='{{item.keyword}}' style='background:{{item.bgColor}};color:{{item.color}}' wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">{{item.keyword}}</text>
+          <text hover-class='searchSpanIf' bindtap="searchSpan" data-kw='{{item.word}}' style='background:{{item.bgColor}};color:{{item.color}}' wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">{{item.word}}</text>
           <!-- <view bindtap="searchSpan" data-kw='{{item.keyword}}' wx:for="{{searchlist}}" wx:key="searchlist" data-index="{{index}}" data-text="{{item.hotKeyName}}">
           <image wx:if='{{item.paixuid==1}}' src='../img/top1@2x.png'></image>
           <image wx:if='{{item.paixuid==2}}' src='../img/top2@2x.png'></image>
@@ -33,7 +33,7 @@
   </view>
 </view>
 
- <!-- <view class="search">
+<!-- <view class="search">
     <form bindreset="res" bindsubmit="search">      
       <view class="df search_arr">
         <icon class="searchcion" size='20' type='search' value="{{search}}" bindtap='Search'></icon>
@@ -41,76 +41,179 @@
       </view>
     </form>  
    </view> -->
-  <view wx:if="{{searchVal==2}}" style='width:750rpx;background:#fff;height:96rpx;position:fixed;top:80rpx;'>
-     <view class="navbar" >
-        <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</view>
+<view wx:if="{{searchVal==2}}" style='width:750rpx;background:#fff;height:96rpx;position:fixed;top:80rpx;z-index:999'>
+  <view class="navbar">
+    <view wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</view>
 
+  </view>
+</view>
+
+<view style='margin-top:178rpx;' wx:if="{{searchVal==2&&productIs==0}}">
+  <view wx:key="list" wx:for="{{list3}}" data-uis='0' data-index="{{index}}">
+    <!-- <navigator url='../detail/detail?id={{item.guochanyiliaoqixieId}}'> -->
+    <view  wx:if="{{productIs==0&&item.guochanyiliaoqixieId!=''&&item.guochanyiliaoqixieId!=null&&item.guochanyiliaoqixieId!=undefined}}" bindtap='hrefUrl' data-uis='0' data-pid='{{item.guochanyiliaoqixieId}}' data-url='../detail/detail?id={{item.guochanyiliaoqixieId}}'
+      style="background:#fff;opacity:{{item.colorRead}}" class="productList_list_pic bottom lf">
+      <view class="productList_list_pic lf">
+        <view class='csTitle'>
+          <view style='font-weight:bold !important'>
+            <block wx:if='{{item.nameIf==1}}' wx:for="{{item.chanpinmingcheng}}" wx:for-item="key_obj" wx:key="">
+              <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+              <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+            </block>
+            <text style='font-weight:bold !important' wx:if='{{item.nameIf==0}}'>{{item.chanpinmingcheng||''}}</text>
+          </view>
+          <view class='vips' wx:if='{{item.zhucerenCoVipIs==1}}'>
+            <image src='../img/V@2x.png'></image>
+            <text>认证</text>
+          </view>
+        </view>
+        <view class='register register1'>【注册证编号】
+          <text>{{item.zhucezhengbianhao||''}}</text>
+        </view>
+        <view class='register register2'>【注册证名称】
+          <text>{{item.zhucerenmingcheng||''}}</text>
+        </view>
       </view>
-  </view>
+    </view>
+    <view  wx:else bindtap='hrefUrl' data-uis='0' data-pid='{{item.coId}}' data-url='../vendorInformation/vendorInformation?id={{item.coId}}' style="background:#fff;position:relative;opacity:{{item.colorRead}}" class="productList_list_text lf">
+      <view class='csTitleIs' wx:if='{{item.vipIs==1}}'>
+        <view style='font-weight:bold !important' wx:if='{{item.nameIf==1}}'>
+          <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
+            <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+            <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+          </block>
+        </view>
+        <view wx:if='{{item.nameIf==0}}'>
+          <text style='font-weight:bold !important'>{{item.name||''}}</text>
+        </view>
 
-<view style='margin-top:178rpx;' wx:if="{{searchVal==2}}">
-  <view wx:for="{{list}}" wx:key="list" data-index="{{index}}">
-       <navigator url='../detail/detail?id={{item.productId}}'>
-        <view wx:if="{{productIs==0}}" style="background:#fff" class="productList_list_pic bottom lf">
-          <view class="productList_list_pic lf">
-            <view class='csTitle'>
-              <view>
-<block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
-          <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);">{{key_obj.str}}</text>
-          <text wx:else>{{key_obj.str}}</text>
-      </block>
-                <view wx:if='{{item.coVipIs==1}}'>
-                  <image src='../img/V@2x.png'></image>
-                  <text>认证</text>
-                </view>
-                 
-              </view>
-            </view>
-            <view class='register register1'>【注册证编号】<text >{{item.registerNo}}</text></view>
-              <view class='register register2'>【注册证名称】<text >{{item.coName}}</text></view>
-            <!-- <view name="productList_list_pic_ps" class="productList_list_pic_ps" id="jq1">
-            <view  style='background:url({{item.pic1}}) no-repeat;background-size:cover;background-position: center;'  class="dis1 img1 color_c"></view>
-              <view style='background:url({{item.pic2}}) no-repeat;background-size:cover;background-position: center;'  class="dis2 img2 color_c"></view>
-              <view style='background:url({{item.pic3}}) no-repeat;background-size:cover;background-position: center;'  class="dis3 img3 color_c"></view>
-            </view> -->
+        <view>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+      </view>
+
+      <view class='csTitleIsNo' wx:if='{{item.vipIs!=1}}'>
+        <view style='font-weight:bold !important' wx:if='{{item.nameIf==1}}'>
+          <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
+            <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+            <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+          </block>
+        </view>
+        <view wx:if='{{item.nameIf==0}}'>
+          <!-- <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key=""> -->
+          <!-- <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);">{{key_obj.str}}</text> -->
+          <text style='font-weight:bold !important'>{{item.name||''}}</text>
+          <!-- </block> -->
+        </view>
+      </view>
+
+
+      <view class="productList_list_text_lf rightIcon lf" wx:if='{{item.vipIs==1}}'>
+        <image src='../img/right@2x.png'></image>
+      </view>
+
+      <view class="productList_list_text_lf rightIcons lf" wx:if='{{item.vipIs!=1}}'>
+        <image src='../img/right@2x.png'></image>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
+  <view class='upMore' wx:if='{{learnMore3!="当前没有数据"}}' style='clear:both;padding-top:30rpx;padding-bottom:30rpx;'>—— {{learnMore}} ——</view>
+  <view wx:if='{{learnMore3=="当前没有数据"}}' class='upMoreNone newsNone'>
+    <image src='../img/bug.png'></image>
+    <!-- <text>您暂无任何消息</text> -->
+    <text>当前没有数据</text>
+  </view>
+</view>
+
+<view style='margin-top:178rpx;' wx:if="{{searchVal==2&&productIs==1}}">
+  <view wx:key="list" data-index="{{index}}">
+    <!-- <navigator url='../detail/detail?id={{item.guochanyiliaoqixieId}}'> -->
+    <view wx:for="{{list}}" wx:if="{{productIs==1}}" bindtap='hrefUrl' data-uis='1' data-pid='{{item.guochanyiliaoqixieId}}' data-url='../detail/detail?id={{item.guochanyiliaoqixieId}}' style="background:#fff;opacity:{{item.colorRead}}" class="productList_list_pic bottom lf">
+      <view class="productList_list_pic lf">
+        <view class='csTitle'>
+          <view style='font-weight:bold !important'>
+            <block wx:if='{{item.nameIf==1}}' wx:for="{{item.chanpinmingcheng}}" wx:for-item="key_obj" wx:key="">
+              <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+              <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+            </block>
+            <text style='font-weight:bold !important' wx:if='{{item.nameIf==0}}'>{{item.chanpinmingcheng||''}}</text>
+          </view>
+          <view class='vips' wx:if='{{item.zhucerenCoVipIs==1}}'>
+            <image src='../img/V@2x.png'></image>
+            <text>认证</text>
           </view>
         </view>
-      </navigator>
-
-         <navigator url='../vendorInformation/vendorInformation?id={{item.coId}}'>
-        <view wx:if="{{productIs!=0}}" style="background:#fff;position:relative;"  class="productList_list_text lf">
-          <view class='csTitleIs' wx:if='{{item.vipIs==1}}'>
-              <view>
-<block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
-          <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);">{{key_obj.str}}</text>
-          <text wx:else>{{key_obj.str}}</text>
-      </block>
-              </view>
-               <view>
-                  <image src='../img/V@2x.png'></image>
-                  <text>认证</text>
-                </view>
-            </view>
-
-<view class='csTitleIsNo' wx:if='{{item.vipIs!=1}}' >
-              <view >
-<block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
-          <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);">{{key_obj.str}}</text>
-          <text wx:else>{{key_obj.str}}</text>
-      </block>
-              </view>
-            </view>
-
-
-          <view class="productList_list_text_lf rightIcon lf" wx:if='{{item.vipIs==1}}'>
-            <image src='../img/right@2x.png'></image>
-          </view>
-
-          <view class="productList_list_text_lf rightIcons lf" wx:if='{{item.vipIs!=1}}'>
-            <image src='../img/right@2x.png'></image>
-          </view>
+        <view class='register register1'>【注册证编号】
+          <text>{{item.zhucezhengbianhao||''}}</text>
         </view>
-      </navigator>
+        <view class='register register2'>【注册证名称】
+          <text>{{item.zhucerenmingcheng||''}}</text>
+        </view>
+      </view>
+    </view>
+    <!-- </navigator> -->
+
+
   </view>
-  <view class='upMore'>——  {{learnMore}} ——</view>
+  <view class='upMore' wx:if='{{learnMore1!="当前没有数据"}}' style='clear:both;padding-top:30rpx;padding-bottom:30rpx;'>—— {{learnMore}} ——</view>
+  <view wx:if='{{learnMore1=="当前没有数据"}}' class='upMoreNone newsNone'>
+    <image src='../img/bug.png'></image>
+    <!-- <text>您暂无任何消息</text> -->
+    <text>当前没有数据</text>
+  </view>
+</view>
+<view style='margin-top:178rpx;' wx:if="{{searchVal==2&&productIs==2}}">
+  <view wx:key="list" data-index="{{index}}">
+    <view wx:for="{{list1}}" wx:if="{{productIs==2}}" bindtap='hrefUrl' data-uis='2' data-pid='{{item.coId}}' data-url='../vendorInformation/vendorInformation?id={{item.coId}}' style="background:#fff;position:relative;opacity:{{item.colorRead}}" class="productList_list_text lf">
+      <view class='csTitleIs' wx:if='{{item.vipIs==1}}'>
+        <view style='font-weight:bold !important' wx:if='{{item.nameIf==1}}'>
+          <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
+            <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+            <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+          </block>
+        </view>
+        <view wx:if='{{item.nameIf==0}}'>
+          <text style='font-weight:bold !important'>{{item.name||''}}</text>
+        </view>
+
+        <view>
+          <image src='../img/V@2x.png'></image>
+          <text>认证</text>
+        </view>
+      </view>
+
+      <view class='csTitleIsNo' wx:if='{{item.vipIs!=1}}'>
+        <view style='font-weight:bold !important' wx:if='{{item.nameIf==1}}'>
+          <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key="">
+            <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);font-weight:bold !important">{{key_obj.str}}</text>
+            <text wx:else style='font-weight:bold !important'>{{key_obj.str}}</text>
+          </block>
+        </view>
+        <view wx:if='{{item.nameIf==0}}'>
+          <!-- <block wx:for="{{item.name}}" wx:for-item="key_obj" wx:key=""> -->
+          <!-- <text wx:if="{{key_obj.key == true}}" style="color:rgb(2,175,101);">{{key_obj.str}}</text> -->
+          <text style='font-weight:bold !important'>{{item.name||''}}</text>
+          <!-- </block> -->
+        </view>
+      </view>
+
+
+      <view class="productList_list_text_lf rightIcon lf" wx:if='{{item.vipIs==1}}'>
+        <image src='../img/right@2x.png'></image>
+      </view>
+
+      <view class="productList_list_text_lf rightIcons lf" wx:if='{{item.vipIs!=1}}'>
+        <image src='../img/right@2x.png'></image>
+      </view>
+    </view>
+    <!-- </navigator> -->
+  </view>
+  <view class='upMore' wx:if='{{learnMore2!="当前没有数据"}}' style='clear:both;padding-top:30rpx;padding-bottom:30rpx;'>—— {{learnMore}} ——</view>
+  <view wx:if='{{learnMore2=="当前没有数据"}}' class='upMoreNone newsNone'>
+    <image src='../img/bug.png'></image>
+    <!-- <text>您暂无任何消息</text> -->
+    <text>当前没有数据</text>
+  </view>
 </view>

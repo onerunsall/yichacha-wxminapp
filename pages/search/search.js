@@ -14,40 +14,72 @@ Page({
     septum: '',
     inputkeyword: '',
     list: [],
+    list1: [],
+    list3:[],
     keyword: '',
     learnMore: '上拉加载更多',
     showDel: 0,
-    navbar: ['产品', '厂商'],
+    navbar: ['全部', '产品', '厂商'],
     currentTab: 0,
-    productIs:0,
+    productIs: 0,
+    marginTop: 30,
+    qx:1,
   },
   navbarTap: function(e) {
     this.setData({
       currentTab: e.currentTarget.dataset.idx,
-      list: [],
-      list1: [],
-      productIs: e.currentTarget.dataset.idx
+      productIs: e.currentTarget.dataset.idx,
+      qx:1,
     })
-    if (e.currentTarget.dataset.idx==0){
-      this.lastPage(this.data.keyword, 1, 15)
-    }else{
-      this.lastPageCs(this.data.keyword, 1, 15)
+    console.log(e.currentTarget.dataset.idx)
+    if (e.currentTarget.dataset.idx == 0) {
+      console.log(this.data.keyword)
+      if (this.data.list3 == '' || this.data.list3 == null || this.data.list3 == undefined){
+        if (this.data.keyword == '' || this.data.keyword == null || this.data.keyword==undefined){
+
+        }else{
+          this.lastPageAll(this.data.keyword, 1, 15)
+        }        
+      }     
+    } else if (e.currentTarget.dataset.idx == 1) {
+      console.log(2)
+      if (this.data.list == '' || this.data.list == null || this.data.list == undefined) {
+        if (this.data.keyword == '' || this.data.keyword == null || this.data.keyword == undefined) {} else {
+          this.lastPage(this.data.keyword, 1, 15)
+        }
+      } else {
+        this.setData({
+          learnMore: '没有更多了'
+        })
+      }
+    } else {
+      console.log(3)
+      if (this.data.list1 == '' || this.data.list1 == null || this.data.list1 == undefined) {
+        if (this.data.keyword == '' || this.data.keyword == null || this.data.keyword == undefined) {} else {
+          this.lastPageCs(this.data.keyword, 1, 15)
+        }
+      }else{
+        this.setData({
+          learnMore:'没有更多了'
+        })
+      }
     }
   },
   delThis(e) {
     this.setData({
       list: [],
+      list1: [],
       inputVal: '',
       searchVal: 1,
-      showDel: 1
+      showDel: 0,
     })
   },
   refuse(e) {
-    this.setData({
-      list: [],
-      inputVal: '',
-      searchVal: 1,
-    })
+    // this.setData({
+    //   list: [],
+    //   inputVal: '',
+    //   searchVal: 1,
+    // })
     wx.navigateBack({
 
     })
@@ -65,22 +97,35 @@ Page({
       })
     }
     this.setData({
+      qx: 1,
       list: [],
+      list1: [],
+      list3: [],
       keyword: keyword,
-      learnMore: '加载中'
+      learnMore: '加载中',
+      marginTop: '30'
       // inputkeyword: e.detail.value
     })
-    if (this.data.currentTab==0){
-      this.lastPage(keyword, 1, 15)
+    if (this.data.currentTab == 1) {
+      if (keyword == '' || keyword == null || keyword == undefined) {} else {
+        this.lastPage(keyword, 1, 15)
+      }
+
+    } else if (this.data.currentTab == 2){
+      if (keyword == '' || keyword == null || keyword == undefined) {} else {
+        this.lastPageCs(keyword, 1, 15)
+      }
     }else{
-      this.lastPageCs(keyword, 1, 15)
+      if (keyword == '' || keyword == null || keyword == undefined) { } else {
+        this.lastPageAll(keyword, 1, 15)
+      }
     }
-    
+
   },
   inputUser: function(e) {
     var keyword = e.detail.value
     this.setData({
-      list: [],
+      // list: [],
       keyword: keyword,
       showDel: 1
       // learnMore: ''
@@ -96,50 +141,56 @@ Page({
   searchSpan: function(e) {
     var that = this
     var keyword = e.currentTarget.dataset.kw
-    for (var i = 0; i < that.data.searchlist.length;i++){
-      if (keyword == that.data.searchlist[i].keyword){
-        that.data.searchlist[i].bgColor ='rgb(255, 149, 27);'
+    for (var i = 0; i < that.data.searchlist.length; i++) {
+      if (keyword == that.data.searchlist[i].word) {
+        that.data.searchlist[i].bgColor = 'rgb(255, 149, 27);'
         that.data.searchlist[i].color = 'rgb(255, 255, 255);'
       }
     }
     that.setData({
       searchlist: that.data.searchlist,
-      showDel:1
+      showDel: 1,
+      currentTab: 0,
+      productIs: 0,
     })
-    setTimeout(function(){
+
+    setTimeout(function() {
       for (var i = 0; i < that.data.searchlist.length; i++) {
-        if (keyword == that.data.searchlist[i].keyword) {
+        if (keyword == that.data.searchlist[i].word) {
           that.data.searchlist[i].bgColor = 'rgb(245, 245, 245);'
           that.data.searchlist[i].color = 'rgb(51, 51, 51);'
         }
       }
       that.setData({
         list: [],
+        list1: [],
+        list3: [],
         searchVal: 2,
         inputVal: keyword,
         keyword: keyword,
         learnMore: '加载中',
+        marginTop: 30,
         searchlist: that.data.searchlist
       })
-      if (that.data.currentTab==0){
-       that.lastPage(e.currentTarget.dataset.kw, 1, 15)
-     }else{
+      if (that.data.currentTab == 0) {
+        that.lastPageAll(e.currentTarget.dataset.kw, 1, 15)
+      } else if (that.data.currentTab == 1) {
+        that.lastPage(e.currentTarget.dataset.kw, 1, 15)
+      } else {
         that.lastPageCs(e.currentTarget.dataset.kw, 1, 15)
-     }
-    },500)
+      }
+    }, 100)
   },
   searchIcon: function(e) {
     var that = this
     var keyword = that.data.keyword;
-
     that.setData({
       keyword: keyword,
       list: [],
+      list1: [],
       searchVal: 2
     })
-
     that.lastPage(keyword, 1, 15)
-
   },
   /**
    * 生命周期函数--监听页面加载
@@ -148,24 +199,27 @@ Page({
     var that = this
     var domain = wx.getStorageSync('domain')
     wx.request({
-      url: app.globalData.url + '/yichacha/client/page/3-0-2',
+      url: app.globalData.url + '/client/searchkeys',
       header: {
-        'Content-type': 'application/json'
+        "Content-Type": "application/x-www-form-urlencoded",
       },
       method: 'post',
+      data: {
+        source: 2
+      },
       success: function(res) {
         wx.hideToast()
         if (res.data.code == 0) {
 
-          for (var i = 0; i < res.data.data.ads.length; i++) {
-            res.data.data.ads[i].paixuid = (i + 1)
-            res.data.data.ads[i].bgColor ='rgb(245, 245, 245)'
-            res.data.data.ads[i].color = 'rgb(51, 51, 51)'
+          for (var i = 0; i < res.data.data.items.length; i++) {
+            res.data.data.items[i].paixuid = (i + 1)
+            res.data.data.items[i].bgColor = 'rgb(245, 245, 245)'
+            res.data.data.items[i].color = 'rgb(51, 51, 51)'
           }
 
           that.setData({
             domain: domain,
-            searchlist: res.data.data.ads,
+            searchlist: res.data.data.items,
           })
         } else {
           wx.showModal({
@@ -212,34 +266,121 @@ Page({
       str: word
     }];
   },
+  hrefUrl(e) {
+    let that = this
+    // that.setData({
+    //   learnMore: '上拉加载更多'
+    // });
+    var url = e.currentTarget.dataset.url
+    if (e.currentTarget.dataset.uis == 1) {
+      for (var i = 0; i < that.data.list.length; i++) {
+        if (e.currentTarget.dataset.pid == that.data.list[i].guochanyiliaoqixieId){
+          console.log(e.currentTarget.dataset.pid)
+          that.data.list[i].colorRead = '0.4'
+        }
+      }
+      that.setData({
+        list: that.data.list
+      })
+    } else if (e.currentTarget.dataset.uis == 2){
+      for (var i = 0; i < that.data.list1.length; i++) {
+        if (e.currentTarget.dataset.pid == that.data.list1[i].coId){
+          that.data.list1[i].colorRead = '0.4'
+        }
+          
+      }
+      that.setData({
+        list1: that.data.list1
+      })
+    }else{
+      for (var i = 0; i < that.data.list3.length; i++) {
+        console.log(e.currentTarget.dataset.pid, that.data.list3[i].coId)
+        if (e.currentTarget.dataset.pid == that.data.list3[i].coId || e.currentTarget.dataset.pid == that.data.list3[i].guochanyiliaoqixieId) {
+          console.log(that.data.list3[i].colorRead)
+          that.data.list3[i].colorRead = '0.4'
+        }
 
+      }
+      that.setData({
+        list3: that.data.list3
+      })
+    }
+
+
+    if (app.globalData.loginIs == 0) {
+      wx.showToast({
+        title: '请登录',
+      })
+      setTimeout(function() {
+        wx.navigateTo({
+          url: '../login/login',
+        })
+      }, 1000)
+    } else {
+
+      wx.navigateTo({
+        url: url
+      })
+    }
+  },
   lastPage: function(keyword, pageNo, pageSize) {
     var that = this;
     wx.request({
-      url: app.globalData.url + '/yichacha/client/products',
+      url: app.globalData.url + '/client/guochanyiliaoqixies?kw=' + keyword + '&pn=' + pageNo + '&ps=' + pageSize,
       method: 'post',
-      data: {
-        kw: keyword,
-        pn: pageNo,
-        ps: pageSize
-      },
+      // data: {
+      //   kw: keyword,
+      //   pn: pageNo,
+      //   ps: pageSize
+      // },
       header: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
       success: function(res) {
         if (res.data.code == 0) {
-          console.log('pageNo=' + pageNo)
           pageNo++
           var pic1, pic2, pic3;
           if (res.data.data.items.length < 15) {
+            if (pageNo == 2 && res.data.data.items.length == 0) {
+              that.setData({
+                learnMore: '当前没有数据',
+                marginTop: 350,
+                learnMore1: '当前没有数据',
+              });
+            } else {
+              if (res.data.data.sum.totalItemCount == 0) {
+                that.setData({
+                  learnMore: '当前没有数据',
+                  marginTop: 350,
+                  learnMore1: '当前没有数据',
+                });
+              } else {
+                that.setData({
+                  learnMore: '没有更多了',
+                  marginTop: 30,
+                  learnMore1: 2,
+                });
+              }
+            }
+
+
+
+            // }
+          } else {
             that.setData({
-              learnMore: '没有更多了'
+              learnMore: '上拉加载更多',
+              marginTop: 30,
+              learnMore1: 2,
             });
           }
           for (var i = 0; i < res.data.data.items.length; i++) {
             var data = res.data.data.items
-            if (res.data.data.items[i].name.indexOf(keyword) > -1) {
-              data[i].name = that.hilight_word(keyword, data[i].name);
+            if (res.data.data.items[i].chanpinmingcheng.indexOf(keyword) > -1) {
+              data[i].chanpinmingcheng = that.hilight_word(keyword, data[i].chanpinmingcheng);
+              data[i].nameIf = 1
+            } else {
+              data[i].chanpinmingcheng = data[i].chanpinmingcheng;
+              data[i].nameIf = 0
             }
             if (res.data.data.items[i].pics != '' && res.data.data.items[i].pics != null && res.data.data.items[i].pics != undefined) {
               var pics = res.data.data.items[i].pics.split(',')
@@ -257,7 +398,7 @@ Page({
                 pic3 = app.globalData.url + pics[2];
               }
             } else {
-              pic1 = app.globalData.url + '/yichacha/resource/Group_12.png';
+              pic1 = app.globalData.url + '/resource/Group_12.png';
               pic2 = '';
               pic3 = '';
             }
@@ -269,40 +410,26 @@ Page({
 
           var list = that.data.list;
           var newlist = list.concat(res.data.data.items)
-          if (res.data.data.items.length == 0) {
-            if (pageNo==2){
-              that.setData({
-                list: newlist,
-                pageNo: pageNo,
-                learnMore: '当前无数据'
-              });
-            }else{
-              that.setData({
-                list: newlist,
-                pageNo: pageNo,
-                learnMore: '没有更多了'
-              });
-            }
-            
-            wx.showToast({
-              title: '数据已全部加载',
-              // icon: 'loading',
-              // duration: 1500
-            })
-          } else {
-            that.setData({
-              list: newlist,
-              pageNo: pageNo
-            });
+          // if (res.data.data.items.length == 0) {        
+          //   // wx.showToast({
+          //   //   title: '数据已全部加载',
+          //   //   // icon: 'loading',
+          //   //   // duration: 1500
+          //   // })
+          // } else {
+          that.setData({
+            list: newlist,
+            pageNo: pageNo
+          });
 
 
 
-            var list = that.data.list
-            that.setData({
-              list: list,
-              pageNo: pageNo
-            })
-          }
+          var list = that.data.list
+          that.setData({
+            list: list,
+            pageNo: pageNo
+          })
+          // }
         } else if (res.data.code == 20 || res.data.code == 26) {
           wx.hideToast()
           wx.navigateTo({
@@ -316,7 +443,7 @@ Page({
   lastPageCs: function(keyword, pageNo, pageSize) {
     var that = this;
     wx.request({
-      url: app.globalData.url + '/yichacha/client/cos',
+      url: app.globalData.url + '/client/cos',
       method: 'post',
       data: {
         kw: keyword,
@@ -330,52 +457,63 @@ Page({
         if (res.data.code == 0) {
           pageNo++
           if (res.data.data.items.length < 15) {
+            if (pageNo == 2 && res.data.data.items.length == 0) {
+              that.setData({
+                learnMore: '当前没有数据',
+                marginTop: 350,
+                learnMore2: '当前没有数据',
+              });
+            } else {
+              if (res.data.data.sum.totalItemCount == 0) {
+                that.setData({
+                  learnMore: '当前没有数据',
+                  marginTop: 350,
+                  learnMore2: '当前没有数据',
+                });
+              } else {
+                that.setData({
+                  learnMore: '没有更多了',
+                  marginTop: 30,
+                  learnMore2: 2,
+                });
+              }
+
+            }
+          } else {
             that.setData({
-              learnMore: '没有更多了'
+              learnMore: '上拉加载更多',
+              marginTop: 30,
+              learnMore2: 2,
             });
           }
           for (var i = 0; i < res.data.data.items.length; i++) {
             var data = res.data.data.items
+
             if (res.data.data.items[i].name.indexOf(keyword) > -1) {
               data[i].name = that.hilight_word(keyword, data[i].name);
-            }
-          }
-
-          var list = that.data.list;
-          var newlist = list.concat(res.data.data.items)
-          if (res.data.data.items.length == 0) {
-            if (pageNo == 2) {
-              that.setData({
-                list: newlist,
-                pageNo: pageNo,
-                learnMore: '当前无数据'
-              });
+              data[i].nameIf = 1
             } else {
-              that.setData({
-                list: newlist,
-                pageNo: pageNo,
-                learnMore: '没有更多了'
-              });
+              data[i].name = data[i].name;
+              data[i].nameIf = 0
             }
-            wx.showToast({
-              title: '数据已全部加载',
-              // icon: 'loading',
-              // duration: 1500
-            })
-          } else {
-            that.setData({
-              list: newlist,
-              pageNo: pageNo
-            });
-
-
-
-            var list = that.data.list
-            that.setData({
-              list: list,
-              pageNo: pageNo
-            })
           }
+
+          var list1 = that.data.list1;
+          var newlist1 = list1.concat(res.data.data.items)
+         
+          that.setData({
+            list1: newlist1,
+            pageNo: pageNo
+          });
+
+
+
+          var list1 = that.data.list1
+          that.setData({
+            list1: list1,
+            pageNo: pageNo
+          })
+          // }
         } else if (res.data.code == 20 || res.data.code == 26) {
           wx.hideToast()
           wx.navigateTo({
@@ -385,6 +523,249 @@ Page({
       }
     })
   },
+
+  lastPageAll: function (keyword, pageNo, pageSize) {
+    var totalItemCount=0;
+    var pageNosQx=0;
+
+      var that = this;
+      if(that.data.qx==1){
+        wx.request({
+          url: app.globalData.url + '/client/guochanyiliaoqixies?kw=' + keyword + '&pn=' + pageNo + '&ps=' + pageSize,
+          method: 'post',
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          success: function (res) {
+            if (res.data.code == 0) {
+              totalItemCount = res.data.data.sum.totalItemCount;
+              pageNosQx = Math.ceil(totalItemCount / pageSize)
+              pageNo++
+              var pic1, pic2, pic3;
+              if (res.data.data.items.length < 15) {
+                wx.request({
+                  url: app.globalData.url + '/client/cos',
+                  method: 'post',
+                  data: {
+                    kw: keyword,
+                    pn: 1,
+                    ps: pageSize
+                  },
+                  header: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                  },
+                  success: function (res) {
+                    if (res.data.code == 0) {
+                      pageNo=2
+                      console.log(pageNo)
+                      if (res.data.data.items.length < 15) {
+                        if (pageNo == 2 && res.data.data.items.length == 0) {
+                          that.setData({
+                            learnMore: '当前没有数据',
+                            marginTop: 350,
+                            learnMore3: '当前没有数据',
+                          });
+                        } else {
+                          if (res.data.data.sum.totalItemCount == 0) {
+                            that.setData({
+                              learnMore: '当前没有数据',
+                              marginTop: 350,
+                              learnMore3: '当前没有数据',
+                            });
+                          } else {
+                            that.setData({
+                              learnMore: '没有更多了',
+                              marginTop: 30,
+                              learnMore3: 2,
+                            });
+                          }
+
+                        }
+                      } else {
+                        that.setData({
+                          learnMore: '上拉加载更多',
+                          marginTop: 30,
+                          learnMore3: 2,
+                        });
+                      }
+                      for (var i = 0; i < res.data.data.items.length; i++) {
+                        var data = res.data.data.items
+
+                        if (res.data.data.items[i].name.indexOf(keyword) > -1) {
+                          data[i].name = that.hilight_word(keyword, data[i].name);
+                          data[i].nameIf = 1
+                        } else {
+                          data[i].name = data[i].name;
+                          data[i].nameIf = 0
+                        }
+                      }
+                      var list3 = that.data.list3;
+                      var newlist = list3.concat(res.data.data.items)
+                      that.setData({
+                        list3: newlist,
+                        pageNo: pageNo
+                      });
+                      var list3 = that.data.list3
+                      
+                      that.setData({
+                        list3: list3,
+                        pageNo: pageNo
+                      })
+                      console.log(that.data.list3)
+                      return
+                    } else if (res.data.code == 20 || res.data.code == 26) {
+                      wx.hideToast()
+                      wx.navigateTo({
+                        url: '../login/login',
+                      })
+                    }
+                  }
+                })
+                if (pageNo == 2 && res.data.data.items.length == 0) {
+                  console.log(that.data.list3)
+                  that.setData({
+                    learnMore: '当前没有数据',
+                    marginTop: 350,
+                    learnMore3: '当前没有数据',
+                    qx:2,
+                  });
+                } else {
+                  if (res.data.data.sum.totalItemCount == 0) {
+                    that.setData({
+                      learnMore: '当前没有数据',
+                      marginTop: 350,
+                      learnMore3: '当前没有数据',
+                      qx: 2,
+                    });
+                  } else {
+                    that.setData({
+                      learnMore: '没有更多了',
+                      marginTop: 30,
+                      learnMore3: 2,
+                      qx: 2,
+                    });
+                  }
+                }
+              } else {
+                that.setData({
+                  learnMore: '上拉加载更多',
+                  marginTop: 30,
+                  learnMore3: 2,
+                });
+              }
+              for (var i = 0; i < res.data.data.items.length; i++) {
+                var data = res.data.data.items
+                if (res.data.data.items[i].chanpinmingcheng.indexOf(keyword) > -1) {
+                  data[i].chanpinmingcheng = that.hilight_word(keyword, data[i].chanpinmingcheng);
+                  data[i].nameIf = 1
+                } else {
+                  data[i].chanpinmingcheng = data[i].chanpinmingcheng;
+                  data[i].nameIf = 0
+                } 
+              }
+              var list3 = that.data.list3;
+              var newlist = list3.concat(res.data.data.items)
+              that.setData({
+                list3: newlist,
+                pageNo: pageNo
+              });
+              var list3 = that.data.list3
+              that.setData({
+                list3: list3,
+                pageNo: pageNo
+              })
+            } else if (res.data.code == 20 || res.data.code == 26) {
+              wx.hideToast()
+              wx.navigateTo({
+                url: '../login/login',
+              })
+            }
+          }
+        })
+      }else{
+        wx.request({
+          url: app.globalData.url + '/client/cos',
+          method: 'post',
+          data: {
+            kw: keyword,
+            pn: pageNo,
+            ps: pageSize
+          },
+          header: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          success: function (res) {
+            if (res.data.code == 0) {
+              pageNo++
+              console.log(pageNo)
+              if (res.data.data.items.length < 15) {
+                if (pageNo == 2 && res.data.data.items.length == 0) {
+                  that.setData({
+                    learnMore: '当前没有数据',
+                    marginTop: 350,
+                    learnMore3: '当前没有数据',
+                  });
+                } else {
+                  if (res.data.data.sum.totalItemCount == 0) {
+                    that.setData({
+                      learnMore: '当前没有数据',
+                      marginTop: 350,
+                      learnMore3: '当前没有数据',
+                    });
+                  } else {
+                    that.setData({
+                      learnMore: '没有更多了',
+                      marginTop: 30,
+                      learnMore3: 2,
+                    });
+                  }
+
+                }
+              } else {
+                that.setData({
+                  learnMore: '上拉加载更多',
+                  marginTop: 30,
+                  learnMore3: 2,
+                });
+              }
+              for (var i = 0; i < res.data.data.items.length; i++) {
+                var data = res.data.data.items
+
+                if (res.data.data.items[i].name.indexOf(keyword) > -1) {
+                  data[i].name = that.hilight_word(keyword, data[i].name);
+                  data[i].nameIf = 1
+                } else {
+                  data[i].name = data[i].name;
+                  data[i].nameIf = 0
+                }
+              }
+              var list3 = that.data.list3;
+              var newlist = list3.concat(res.data.data.items)
+              that.setData({
+                list3: newlist,
+                pageNo: pageNo
+              });
+              var list3 = that.data.list3
+              that.setData({
+                list3: list3,
+                pageNo: pageNo
+              })
+            } else if (res.data.code == 20 || res.data.code == 26) {
+              wx.hideToast()
+              wx.navigateTo({
+                url: '../login/login',
+              })
+            }
+          }
+        })
+      }
+     
+ 
+  },
+  lastPageAllNext(pageNo){
+
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -419,16 +800,43 @@ Page({
   onPullDownRefresh: function() {
     var that = this
     var pageNo = 1;
-    var keyword = that.data.keyword;
     that.setData({
-      list: []
-    })
-    if (that.data.currentTab==0){
-      that.lastPage(keyword, pageNo, 15)
+      learnMore: '加载中',
+      marginTop: 30,
+    });
+    var keyword = that.data.keyword;
+
+    if (that.data.currentTab == 1) {
+      that.setData({
+        list: [],
+      })
+      if (that.data.keyword == '' || that.data.keyword == null || that.data.keyword == undefined) {
+
+      } else {
+        that.lastPage(keyword, pageNo, 15)
+      }
+
+
+    } else if (that.data.currentTab == 2){
+      that.setData({
+        list1: []
+      })
+      if (that.data.keyword == '' || that.data.keyword == null || that.data.keyword == undefined) {
+
+      } else {
+        that.lastPageCs(keyword, pageNo, 15)
+      }
     }else{
-      that.lastPageCs(keyword, pageNo, 15)
-    }  
-    
+      that.setData({
+        list3: []
+      })
+      if (that.data.keyword == '' || that.data.keyword == null || that.data.keyword == undefined) {
+
+      } else {
+        that.lastPageAll(keyword, pageNo, 15)
+      }
+    }
+
     wx.stopPullDownRefresh()
   },
 
@@ -437,19 +845,42 @@ Page({
    */
   onReachBottom: function() {
     var that = this
+    that.setData({
+      learnMore: '加载中',
+      marginTop: 30,
+    });
     var pageNo = that.data.pageNo;
     var keyword = that.data.keyword;
-    if (that.data.currentTab == 0) {
-      that.lastPage(keyword, pageNo, 15)
-    } else {
-      that.lastPageCs(keyword, pageNo, 15)
-    }  
+    if (that.data.currentTab == 1) {
+      if (keyword == '' || keyword == null || keyword == undefined) {
+
+      } else {
+        that.lastPage(keyword, pageNo, 15)
+      }
+
+    } else if(that.data.currentTab == 2) {
+      if (keyword == '' || keyword == null || keyword == undefined) {
+
+      } else {
+        that.lastPageCs(keyword, pageNo, 15)
+      }
+    }else{
+      if (keyword == '' || keyword == null || keyword == undefined) {
+
+      } else {
+        that.lastPageAll(keyword, pageNo, 15)
+      }
+    }
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function() {
-
+    return {
+      title: '医查查在线',
+      desc: '推荐你一款专业的医疗器械和厂商查询工具,各大医院厂商都在用',
+      path: 'pages/index/index?shareUserId=' + app.globalData.userId
+    }
   }
 })

@@ -1,0 +1,18 @@
+/* pages/shareholders/shareholders.wxss */
+page{
+  background: #f2f2f2;
+}
+.shareItem{
+  width: 678rpx;
+  height: 86rpx;
+  border-radius: 5rpx;
+  margin: 30rpx auto 0;
+  font-size: 30rpx;
+  color: rgb(51,51,51);
+  line-height: 86rpx;
+  text-align: center;
+  overflow:hidden;
+white-space:nowrap;
+text-overflow:ellipsis;
+background: #fff;
+}

@@ -1,20 +1,25 @@
 {
   "pages": [
     "pages/index/index",
-        "pages/search/search",
-   
     "pages/mycollection/mycollection",
     "pages/login/login",
     "pages/selectRole/selectRole",
     "pages/news/news",
-
+    "pages/search/search",
     "pages/mine/mine",
     "pages/vendorInformation/vendorInformation",
     "pages/Tindex/Tindex",
     "pages/webview/webview",
     "pages/detail/detail",
     "pages/logs/logs",
-    "pages/linkhref/linkhref"
+    "pages/linkhref/linkhref",
+    "pages/feedback/feedback",
+    "pages/brandDirect/brandDirect",
+    "pages/brandDirectDetail/brandDirectDetail",
+    "pages/supplyOrder/supplyOrder",
+    "pages/shareholders/shareholders",
+    "pages/administrative/administrative",
+    "pages/bidding/bidding"
   ],
   "window": {
     "backgroundTextStyle": "dark",
@@ -23,5 +28,6 @@
     "navigationBarTextStyle": "black",
     "backgroundColor": "#fff",
     "enablePullDownRefresh": true
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
